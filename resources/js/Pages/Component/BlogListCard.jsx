@@ -1,0 +1,48 @@
+import React from 'react';
+import { Tooltip, Button } from "@material-tailwind/react";
+
+
+
+
+function BlogListCard({image,title,description,time}) {
+  const date = new Date(time);
+  const formattedDate = date.toLocaleDateString();
+
+  return (
+    <div className=''>
+      <Tooltip content={title} animate={{
+        mount: { scale: 1, y: 0 },
+        unmount: { scale: 0, y: 25 },
+      }} placement="bottom-end">
+        <div className="flex flex-wrap mb-4">
+      <div className="grow-0 shrink-0 basis-auto w-full md:w-3/12 px-3 md:mb-0">
+        <div
+          className="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover ripple shadow-lg rounded-lg mb-3"
+          data-mdb-ripple="true" data-mdb-ripple-color="light">
+          <img src={image}
+            className="w-full" alt="Louvre" />
+          {/* <a href="#!">
+            <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+              ></div>
+          </a> */}
+        </div>
+      </div>
+
+      <div className="grow-0 shrink-0 basis-auto w-full md:w-9/12 xl:w-7/12 px-3 mb-1 md:mb-0 mr-auto">
+        <h5 className="text-lg font-bold mb-1 line-clamp-2">{title}</h5>
+       
+        <p className="text-gray-500 line-clamp-2">
+          {description}
+        </p>
+        <p className="text-gray-500 mb-2">
+          <small>Published <u>
+                {formattedDate}</u></small>
+        </p>
+      </div>
+    </div>
+    </Tooltip>
+    </div>
+  )
+}
+
+export default BlogListCard
