@@ -16,17 +16,18 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/',[BlogController::class,'index']);
-Route::get('/blog/{id}',[BlogController::class,'show']);
+Route::get('/', [BlogController::class, 'index']);
+Route::get('/blog/{id}', [BlogController::class, 'show']);
+Route::post('/blog/comment', [BlogController::class, 'comment']);
 
 Route::get('/blogpost', function () {
     return Inertia::render('Userside/ArticleScreen');
 });
 
 
-Route::get('/uploadarticle',[BlogController::class, 'displayUploadArticle']);
-Route::post('/uploadarticle',[BlogController::class, 'store']);
-Route::get('/category/{category}',[BlogController::class, 'dispayCategoryBlogs']);
+Route::get('/uploadarticle', [BlogController::class, 'displayUploadArticle']);
+Route::post('/uploadarticle', [BlogController::class, 'store']);
+Route::get('/category/{category}', [BlogController::class, 'dispayCategoryBlogs']);
 
 Auth::routes();
 

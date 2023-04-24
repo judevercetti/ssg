@@ -3,13 +3,21 @@ import Navbar from '../Component/Navbar'
 import { Footer } from '../Component/Footer'
 import parse from 'html-react-parser'
 import BlogAsideCard from '../Component/BlogAsideCard'
-import { Link, usePage } from '@inertiajs/inertia-react'
+import { Link, useForm, usePage } from '@inertiajs/inertia-react'
 import { Tooltip } from "@material-tailwind/react";
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 
-function ArticleScreen({ blog, category, latests, category_name }) {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import CommentCard from '../Component/CommentCard'
+
+
+function ArticleScreen({ blog, category, latests, category_name, comments }) {
     const currentUrl = location.href;
     const [copied, setCopied] = useState(false)
+    const commentForm = useForm({'blog_id': blog.id});
+    const {auth} = usePage().props;
+    console.log(comments)
 
     const copyLink = () => {
         navigator.clipboard.writeText(currentUrl);
@@ -17,9 +25,27 @@ function ArticleScreen({ blog, category, latests, category_name }) {
         setTimeout(() => setCopied(false), 2000);
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (!auth.user) {
+            toast.error('Login to comment on this article');
+            return;
+        }
+
+        commentForm.post(`comment`, {
+            preserveScroll: true,
+            onSuccess: () => {
+                commentForm.setData('body', '');
+                toast.success('Comment Sent');
+            }
+        })
+    };
+
     return (
         <div>
             <Navbar />
+            <ToastContainer />
             <div className='container mx-auto flex flex-wrap py-6'>
                 <section className="w-full md:w-2/3 flex flex-col items-center px-3">
                     <article className="flex flex-col shadow my-4">
@@ -59,7 +85,7 @@ function ArticleScreen({ blog, category, latests, category_name }) {
                                 <span>Facebook</span>
                             </FacebookShareButton>
 
-                            <LinkedinShareButton title='Check this interesting article I found: '  url={currentUrl} className='flex space-x-3 items-center'>
+                            <LinkedinShareButton title='Check this interesting article I found: ' url={currentUrl} className='flex space-x-3 items-center'>
                                 <LinkedinIcon round={true} size={30} />
                                 <span>LinkedIn</span>
                             </LinkedinShareButton>
@@ -70,6 +96,35 @@ function ArticleScreen({ blog, category, latests, category_name }) {
                                 </svg>
                                 <span>{copied ? 'Copied' : 'Copy link'}</span>
                             </button>
+                        </div>
+
+                        <div className="w-full  p-4 bg-white border rounded-lg shadow-md sm:p-8">
+                            <div className="flex items-center justify-between mb-4">
+                                <h5 className="text-xl font-bold leading-none text-gray-900 ">Comments</h5>
+
+                            </div>
+
+                            <form className="mb-6" onSubmit={handleSubmit}>
+                                <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 ">
+                                    <label htmlFor="comment" className="sr-only">Your comment</label>
+                                    <textarea id="comment" rows="3" value={commentForm.body} onChange={(event) => commentForm.setData('body', event.target.value)}
+                                        className="px-0 w-full text-sm  border-0 focus:ring-0 "
+                                        placeholder="Write a comment..." required></textarea>
+                                </div>
+                                <button type="submit"
+                                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-red-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                    Post comment
+                                </button>
+                            </form>
+
+                            <div className="flow-root">
+
+                                {comments && comments.map((usercomment) => (
+                                    <CommentCard commenterName={usercomment.user.name} commentDetails={usercomment.body} userimage={usercomment.display_photo} key={usercomment.id} />
+                                ))}
+
+
+                            </div>
                         </div>
                     </article>
                 </section>

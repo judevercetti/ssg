@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\BlogComment;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -91,7 +93,8 @@ class BlogController extends Controller
         $category_name = BlogCategory::where('id',$categoryid)->first();
         $category = Blog::where('category',$categoryid)->latest()->limit(4)->get();
         $latests = Blog::latest()->limit(6)->get();
-        return Inertia::render('Userside/ArticleScreen', ['blog' => $blog, 'category_name'=> $category_name, 'category'=>$category, 'latests'=>$latests]);
+        $comments = $blog->blogComments->load('user:id,name');
+        return Inertia::render('Userside/ArticleScreen', ['blog' => $blog, 'category_name'=> $category_name, 'category'=>$category, 'latests'=>$latests, 'comments'=>$comments]);
     }
 
     /**
@@ -148,5 +151,17 @@ class BlogController extends Controller
         $blogs = Blog::where('category',$getid)->get();
         return Inertia::render('Userside/CategoryScreen', ['blogs'=>$blogs, 'category'=>$category]);
        
+    }
+
+    public function comment(Request $request)
+    {
+        $comment = $request->input('body');
+        $blog_id = $request->input('blog_id');
+        $user = auth()->user()->id;
+        $query = DB::table('blog_comment')->insert([
+            'blog_id' => $blog_id,
+            'user_id' => $user,
+            'body' => $comment,
+        ]);
     }
 }
