@@ -2,9 +2,6 @@ import React from 'react'
 import { Link } from '@inertiajs/inertia-react';
 
 function BlogListCard2({ title, content, time, image }) {
-  const date = new Date(time);
-  const formattedDate = date.toLocaleDateString();
-
   return (
     <div>
       <div className="w-full rounded-lg shadow-md lg:max-w-sm" >
@@ -21,7 +18,7 @@ function BlogListCard2({ title, content, time, image }) {
             {content}
           </p>
           <p className="text-gray-500 mb-1">
-            <small>Published <u>{formattedDate}</u></small>
+            <small><u>{new Date(time).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</u></small>
           </p>
 
         </div>

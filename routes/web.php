@@ -17,6 +17,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [BlogController::class, 'index']);
+Route::get('/search', [BlogController::class, 'search']);
 Route::get('/blog/{id}', [BlogController::class, 'show']);
 Route::post('/blog/comment', [BlogController::class, 'comment']);
 Route::post('/blog/like', [BlogController::class, 'like']);
@@ -26,8 +27,8 @@ Route::get('/blogpost', function () {
 });
 
 
-Route::get('/uploadarticle', [BlogController::class, 'displayUploadArticle']);
-Route::post('/uploadarticle', [BlogController::class, 'store']);
+Route::get('/uploadarticle', [BlogController::class, 'displayUploadArticle'])->middleware(['auth']);
+Route::post('/uploadarticle', [BlogController::class, 'store'])->middleware(['auth']);
 Route::get('/category/{category}', [BlogController::class, 'dispayCategoryBlogs']);
 
 Auth::routes();

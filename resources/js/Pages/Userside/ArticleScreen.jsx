@@ -17,6 +17,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
     const [copied, setCopied] = useState(false)
     const commentForm = useForm({ 'blog_id': blog.id });
     const { auth } = usePage().props;
+    console.log(blog)
 
     const copyLink = () => {
         navigator.clipboard.writeText(currentUrl);
@@ -53,19 +54,18 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                             <div className="text-3xl font-bold hover:text-gray-700 pb-4">{blog.title}</div>
                             <div className="text-yellow-600 text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
-                                By <span className="font-semibold hover:text-gray-800">David Grzyb</span>, <br />Published on April 25th, 2020
+                                By <span className="font-semibold hover:text-gray-800">{blog.user.name}</span>, <br />
+                                Published on {new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </div>
                         </div>
 
                         <div className='py-5 text-center'>
-                            <img src={'/' + blog.imageurl} />
+                            <img src={'/' + blog.imageurl} className='w-full' />
                             <span className='text-sm italic text-gray-600'>Image: no description</span>
                         </div>
 
                         <div className="pb-6 px-5 my-5">
-                            {
-                                parse(blog.content)
-                            }
+                            {parse(blog.content)}
                         </div>
 
 
@@ -134,54 +134,77 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
                 <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
                     <div>
-
                         <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Similar Posts</span></h1>
-                        {
-                            category && category.map((blog, index) =>
+                        {category && category.map((blog, index) =>
+                            <Link key={index} href={"/blog/" + blog.slug}>
+                                {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
+                                <BlogAsideCard
+                                    key={blog.id}
+                                    image={blog.imageurl}
+                                    title={blog.title}
+                                    time={blog.created_at}
+                                />
+                            </Link>
+                        )}
+                    </div>
 
-                                <Link key={index} href={"/blog/" + blog.slug}>
 
-                                    {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
-                                    <BlogAsideCard
-                                        key={blog.id}
-                                        image={blog.imageurl}
-                                        title={blog.title}
-                                        time={blog.created_at}
-                                    />
-
-                                </Link>
-
-                            )}
-
+                    <div className="text-sm py-6 top-10">
+                        <div className="w-full text-center">
+                            {/* <Adsense
+                                client='ca-pub-2005682797531342'
+                                slot='7046626912'
+                                adTest='on'
+                                style={{ display: 'block' }}
+                                format='auto'
+                                responsive='true'
+                                layoutKey='-gw-1+2a-9x+5c'
+                            /> */}
+                            <a className="uppercase mt-5" href="#">Advertisement</a>
+                            <a href="#">
+                                <img className="mx-auto" src="/images/ads/250.jpg" alt="advertisement area" />
+                            </a>
+                        </div>
                     </div>
 
                     <div className="w-full bg-white shadow flex flex-col my-4 p-6">
                         <h1 className="ml-2 w-full mb-2 mt-5 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-2xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest Posts</span></h1>
                         <div className="grid grid-cols-3 gap-3">
-                            {
-                                latests && latests.map((latest, index) =>
+                            {latests && latests.map((latest, index) =>
+                                <Link key={index} href={"/blog/" + latest.slug}>
+                                    <Tooltip content={latest.title} animate={{
+                                        mount: { scale: 1, y: 0 },
+                                        unmount: { scale: 0, y: 25 },
+                                    }} placement="bottom-end">
 
-                                    <Link key={index} href={"/blog/" + latest.slug}>
-                                        <Tooltip content={latest.title} animate={{
-                                            mount: { scale: 1, y: 0 },
-                                            unmount: { scale: 0, y: 25 },
-                                        }} placement="bottom-end">
-
-                                            <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} />
-                                        </Tooltip>
-
-
-                                    </Link>
-
-                                )}
-
-
-
+                                        <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} />
+                                    </Tooltip>
+                                </Link>
+                            )}
                         </div>
                         <a href="#" className="w-full bg-yellow-500 text-white font-bold text-sm uppercase rounded hover:bg-yellow-700 flex items-center justify-center px-2 py-3 mt-6">
                             Subscribe
                         </a>
                     </div>
+
+                    <div className="text-sm py-6 sticky top-20">
+                        <div className="w-full text-center">
+                            {/* <Adsense
+                                client='ca-pub-2005682797531342'
+                                slot='7046626912'
+                                adTest='on'
+                                style={{ display: 'block' }}
+                                format='auto'
+                                responsive='true'
+                                layoutKey='-gw-1+2a-9x+5c'
+                            /> */}
+                            <a className="uppercase mt-5" href="#">Advertisement</a>
+                            <a href="#">
+                                <img className="mx-auto" src="/images/ads/250.jpg" alt="advertisement area" />
+                            </a>
+                        </div>
+                    </div>
+
                 </aside>
             </div>
             <Footer />

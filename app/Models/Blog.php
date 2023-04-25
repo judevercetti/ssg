@@ -22,6 +22,11 @@ class Blog extends Model
     ];
 
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'uploadedby');
+    }
+
     public function blogCategory()
     {
         return $this->belongsTo(BlogCategory::class);

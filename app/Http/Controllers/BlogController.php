@@ -17,79 +17,88 @@ class BlogController extends Controller
     public function index()
     {
         //
-    
+
         $latest = Blog::latest()->first();
         $latests = Blog::latest()->limit(4)->get();
         $trending_posts = Blog::latest()->limit(4)->get();
         //$categories = BlogCategory::all();
 
-        
-        
-        $blog_category = BlogCategory::with(['blog'=> function($query){$query->limit(4);}])->get();
+
+
+        $blog_category = BlogCategory::with([
+            'blog' => function ($query) {
+                $query->limit(4);
+            }
+        ])->get();
         //return Response($entertainment);
         return Inertia::render('Userside/Home', [
-            'latest' =>$latest,
-            'latests' =>$latests,
-            'blog_category'=> $blog_category,
-            'trending_posts'=> $trending_posts,
+            'latest' => $latest,
+            'latests' => $latests,
+            'blog_category' => $blog_category,
+            'trending_posts' => $trending_posts,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function search(Request $request)
+    {
+        $search_text = $request->input('search_text');
+
+        $posts = Blog::where('title', 'LIKE', "%{$search_text}%")
+            ->orWhere('content', 'LIKE', "%{$search_text}%")
+            ->get();
+
+        return Inertia::render('Userside/SearchArticleScreen', [
+            'posts' => $posts,
+        ]);
+    }
+
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $title = $request->input('articleTitle');
         $description = $request->input('articleDescription');
         $category = $request->input('articleCategory');
         $content = $request->input('articleContent');
-        $value = $title.' '. Str::random();
-        $slug = Str::slug($value.'-');
+        $value = $title . ' ' . Str::random();
+        $slug = Str::slug($value . '-');
 
-        $file= $request->file('articleImage');
-        $filename= $slug . '.'.$file->extension();;
+        $file = $request->file('articleImage');
+        $filename = $slug . '.' . $file->extension();
+        ;
         // $file-> move(public_path('/images/blogpictures'), $filename);
-        
-        $path = $file->storeAs('/images/blogpictures', $filename, ['disk'=>'public_uploads']);
+
+        $path = $file->storeAs('/images/blogpictures', $filename, ['disk' => 'public_uploads']);
 
         $blog = Blog::create([
-            'title'=>$title,
-            'slug'=>$slug,
-            'description'=>$description,
-            'category'=>$category,
-            'content'=>$content,
-            'uploadedby'=>1,
-            'imageurl'=>$path
+            'title' => $title,
+            'slug' => $slug,
+            'description' => $description,
+            'category' => $category,
+            'content' => $content,
+            'uploadedby' => auth()->id(),
+            'imageurl' => $path
         ]);
-        
+
 
 
     }
-    
+
     public function show($blog)
     {
         //
-        $blog= Blog::where('slug',$blog)->first();
+        $blog = Blog::where('slug', $blog)->with('user:id,name')->first();
         $categoryid = $blog->category;
-        $category_name = BlogCategory::where('id',$categoryid)->first();
-        $category = Blog::where('category',$categoryid)->latest()->limit(4)->get();
+        $category_name = BlogCategory::where('id', $categoryid)->first();
+        $category = Blog::where('category', $categoryid)->latest()->limit(4)->get();
         $latests = Blog::latest()->limit(6)->get();
         $comments = $blog->blogComments;
-        return Inertia::render('Userside/ArticleScreen', ['blog' => $blog, 'category_name'=> $category_name, 'category'=>$category, 'latests'=>$latests, 'comments'=>$comments]);
+        return Inertia::render('Userside/ArticleScreen', ['blog' => $blog, 'category_name' => $category_name, 'category' => $category, 'latests' => $latests, 'comments' => $comments]);
     }
 
     /**
@@ -132,7 +141,7 @@ class BlogController extends Controller
         $categories = BlogCategory::all();
 
         //return Response($category);
-        return Inertia::render('Admins/UploadArticleScreen', ['categories'=>$categories]);
+        return Inertia::render('Admins/UploadArticleScreen', ['categories' => $categories]);
 
     }
 
@@ -141,11 +150,11 @@ class BlogController extends Controller
         //
         $category = $request->category;
 
-        $getid = BlogCategory::where('name',$category)->first()->id;
+        $getid = BlogCategory::where('name', $category)->first()->id;
 
-        $blogs = Blog::where('category',$getid)->get();
-        return Inertia::render('Userside/CategoryScreen', ['blogs'=>$blogs, 'category'=>$category]);
-       
+        $blogs = Blog::where('category', $getid)->get();
+        return Inertia::render('Userside/CategoryScreen', ['blogs' => $blogs, 'category' => $category]);
+
     }
 
     public function comment(Request $request)
@@ -170,8 +179,7 @@ class BlogController extends Controller
 
         if ($like) {
             $like->delete();
-        }
-        else {   
+        } else {
             BlogCommentLike::create([
                 'comment_id' => $comment_id,
                 'user_id' => $user_id,

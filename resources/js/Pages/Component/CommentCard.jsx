@@ -72,9 +72,13 @@ function CommentCard({ comment }) {
                 </div>
                 <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 truncate  ">
-                        {comment.user.name}
+                        {comment.user.name} • 
+                        <span className='text-xs font-light text-color-gray-500 ml-2'>
+
+                        {new Date(comment.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                        </span>
                     </p>
-                    <p className="text-sm  ">
+                    <p className="text-sms  ">
                         {comment.body}
                     </p>
                     {!showReply && <div className='flex text-sm text-gray-500'>

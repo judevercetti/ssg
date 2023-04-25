@@ -19,7 +19,7 @@ function Navbar() {
 
         <div className='flex justify-between content-center pt-1'>
           <div className='flex'>
-            <div className="flex justify-center ml-4">
+            <div className="flex justify-center ml-4 font-semibold">
 
               <Link href="#" className="mx-2 text-white transition-colors duration-300  hover:text-yellow-600" aria-label="Facebook">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
@@ -78,19 +78,15 @@ function Navbar() {
                 className="ml-10 text-white text-md transition-colors duration-300  hover:text-yellow-600">
                 Login
               </Link>
-              <Link
-                href="/subscribe"
-                className="ml-10 text-white text-md transition-colors duration-300  hover:text-yellow-600"
-              >
+              <button className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-yellow-600 rounded-xl  hover:bg-yellow-700">
                 Subscribe
-              </Link>
+              </button>
             </>}
           </div>
         </div>
-
       </div>
 
-      <nav className="flex flex-wrap items-center justify-between pr-2 shadow-lg bg-yellow-600 mb-3 sticky top-0 ">
+      <nav className="flex flex-wrap items-center justify-between pr-2 shadow-lg bg-yellow-600 sticky top-0 ">
         <div className="container pr-4 flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             {/* <Link
@@ -205,6 +201,18 @@ function Navbar() {
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Fashion & lifestyle</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
+                  href="#pablo"
+                >
+                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                  </span>
                 </Link>
               </li>
             </ul>
