@@ -21,13 +21,16 @@ class Blog extends Model
         'uploadedby'
     ];
 
-   
-    public function blogCategory(){
+
+    public function blogCategory()
+    {
         return $this->belongsTo(BlogCategory::class);
     }
 
     public function blogComments()
     {
-        return $this->hasMany(BlogComment::class);
+        return $this->hasMany(BlogComment::class)->with(['user:id,name', 'replies'])
+            ->withCount('likes')
+            ->whereNull('parent_id');
     }
 }

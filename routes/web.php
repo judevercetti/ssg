@@ -19,6 +19,7 @@ use Inertia\Inertia;
 Route::get('/', [BlogController::class, 'index']);
 Route::get('/blog/{id}', [BlogController::class, 'show']);
 Route::post('/blog/comment', [BlogController::class, 'comment']);
+Route::post('/blog/like', [BlogController::class, 'like']);
 
 Route::get('/blogpost', function () {
     return Inertia::render('Userside/ArticleScreen');

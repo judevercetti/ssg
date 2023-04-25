@@ -90,11 +90,11 @@ function Navbar() {
 
       </div>
 
-      <nav className="flex flex-wrap items-center justify-between px-2 py-4 bg-yellow-600 mb-3 sticky top-0 ">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+      <nav className="flex flex-wrap items-center justify-between pr-2 shadow-lg bg-yellow-600 mb-3 sticky top-0 ">
+        <div className="container pr-4 flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             {/* <Link
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+              className="text-sm font-semibold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
               href="/"
             >
               <div className="lg:mt-0 absolute top-0 left-0 rounded-l px-8 py-1">
@@ -116,25 +116,21 @@ function Navbar() {
 
             </button>
           </div>
-          <div
-            className={
-              "lg:flex flex-grow items-center" +
-              (navbarOpen ? " flex" : " hidden")
-            }
-            id="example-navbar-danger">
-            <img className='h-12 object-contain' src='/images/logo.png' alt="" />
+          <div className={"lg:flex flex-grow items-center" + (navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
+            <div className='flex items-center py-2 px-8 bg-white'>
+              <img className='h-12 object-contain' src='/images/logo.png' alt="" />
+              <h1 className="relative pl-5 xl:text-2xl ml-3 text-gray-900 font-bold tracking-tight">
+                South Sudan Global
+              </h1>
+            </div>
 
-            <h1 className="relative pl-5 xl:text-2xl ml-3 text-gray-900 font-bold tracking-tight">
-              South Sudan Global
-            </h1>
             {/* News (National, Regional (East Africa), Africa, world)), Politics, Business and Innovation, Agribusiness and Economy, Opinion, Health and Wellness, Diaspora, Science, Culture, Environment and Climate change, videos */}
 
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="/"
-                >
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
+                  href="/">
                   <span className="ml-2">Home</span>
                 </Link>
               </li>
@@ -142,10 +138,8 @@ function Navbar() {
               <li className="nav-item cursor-pointer">
                 <Menu>
                   <MenuHandler>
-                    <div className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">News
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-4 h-4 ml-1">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                      </svg>
+                    <div className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75">
+                      News
                     </div>
                   </MenuHandler>
                   <MenuList className='flex flex-col space-y-5 w-32 py-4 font-semibold text-base text-start text-gray-600'>
@@ -175,7 +169,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Opinions</span>
@@ -183,7 +177,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Videos</span>
@@ -191,7 +185,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Contributors</span>
@@ -199,7 +193,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Agribusiness</span>
@@ -207,7 +201,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
                   href="#pablo"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Fashion & lifestyle</span>

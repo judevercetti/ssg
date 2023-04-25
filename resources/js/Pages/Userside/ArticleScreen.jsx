@@ -15,9 +15,8 @@ import CommentCard from '../Component/CommentCard'
 function ArticleScreen({ blog, category, latests, category_name, comments }) {
     const currentUrl = location.href;
     const [copied, setCopied] = useState(false)
-    const commentForm = useForm({'blog_id': blog.id});
-    const {auth} = usePage().props;
-    console.log(comments)
+    const commentForm = useForm({ 'blog_id': blog.id });
+    const { auth } = usePage().props;
 
     const copyLink = () => {
         navigator.clipboard.writeText(currentUrl);
@@ -45,27 +44,30 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
     return (
         <div>
             <Navbar />
-            <ToastContainer />
+            <ToastContainer autoClose={2000} />
             <div className='container mx-auto flex flex-wrap py-6'>
                 <section className="w-full md:w-2/3 flex flex-col items-center px-3">
                     <article className="flex flex-col shadow my-4">
 
-                        <div>
-                            <img src={'/' + blog.imageurl} />
-                        </div>
-                        <div className="bg-white flex flex-col justify-start p-6">
-                            <div className="text-yellow-600 text-sm font-bold uppercase pb-4">{category_name.name}</div>
+                        <div className="bg-white flex flex-col justify-start px-5">
                             <div className="text-3xl font-bold hover:text-gray-700 pb-4">{blog.title}</div>
+                            <div className="text-yellow-600 text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
-                                By <div className="font-semibold hover:text-gray-800">David Grzyb</div>, Published on April 25th, 2020
+                                By <span className="font-semibold hover:text-gray-800">David Grzyb</span>, <br />Published on April 25th, 2020
                             </div>
-                            <div className="pb-6 mt-5">
-                                {
-                                    parse(blog.content)
-                                }
-                            </div>
-
                         </div>
+
+                        <div className='py-5 text-center'>
+                            <img src={'/' + blog.imageurl} />
+                            <span className='text-sm italic text-gray-600'>Image: no description</span>
+                        </div>
+
+                        <div className="pb-6 px-5 my-5">
+                            {
+                                parse(blog.content)
+                            }
+                        </div>
+
 
                         <h4 className='text-lg ml-7 font-semibold hover:text-gray-700 pb-1'>Share Post</h4>
 
@@ -98,10 +100,11 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                             </button>
                         </div>
 
-                        <div className="w-full  p-4 bg-white border rounded-lg shadow-md sm:p-8">
+                        <div className="w-full  p-4 mt-5 bg-white border rounded-lg shadow-md sm:p-8">
                             <div className="flex items-center justify-between mb-4">
-                                <h5 className="text-xl font-bold leading-none text-gray-900 ">Comments</h5>
-
+                                <h5 className="text-xl font-bold leading-none text-gray-900 ">
+                                    {comments && comments.length} Comments
+                                </h5>
                             </div>
 
                             <form className="mb-6" onSubmit={handleSubmit}>
@@ -119,8 +122,8 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
                             <div className="flow-root">
 
-                                {comments && comments.map((usercomment) => (
-                                    <CommentCard commenterName={usercomment.user.name} commentDetails={usercomment.body} userimage={usercomment.display_photo} key={usercomment.id} />
+                                {comments && comments.map((comment, index) => (
+                                    <CommentCard key={index} comment={comment} />
                                 ))}
 
 

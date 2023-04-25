@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\BlogComment;
+use App\Models\BlogCommentLike;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -78,13 +79,7 @@ class BlogController extends Controller
 
 
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($blog)
     {
         //
@@ -93,7 +88,7 @@ class BlogController extends Controller
         $category_name = BlogCategory::where('id',$categoryid)->first();
         $category = Blog::where('category',$categoryid)->latest()->limit(4)->get();
         $latests = Blog::latest()->limit(6)->get();
-        $comments = $blog->blogComments->load('user:id,name');
+        $comments = $blog->blogComments;
         return Inertia::render('Userside/ArticleScreen', ['blog' => $blog, 'category_name'=> $category_name, 'category'=>$category, 'latests'=>$latests, 'comments'=>$comments]);
     }
 
@@ -157,11 +152,30 @@ class BlogController extends Controller
     {
         $comment = $request->input('body');
         $blog_id = $request->input('blog_id');
+        $parent_id = $request->input('parent_id');
         $user = auth()->user()->id;
-        $query = DB::table('blog_comment')->insert([
+        $query = BlogComment::create([
             'blog_id' => $blog_id,
+            'parent_id' => $parent_id,
             'user_id' => $user,
             'body' => $comment,
         ]);
+    }
+
+    public function like(Request $request)
+    {
+        $comment_id = $request->input('parent_id');
+        $user_id = auth()->id();
+        $like = BlogCommentLike::where('comment_id', $comment_id)->where('user_id', $user_id)->first();
+
+        if ($like) {
+            $like->delete();
+        }
+        else {   
+            BlogCommentLike::create([
+                'comment_id' => $comment_id,
+                'user_id' => $user_id,
+            ]);
+        }
     }
 }
