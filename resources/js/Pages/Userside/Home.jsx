@@ -5,32 +5,43 @@ import BlogListCard from '../Component/BlogListCard';
 import BlogListCard2 from '../Component/BlogListCard2';
 import BlogAsideCard from '../Component/BlogAsideCard';
 import { Link } from '@inertiajs/inertia-react';
+import VideoListCard from '../Component/VideoListCard';
+import Layout from '../Component/Layout';
 
 
 function Home({ latest, latests, blog, blog_category, trending_posts }) {
     return (
         <div>
-            <Navbar />
-
-            <section className="flex justify-between items-center bg-black p-10">
-                <div className='w-2/3'>
-                    <img src={latest.imageurl} className="h-96 w-full object-cover" />
+            <section className="flex space-x-5 justify-between items-center bg-black p-10">
+                <div className='w-2/4'>
+                    <Link href={"/" + latest.slug}>
+                        <img src={latest.imageurl} className="h-96 w-full object-cover" />
+                    </Link>
                 </div>
-                <div className="flex-1 space-y-4 lg:ml-10 sm:text-center lg:text-left">
-                    <h1 className="text-2xl font-bold text-yellow-500">
-                        {latest.title}
+                <div className="flex-1 space-y-4 sm:text-center lg:text-left">
+                    <h1 className="text-3xl font-bold text-yellow-500 hover:underline">
+                        <Link href={"/" + latest.slug}>{latest.title}</Link>
                     </h1>
-                    <p className="max-w-xl leading-relaxed text-gray-300 sm:mx-auto lg:ml-0">
+                    <p className="max-w-xl text-lg leading-relaxed text-gray-300 sm:mx-auto lg:ml-0">
                         {latest.description}
                     </p>
-                    <div className="items-center justify-center space-y-3 sm:space-x-6 sm:space-y-0 sm:flex lg:justify-start">
-                        <Link
-                            href={"/blog/" + latest.slug}
-                            className="block px-6 py-2 text-center text-white bg-yellow-600 hover:bg-yellow-700 rounded-md"
-                        >
-                            Read More
+                    <Link href={"/" + latest.slug} className="block text-yellow-500 rounded-md hover:underline">
+                        Read More
+                    </Link>
+                </div>
+                <div className='w-1/4 text-gray-200'>
+                    <h1 className='font-semibold text-lg'>LATEST VIDEOS</h1>
+                    {trending_posts && trending_posts.map((post, index) =>
+                        <Link key={index} href={'/' + post.slug}>
+                            <VideoListCard image={post.imageurl} title={post.title} />
                         </Link>
-                    </div>
+                    )}
+                    <Link href='/ssgtv' className='flex space-x-2 items-center font-semibold text-base text-yellow-500 float-right hover:underline'>
+                        <span>See more videos</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 animate-pulse">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                        </svg>
+                    </Link>
                 </div>
             </section>
 
@@ -38,11 +49,10 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start mb-5' >
                         <h1 className="ml-6  w-full mb-2 mt-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest</span></h1>
-                        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-5">
+                        <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-5">
                             {latests && latests.map((latest, index) =>
-                                <Link key={index} href={"/blog/" + latest.slug}>
+                                <Link key={index} href={"/" + latest.slug}>
                                     <BlogListCard2 title={latest.title} content={latest.description} time={latest.updated_at} image={latest.imageurl} />
-
                                 </Link>
                             )}
                         </div>
@@ -54,7 +64,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                                 {category.blog.length == 0 ? <></> : <>
                                     <h1 className="ml-6 w-full mb-2 my-10 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">  {category.name}</span></h1>
                                     {category.blog.map((blogs, index) =>
-                                        <Link key={index} href={"/blog/" + blogs.slug}>
+                                        <Link key={index} href={"/" + blogs.slug}>
 
                                             <BlogListCard key={blogs.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} />
                                         </Link>
@@ -71,7 +81,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                             )}
                     </div>
                 </section>
-                
+
                 <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>
                     <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Trending Posts</span></h1>
                     {trending_posts && trending_posts.map((post, index) =>
@@ -105,4 +115,5 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
     );
 }
 
+Home.layout = page => <Layout children={page} />
 export default Home

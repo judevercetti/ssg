@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('blog_category', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->string('description')->nullable();
             $table->timestamps();
         });

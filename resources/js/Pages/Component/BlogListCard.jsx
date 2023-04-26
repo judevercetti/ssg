@@ -1,20 +1,13 @@
 import React from 'react';
-import { Tooltip, Button } from "@material-tailwind/react";
 
 
 function BlogListCard({ image, title, description, time }) {
-  console.log(description)
-
   return (
     <div className=''>
-      <Tooltip content={title} animate={{
-        mount: { scale: 1, y: 0 },
-        unmount: { scale: 0, y: 25 },
-      }} placement="bottom-end">
         <div className="flex flex-wrap mb-4">
           <div className="grow-0 shrink-0 basis-auto w-full md:w-4/12 px-3 md:mb-0">
             <div
-              className="relative overflow-hidden bg-no-repeat bg-cover -z-50 ripple shadow-lg rounded-lg mb-3"
+              className="relative overflow-hidden bg-no-repeat bg-cover -z-50 ripple rounded-lg mb-3"
               data-mdb-ripple="true" data-mdb-ripple-color="light">
               <img src={image}
                 className="w-full h-32 object-cover" alt="Louvre" />
@@ -26,7 +19,7 @@ function BlogListCard({ image, title, description, time }) {
           </div>
 
           <div className="grow-0 shrink-0 basis-auto w-full md:w-9/12 xl:w-7/12 px-3 mb-1 md:mb-0 mr-auto">
-            <h5 className="text-lg font-bold mb-1 line-clamp-2">{title}</h5>
+            <h5 className="text-lg font-bold mb-1 line-clamp-2 hover:underline">{title}</h5>
 
             <p className="text-gray-500 line-clamp-2">
               {description}
@@ -37,7 +30,6 @@ function BlogListCard({ image, title, description, time }) {
             </p>
           </div>
         </div>
-      </Tooltip>
     </div>
   )
 }

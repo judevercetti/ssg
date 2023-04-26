@@ -4,14 +4,28 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
+  Card,
+  Popover,
+  PopoverHandler,
+  PopoverContent,
 } from "@material-tailwind/react";
-import { Link, usePage } from '@inertiajs/inertia-react';
+import { Link, useForm, usePage } from '@inertiajs/inertia-react';
+import { Inertia } from '@inertiajs/inertia';
 
 
 
 function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const { auth } = usePage().props
+  const searchForm = useForm();
+
+  const handleSearch = e => {
+    e.preventDefault();
+
+    searchForm.get('/search', {
+      preserveState: true, preserveScroll: true
+    });
+  }
 
   return (
     <>
@@ -160,60 +174,91 @@ function Navbar() {
                     <MenuItem>World</MenuItem>
                   </MenuList>
                 </Menu>
-
-
               </li>
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
                   href="#pablo"
                 >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Opinions</span>
+                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Opinion</span>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link
+                <a
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href="https://www.youtube.com/@SSGTVSouthSudanGlobal"
                 >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Videos</span>
-                </Link>
+                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">SSGTV</span>
+                </a>
               </li>
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
                   href="#pablo"
                 >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Contributors</span>
+                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Diaspora</span>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Agribusiness</span>
-                </Link>
+              <li className="nav-item cursor-pointer">
+                <Menu>
+                  <MenuHandler>
+                    <div className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75">
+                      Economy
+                    </div>
+                  </MenuHandler>
+                  <MenuList className='flex flex-col space-y-5 w-32 py-4 font-semibold text-base text-start text-gray-600'>
+                    <MenuItem>Agribusiness</MenuItem>
+                    <MenuItem>Mining</MenuItem>
+                  </MenuList>
+                </Menu>
+              </li>
+              <li className="nav-item cursor-pointer">
+                <Menu>
+                  <MenuHandler>
+                    <div className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75">
+                      Lifestyle
+                    </div>
+                  </MenuHandler>
+                  <MenuList className='flex flex-col space-y-5 w-32 py-4 font-semibold text-base text-start text-gray-600'>
+                    <MenuItem>Fashion</MenuItem>
+                    <MenuItem>Health</MenuItem>
+                    <MenuItem>Fitness</MenuItem>
+                  </MenuList>
+                </Menu>
               </li>
               <li className="nav-item">
-                <Link
+                <span
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Fashion & lifestyle</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
+                  href="#pablo">
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                    </svg>
+                    <Popover>
+                      <PopoverHandler>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                      </PopoverHandler>
+                      <PopoverContent>
+                        <form onSubmit={handleSearch}>
+                          <div className='flex rounded-md'>
+                            <input
+                              className="shadow appearance-none border rounded-l-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              id="articleTitle"
+                              type="text"
+                              placeholder="Search for an article"
+                              value={searchForm.data.search_text ?? ''}
+                              onChange={(event) => searchForm.setData('search_text', event.target.value)}
+                            />
+                            <button type='submit' disabled={searchForm.processing} className='bg-yellow-600 px-4 rounded-r-md shadow text-white'>
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                              </svg>
+                            </button>
+                          </div>
+                        </form>
+                      </PopoverContent>
+                    </Popover>
                   </span>
-                </Link>
+                </span>
               </li>
             </ul>
           </div>

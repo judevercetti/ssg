@@ -18,19 +18,14 @@ use Inertia\Inertia;
 
 Route::get('/', [BlogController::class, 'index']);
 Route::get('/search', [BlogController::class, 'search']);
-Route::get('/blog/{id}', [BlogController::class, 'show']);
-Route::post('/blog/comment', [BlogController::class, 'comment']);
-Route::post('/blog/like', [BlogController::class, 'like']);
-
-Route::get('/blogpost', function () {
-    return Inertia::render('Userside/ArticleScreen');
-});
-
+Route::post('/comment', [BlogController::class, 'comment']);
+Route::post('/like', [BlogController::class, 'like']);
 
 Route::get('/uploadarticle', [BlogController::class, 'displayUploadArticle'])->middleware(['auth']);
 Route::post('/uploadarticle', [BlogController::class, 'store'])->middleware(['auth']);
 Route::get('/category/{category}', [BlogController::class, 'dispayCategoryBlogs']);
 
 Auth::routes();
-
 Route::get('/home', [BlogController::class, 'index'])->name('home');
+
+Route::get('/{id}', [BlogController::class, 'show']);

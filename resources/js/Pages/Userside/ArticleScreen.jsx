@@ -4,12 +4,12 @@ import { Footer } from '../Component/Footer'
 import parse from 'html-react-parser'
 import BlogAsideCard from '../Component/BlogAsideCard'
 import { Link, useForm, usePage } from '@inertiajs/inertia-react'
-import { Tooltip } from "@material-tailwind/react";
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CommentCard from '../Component/CommentCard'
+import Layout from '../Component/Layout'
 
 
 function ArticleScreen({ blog, category, latests, category_name, comments }) {
@@ -44,7 +44,6 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
     return (
         <div>
-            <Navbar />
             <ToastContainer autoClose={2000} />
             <div className='container mx-auto flex flex-wrap py-6'>
                 <section className="w-full md:w-2/3 flex flex-col items-center px-3">
@@ -136,7 +135,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                     <div>
                         <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Similar Posts</span></h1>
                         {category && category.map((blog, index) =>
-                            <Link key={index} href={"/blog/" + blog.slug}>
+                            <Link key={index} href={"/" + blog.slug}>
                                 {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
                                 <BlogAsideCard
                                     key={blog.id}
@@ -171,14 +170,8 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         <h1 className="ml-2 w-full mb-2 mt-5 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-2xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest Posts</span></h1>
                         <div className="grid grid-cols-3 gap-3">
                             {latests && latests.map((latest, index) =>
-                                <Link key={index} href={"/blog/" + latest.slug}>
-                                    <Tooltip content={latest.title} animate={{
-                                        mount: { scale: 1, y: 0 },
-                                        unmount: { scale: 0, y: 25 },
-                                    }} placement="bottom-end">
-
-                                        <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} />
-                                    </Tooltip>
+                                <Link key={index} href={"/" + latest.slug}>
+                                        <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} title={latest.title} />
                                 </Link>
                             )}
                         </div>
@@ -213,4 +206,5 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
     )
 }
 
+ArticleScreen.layout = page => <Layout children={page} />
 export default ArticleScreen
