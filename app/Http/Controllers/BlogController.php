@@ -53,7 +53,7 @@ class BlogController extends Controller
         ]);
     }
 
-    
+
     public function create()
     {
         //
@@ -148,12 +148,18 @@ class BlogController extends Controller
     public function dispayCategoryBlogs(Request $request)
     {
         //
-        $category = $request->category;
+        $category_slug = $request->category;
 
-        $getid = BlogCategory::where('name', $category)->first()->id;
+        $category = BlogCategory::where('slug', $category_slug)->first();
 
-        $blogs = Blog::where('category', $getid)->get();
-        return Inertia::render('Userside/CategoryScreen', ['blogs' => $blogs, 'category' => $category]);
+        $blogs = Blog::where('category', $category->id)->get();
+        $trending_posts = Blog::latest()->limit(4)->get();
+
+        return Inertia::render('Userside/CategoryScreen', [
+            'blogs' => $blogs,
+            'category' => $category->name,
+            'trending_posts' => $trending_posts,
+        ]);
 
     }
 

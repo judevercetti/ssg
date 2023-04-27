@@ -12,7 +12,7 @@ function BlogAsideCard({ title, time, image }) {
                     <div className="w-full lg:w-9/12 mr-2 mb-10 lg:mb-0">
                         <div className="max-w-2xl">
                             <span className="block text-xs text-gray-400 mb-1">{new Date(time).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                            <p className="text-sm font-semibold text-gray-900 line-clamp-3 hover:underline">{title}</p>
+                            <p className="text-sm font-semibold text-gray-900 line-clamp-3 hover:underline cursor-pointer">{title}</p>
                         </div>
                     </div>
                     <div className="w-full lg:w-auto px-4 ml-auto text-right">

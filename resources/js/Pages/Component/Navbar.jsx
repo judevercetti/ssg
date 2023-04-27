@@ -4,13 +4,11 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
-  Card,
   Popover,
   PopoverHandler,
   PopoverContent,
 } from "@material-tailwind/react";
 import { Link, useForm, usePage } from '@inertiajs/inertia-react';
-import { Inertia } from '@inertiajs/inertia';
 
 
 
@@ -129,7 +127,7 @@ function Navbar() {
           <div className={"lg:flex flex-grow items-center" + (navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
             <div className='flex items-center py-2 px-8 bg-white'>
               <img className='h-12 object-contain' src='/images/logo.png' alt="" />
-              <h1 className="relative pl-5 xl:text-2xl ml-3 text-gray-900 font-bold tracking-tight">
+              <h1 className="relative pl-5 xl:text-xl ml-3 text-gray-900 font-bold tracking-tight" style={{ fontFamily: 'ethnocentric-rg' }}>
                 South Sudan Global
               </h1>
             </div>
@@ -162,7 +160,7 @@ function Navbar() {
                           </svg>
                         </MenuItem>
                       </MenuHandler>
-                      <MenuList className='flex flex-col space-y-5 w-32 py-4 font-semibold text-base text-start text-gray-600'>
+                      <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-gray-600'>
                         <MenuItem><Link href={"/category/Economy"}>Economy</Link></MenuItem>
                         <MenuItem><Link href={"/category/Education"}></Link>Education</MenuItem>
                         <MenuItem><Link href={"/category/Health"}>Health</Link></MenuItem>
@@ -178,7 +176,7 @@ function Navbar() {
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href="/category/opinion"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Opinion</span>
                 </Link>
@@ -186,7 +184,7 @@ function Navbar() {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
-                  href="https://www.youtube.com/@SSGTVSouthSudanGlobal"
+                  href="https://www.youtube.com/@SSGTVSouthSudanGlobal" target='_blank'
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">SSGTV</span>
                 </a>
@@ -194,7 +192,7 @@ function Navbar() {
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href="/category/diaspora"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Diaspora</span>
                 </Link>
@@ -206,9 +204,9 @@ function Navbar() {
                       Economy
                     </div>
                   </MenuHandler>
-                  <MenuList className='flex flex-col space-y-5 w-32 py-4 font-semibold text-base text-start text-gray-600'>
-                    <MenuItem>Agribusiness</MenuItem>
-                    <MenuItem>Mining</MenuItem>
+                  <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-gray-600'>
+                    <MenuItem><Link href={"/category/agribusiness"}>Agribusiness</Link></MenuItem>
+                    <MenuItem><Link href={"/category/mining"}>Mining</Link></MenuItem>
                   </MenuList>
                 </Menu>
               </li>
@@ -219,10 +217,9 @@ function Navbar() {
                       Lifestyle
                     </div>
                   </MenuHandler>
-                  <MenuList className='flex flex-col space-y-5 w-32 py-4 font-semibold text-base text-start text-gray-600'>
-                    <MenuItem>Fashion</MenuItem>
-                    <MenuItem>Health</MenuItem>
-                    <MenuItem>Fitness</MenuItem>
+                  <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-gray-600'>
+                    <MenuItem><Link href={"/category/fashion"}>Fashion</Link></MenuItem>
+                    <MenuItem><Link href={"/category/health-and-fitness"}>Health & Fitness</Link></MenuItem>
                   </MenuList>
                 </Menu>
               </li>

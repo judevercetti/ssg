@@ -1,4 +1,4 @@
-import { useForm, usePage } from '@inertiajs/inertia-react';
+import { Link, useForm, usePage } from '@inertiajs/inertia-react';
 import React from 'react'
 
 function RegisterScreen() {
@@ -21,7 +21,7 @@ function RegisterScreen() {
                 <section className="flex flex-col md:flex-row h-screen items-center">
 
                     <div className="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-                        <img src="https://images.pexels.com/photos/3228766/pexels-photo-3228766.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260 " alt="" className="w-full h-full object-cover" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/JUBA_VIEW.jpg/800px-JUBA_VIEW.jpg " alt="" className="w-full h-full object-cover" />
                     </div>
 
                     <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
@@ -49,21 +49,18 @@ function RegisterScreen() {
                                 <div className="mt-4">
                                     <label className="block text-gray-700">Password</label>
                                     <input type="password" value={data.password ?? ''} onChange={e => setData('password', e.target.value)}
-                                        name="password" id="password" placeholder="Enter Password" minLength="6" className="w-full px-4 py-3 mr rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-              focus:bg-white focus:outline-none" required />
+                                        name="password" id="password" placeholder="Enter Password" minLength="6" className="w-full px-4 py-3 mr rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
                                     {errors.password && <div className='text-sm text-red-500'>{errors.password}</div>}
                                 </div>
                                 <div className="mt-4">
                                     <label className="block text-gray-700">Confirm Password</label>
                                     <input type="password" value={data.password_confirmation ?? ''} onChange={e => setData('password_confirmation', e.target.value)}
-                                        name="password_confirmation" id="password-confirm" placeholder="Confirm Password" minLength="6" className="w-full px-4 py-3 mr rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-              focus:bg-white focus:outline-none" required />
+                                        name="password_confirmation" id="password-confirm" placeholder="Confirm Password" minLength="6" className="w-full px-4 py-3 mr rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
                                 </div>
 
 
 
-                                <button type="submit" className="w-full block bg-green-500 hover:bg-green-700 focus:bg-indigo-400 text-white font-semibold rounded-lg
-            px-4 py-3 mt-6">Register</button>
+                                <button type="submit" className="w-full block bg-yellow-600 hover:bg-yellow-700 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Register</button>
                             </form>
 
                             <hr className="my-6 border-gray-300 w-full" />
@@ -81,6 +78,7 @@ function RegisterScreen() {
                             {/* <p className="mt-8">Need an account? <a href="#" className="text-blue-500 hover:text-blue-700 font-semibold">Create an
             account</a></p> */}
 
+                            <p className="mt-8">Already have an account? <Link href="/login" className="text-blue-500 hover:text-blue-700 font-semibold">Login</Link></p>
 
                         </div>
                     </div>

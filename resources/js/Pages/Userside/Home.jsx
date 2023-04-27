@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Navbar from '../Component/Navbar';
 import { Footer } from '../Component/Footer'
 import BlogListCard from '../Component/BlogListCard';
 import BlogListCard2 from '../Component/BlogListCard2';

@@ -17,7 +17,6 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
     const [copied, setCopied] = useState(false)
     const commentForm = useForm({ 'blog_id': blog.id });
     const { auth } = usePage().props;
-    console.log(blog)
 
     const copyLink = () => {
         navigator.clipboard.writeText(currentUrl);
@@ -120,12 +119,9 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                             </form>
 
                             <div className="flow-root">
-
                                 {comments && comments.map((comment, index) => (
                                     <CommentCard key={index} comment={comment} />
                                 ))}
-
-
                             </div>
                         </div>
                     </article>

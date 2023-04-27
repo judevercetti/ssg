@@ -20,7 +20,7 @@ function LoginScreen() {
       <section className="flex flex-col md:flex-row h-screen items-center">
 
         <div className="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-          <img src="https://images.pexels.com/photos/3228766/pexels-photo-3228766.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260 " alt="" className="w-full h-full object-cover" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/JUBA_VIEW.jpg/800px-JUBA_VIEW.jpg" alt="" className="w-full h-full object-cover" />
         </div>
 
         <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
@@ -29,7 +29,7 @@ function LoginScreen() {
           <div className="w-full h-100">
 
 
-            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Login to your admin account</h1>
+            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Login to your account</h1>
 
             <form className="mt-6" onSubmit={handleSubmit}>
               <div>
@@ -51,8 +51,7 @@ function LoginScreen() {
                 <Link href="#" className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
               </div>
 
-              <button type="submit" className="w-full block bg-green-500 hover:bg-green-700 focus:bg-indigo-400 text-white font-semibold rounded-lg
-            px-4 py-3 mt-6">Log In</button>
+              <button type="submit" className="w-full block bg-yellow-600 hover:bg-yellow-700 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Log In</button>
             </form>
 
             <hr className="my-6 border-gray-300 w-full" />

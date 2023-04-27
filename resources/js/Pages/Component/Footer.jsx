@@ -12,7 +12,7 @@ export const Footer = () => {
                                     <img className="w-40 h-24" src='/images/logo.png' alt="" />
                                 </Link>
                                 <div className="text-start pr-5">
-                                    <h1 className="xl:text-2xl text-gray-900 font-bold tracking-tight">
+                                    <h1 className="xl:text-lg text-gray-900 font-bold tracking-tight" style={{ fontFamily: 'ethnocentric-rg' }}>
                                         South Sudan Global
                                     </h1>
                                     <p className="max-w-sm mt-2 text-white">Join 31,000+ other and never miss out on new tips, tutorials, and more.</p>
