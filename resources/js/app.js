@@ -11,7 +11,7 @@ InertiaProgress.init();
 createInertiaApp({
     title: title => `${title} | SPILLZILLA`,
     resolve: async (name) => {
-        return (await import(`./Pages/${name}`)).default
+        return (await import(`./Pages/${name}.jsx`)).default
     },
     setup({el, App, props}) {
         const container = document.getElementById('app');

@@ -21,8 +21,10 @@ Route::get('/search', [BlogController::class, 'search']);
 Route::post('/comment', [BlogController::class, 'comment']);
 Route::post('/like', [BlogController::class, 'like']);
 
-Route::get('/uploadarticle', [BlogController::class, 'displayUploadArticle'])->middleware(['auth']);
-Route::post('/uploadarticle', [BlogController::class, 'store'])->middleware(['auth']);
+Route::middleware('admin')->group(function () {
+    Route::get('/admin', [BlogController::class, 'displayUploadArticle']);
+});
+
 Route::get('/category/{category}', [BlogController::class, 'dispayCategoryBlogs']);
 
 Auth::routes();

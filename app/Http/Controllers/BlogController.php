@@ -31,7 +31,7 @@ class BlogController extends Controller
             }
         ])->get();
         //return Response($entertainment);
-        return Inertia::render('Userside/Home', [
+        return Inertia::render('Home', [
             'latest' => $latest,
             'latests' => $latests,
             'blog_category' => $blog_category,
@@ -48,7 +48,7 @@ class BlogController extends Controller
             ->orWhere('content', 'LIKE', "%{$search_text}%")
             ->get();
 
-        return Inertia::render('Userside/SearchArticleScreen', [
+        return Inertia::render('SearchArticleScreen', [
             'posts' => $posts,
         ]);
     }
@@ -98,7 +98,7 @@ class BlogController extends Controller
         $category = Blog::where('category', $categoryid)->latest()->limit(4)->get();
         $latests = Blog::latest()->limit(6)->get();
         $comments = $blog->blogComments;
-        return Inertia::render('Userside/ArticleScreen', ['blog' => $blog, 'category_name' => $category_name, 'category' => $category, 'latests' => $latests, 'comments' => $comments]);
+        return Inertia::render('ArticleScreen', ['blog' => $blog, 'category_name' => $category_name, 'category' => $category, 'latests' => $latests, 'comments' => $comments]);
     }
 
     /**
@@ -141,7 +141,7 @@ class BlogController extends Controller
         $categories = BlogCategory::all();
 
         //return Response($category);
-        return Inertia::render('Admins/UploadArticleScreen', ['categories' => $categories]);
+        return Inertia::render('UploadArticleScreen', ['categories' => $categories]);
 
     }
 
@@ -155,7 +155,7 @@ class BlogController extends Controller
         $blogs = Blog::where('category', $category->id)->get();
         $trending_posts = Blog::latest()->limit(4)->get();
 
-        return Inertia::render('Userside/CategoryScreen', [
+        return Inertia::render('CategoryScreen', [
             'blogs' => $blogs,
             'category' => $category->name,
             'trending_posts' => $trending_posts,

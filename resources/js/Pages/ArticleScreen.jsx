@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import Navbar from '../Component/Navbar'
-import { Footer } from '../Component/Footer'
+import Navbar from './Component/Navbar'
+import { Footer } from './Component/Footer'
 import parse from 'html-react-parser'
-import BlogAsideCard from '../Component/BlogAsideCard'
+import BlogAsideCard from './Component/BlogAsideCard'
 import { Link, useForm, usePage } from '@inertiajs/inertia-react'
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import CommentCard from '../Component/CommentCard'
-import Layout from '../Component/Layout'
+import CommentCard from './Component/CommentCard'
+import Layout from './Component/Layout'
 
 
 function ArticleScreen({ blog, category, latests, category_name, comments }) {

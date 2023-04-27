@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../Component/Navbar'
-import { Footer } from '../Component/Footer'
-import BlogListCard2 from '../Component/BlogListCard2'
+import Navbar from './Component/Navbar'
+import { Footer } from './Component/Footer'
+import BlogListCard2 from './Component/BlogListCard2'
 import { Link } from '@inertiajs/inertia-react'
-import Layout from '../Component/Layout'
-import BlogListCard from '../Component/BlogListCard'
-import BlogAsideCard from '../Component/BlogAsideCard'
+import Layout from './Component/Layout'
+import BlogListCard from './Component/BlogListCard'
+import BlogAsideCard from './Component/BlogAsideCard'
 
 function CategoryScreen({ blogs, category, trending_posts }) {
     return (

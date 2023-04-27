@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import BlogListCard2 from '../Component/BlogListCard2'
+import BlogListCard2 from './Component/BlogListCard2'
 import { Link, useForm } from '@inertiajs/inertia-react'
-import BlogListCard from '../Component/BlogListCard'
-import Navbar from '../Component/Navbar'
-import Layout from '../Component/Layout'
+import BlogListCard from './Component/BlogListCard'
+import Navbar from './Component/Navbar'
+import Layout from './Component/Layout'
 
 function SearchArticleScreen({ posts }) {
   const { data, setData, get, processing } = useForm();

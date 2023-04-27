@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Footer } from '../Component/Footer'
-import BlogListCard from '../Component/BlogListCard';
-import BlogListCard2 from '../Component/BlogListCard2';
-import BlogAsideCard from '../Component/BlogAsideCard';
+import { Footer } from './Component/Footer'
+import BlogListCard from './Component/BlogListCard';
+import BlogListCard2 from './Component/BlogListCard2';
+import BlogAsideCard from './Component/BlogAsideCard';
 import { Link } from '@inertiajs/inertia-react';
-import VideoListCard from '../Component/VideoListCard';
-import Layout from '../Component/Layout';
+import VideoListCard from './Component/VideoListCard';
+import Layout from './Component/Layout';
 
 
 function Home({ latest, latests, blog, blog_category, trending_posts }) {
