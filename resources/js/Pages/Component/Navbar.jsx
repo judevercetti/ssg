@@ -27,8 +27,7 @@ function Navbar() {
 
   return (
     <>
-      <div className='bg-gray-900 h-8 sticky top-0'>
-
+      <div className='hidden md:block bg-gray-900 h-8 sticky top-0'>
         <div className='flex justify-between content-center pt-1'>
           <div className="flex items-center justify-center ml-4">
             <Link href="#" className="mx-2 text-white transition-colors duration-300  hover:text-yellow-600" aria-label="Facebook">
@@ -93,17 +92,16 @@ function Navbar() {
       <nav className="flex flex-wrap items-center justify-between pr-2 shadow-lg bg-yellow-600 sticky top-0 ">
         <div className="container pr-4 flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            {/* <Link
-              className="text-sm font-semibold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-              href="/"
-            >
-              <div className="lg:mt-0 absolute top-0 left-0 rounded-l px-8 py-1">
-                <div className='flex items-center'>
-                  <img className='h-12 object-contain' src='/images/logo.png' alt="" />
-
-                </div>
-              </div>
-            </Link> */}
+            <div className='flex lg:hidden items-center py-2 px-4 bg-white'>
+              <Link href='/'>
+                <img className='h-8 object-contain' src='/images/logo.png' alt="" />
+              </Link>
+              <Link href='/'>
+                <h1 className="relative pl-5 text-lg text-gray-900 font-bold tracking-tight">
+                  South Sudan Global
+                </h1>
+              </Link>
+            </div>
 
             <button
               className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -113,11 +111,11 @@ function Navbar() {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
               </svg>
-
             </button>
           </div>
-          <div className={"lg:flex flex-grow items-center" + (navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
-            <div className='flex items-center py-2 px-8 bg-white'>
+
+          <div className={"lg:flex flex-grow flex-col md:flex-row" + (navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
+            <div className='hidden lg:flex items-center py-2 px-8 bg-white'>
               <Link href='/'>
                 <img className='h-12 object-contain' src='/images/logo.png' alt="" />
               </Link>
@@ -125,6 +123,18 @@ function Navbar() {
                 <h1 className="relative pl-5 xl:text-2xl ml-3 text-gray-900 font-bold tracking-tight">
                   South Sudan Global
                 </h1>
+              </Link>
+            </div>
+
+            <div className="w-full flex justify-around py-4 border-b border-white lg:hidden items-center">
+              <Link href="/" className="text-white transition-colors duration-300  hover:text-yellow-600">
+                Advertise
+              </Link>
+              <Link href="/about-us" className="text-white transition-colors duration-300  hover:text-yellow-600">
+                About us
+              </Link>
+              <Link href="/login" className="text-white transition-colors duration-300  hover:text-yellow-600">
+                Login
               </Link>
             </div>
 

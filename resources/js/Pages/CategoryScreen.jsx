@@ -65,7 +65,6 @@ function CategoryScreen({ blogs, category, trending_posts }) {
                     </div>
                 </aside>
             </div>
-            <Footer />
         </div>
     )
 }

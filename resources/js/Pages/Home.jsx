@@ -11,14 +11,14 @@ import Layout from './Component/Layout';
 function Home({ latest, latests, blog, blog_category, trending_posts }) {
     return (
         <div>
-            <section className="flex space-x-5 justify-between items-center bg-black p-10">
-                <div className='w-2/4'>
+            <section className="flex flex-col lg:flex-row lg:space-x-5 justify-between items-center bg-black p-2 lg:p-10">
+                <div className='w-full lg:w-2/4'>
                     <Link href={"/" + latest.slug}>
-                        <img src={latest.imageurl} className="h-96 w-full object-cover" />
+                        <img src={latest.imageurl} className="h-72 lg:h-96 w-full object-cover" />
                     </Link>
                 </div>
-                <div className="flex-1 space-y-4 sm:text-center lg:text-left">
-                    <h1 className="text-3xl font-bold text-yellow-500 hover:underline">
+                <div className="lg:flex-1 space-y-4 mt-2 sm:text-center text-left">
+                    <h1 className="text-2xl lg:text-3xl font-bold text-yellow-500 hover:underline">
                         <Link href={"/" + latest.slug}>{latest.title}</Link>
                     </h1>
                     <p className="max-w-xl text-lg leading-relaxed text-gray-300 sm:mx-auto lg:ml-0">
@@ -28,7 +28,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                         Read More
                     </Link>
                 </div>
-                <div className='w-1/4 text-gray-200'>
+                <div className='hidden md:block w-full lg:w-1/4 text-gray-200'>
                     <h1 className='font-semibold text-lg'>LATEST VIDEOS</h1>
                     {trending_posts && trending_posts.map((post, index) =>
                         <Link key={index} href={'/' + post.slug}>
@@ -109,7 +109,6 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                     </div>
                 </aside>
             </div>
-            <Footer />
         </div>
     );
 }

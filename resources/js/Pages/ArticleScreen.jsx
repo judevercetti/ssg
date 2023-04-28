@@ -69,7 +69,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
                         <h4 className='text-lg ml-7 font-semibold hover:text-gray-700 pb-1'>Share Post</h4>
 
-                        <div className="border-b border-gray-200 pb-6 flex justify-between mt-2 ml-5 mr-4">
+                        <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-2">
                             <WhatsappShareButton title='Check this interesting article I found: ' url={currentUrl} className='flex space-x-3 items-center'>
                                 <WhatsappIcon round={true} size={30} />
                                 <span>WhatsApp</span>
@@ -196,7 +196,6 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
                 </aside>
             </div>
-            <Footer />
         </div>
 
     )

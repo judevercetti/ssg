@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blog_category', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('slug');
+        Schema::create('blog', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('slug')->unique();
             $table->string('description')->nullable();
+            $table->unsignedBigInteger('category')->index('blog_category_foreign');
+            $table->text('content');
+            $table->string('imageurl');
+            $table->unsignedBigInteger('uploadedby')->index('blog_uploadedby_foreign');
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_category');
+        Schema::dropIfExists('blog');
     }
 };

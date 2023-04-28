@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('blog', function (Blueprint $table) {
-            $table->string('slug')->unique()->after('title');
+            $table->foreign(['uploadedby'])->references(['id'])->on('users');
+            $table->foreign(['category'])->references(['id'])->on('blog_category');
         });
     }
 
@@ -26,7 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('blog', function (Blueprint $table) {
-            $table->dropColumn('slug');
+            $table->dropForeign('blog_uploadedby_foreign');
+            $table->dropForeign('blog_category_foreign');
         });
     }
 };

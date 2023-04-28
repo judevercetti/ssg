@@ -1,0 +1,142 @@
+{
+  "ReactToastify.css": {
+    "file": "assets/ReactToastify-2a37359d.css",
+    "src": "ReactToastify.css"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-20819985.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/Pages/CategoryScreen.jsx": {
+    "file": "assets/CategoryScreen-624ec4ce.js",
+    "src": "resources/js/Pages/CategoryScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js",
+      "_ReactToastify-b07b1eab.js",
+      "_Layout-d7f57122.js",
+      "_BlogListCard-399a91c2.js",
+      "_BlogAsideCard-9d13e439.js"
+    ]
+  },
+  "_BlogAsideCard-9d13e439.js": {
+    "file": "assets/BlogAsideCard-9d13e439.js",
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_BlogListCard-399a91c2.js": {
+    "file": "assets/BlogListCard-399a91c2.js",
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/SearchArticleScreen.jsx": {
+    "file": "assets/SearchArticleScreen-f38933d9.js",
+    "src": "resources/js/Pages/SearchArticleScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js",
+      "_BlogListCard-399a91c2.js",
+      "_ReactToastify-b07b1eab.js",
+      "_Layout-d7f57122.js"
+    ]
+  },
+  "_jsx-runtime-6d11cb2e.js": {
+    "file": "assets/jsx-runtime-6d11cb2e.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/LoginScreen.jsx": {
+    "file": "assets/LoginScreen-578f6787.js",
+    "src": "resources/js/Pages/LoginScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Home.jsx": {
+    "file": "assets/Home-065a7f6f.js",
+    "src": "resources/js/Pages/Home.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js",
+      "_BlogListCard-399a91c2.js",
+      "_BlogAsideCard-9d13e439.js",
+      "_Layout-d7f57122.js",
+      "_ReactToastify-b07b1eab.js"
+    ]
+  },
+  "resources/js/Pages/RegisterScreen.jsx": {
+    "file": "assets/RegisterScreen-dd129451.js",
+    "src": "resources/js/Pages/RegisterScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_Layout-d7f57122.js": {
+    "file": "assets/Layout-d7f57122.js",
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js",
+      "_ReactToastify-b07b1eab.js"
+    ]
+  },
+  "resources/js/Pages/ArticleScreen.jsx": {
+    "file": "assets/ArticleScreen-d03cade5.js",
+    "src": "resources/js/Pages/ArticleScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js",
+      "_ReactToastify-b07b1eab.js",
+      "_BlogAsideCard-9d13e439.js",
+      "_Layout-d7f57122.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-5fae919e.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/ArticleScreen.jsx",
+      "resources/js/Pages/CategoryScreen.jsx",
+      "resources/js/Pages/Home.jsx",
+      "resources/js/Pages/LoginScreen.jsx",
+      "resources/js/Pages/RegisterScreen.jsx",
+      "resources/js/Pages/SearchArticleScreen.jsx",
+      "resources/js/Pages/UploadArticleScreen.jsx"
+    ],
+    "css": [
+      "assets/app-20819985.css"
+    ]
+  },
+  "resources/js/Pages/UploadArticleScreen.jsx": {
+    "file": "assets/UploadArticleScreen-c20764d0.js",
+    "src": "resources/js/Pages/UploadArticleScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-6d11cb2e.js",
+      "resources/js/app.js",
+      "_ReactToastify-b07b1eab.js"
+    ]
+  },
+  "_ReactToastify-b07b1eab.js": {
+    "file": "assets/ReactToastify-b07b1eab.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/ReactToastify-2a37359d.css"
+    ]
+  }
+}

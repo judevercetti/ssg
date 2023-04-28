@@ -54,7 +54,7 @@ export const Footer = () => {
                     </div>
 
                     <div className="mt-6 lg:mt-0 lg:flex-1">
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                        <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                             <div>
                                 <h3 className="text-gray-700 uppercase dark:text-white">About</h3>
                                 <a href="#" className="block mt-2 text-sm white text-white hover:underline">Company</a>

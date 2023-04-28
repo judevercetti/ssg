@@ -10,7 +10,6 @@ export default ({ command }) => ({
         rollupOptions: {
             input: 'resources/js/app.js',
         },
-        
     },
 
     server: {

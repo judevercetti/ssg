@@ -53,9 +53,6 @@ const UploadArticleScreen = ({ categories }) => {
 
       })
     }
-
-
-
   };
 
 
