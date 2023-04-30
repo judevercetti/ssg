@@ -71,9 +71,9 @@ export const Footer = () => {
 
                             <div>
                                 <h3 className="text-gray-300 uppercase dark:text-white">Categories</h3>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Diaspora</a>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Health & Fitness</a>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Education</a>
+                                <a href="/diaspora" className="block mt-2 text-sm white text-white hover:underline">Diaspora</a>
+                                <a href="/health-and-fitness" className="block mt-2 text-sm white text-white hover:underline">Health & Fitness</a>
+                                <a href="/education" className="block mt-2 text-sm white text-white hover:underline">Education</a>
                             </div>
 
                             <div>
