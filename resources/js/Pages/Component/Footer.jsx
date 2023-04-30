@@ -2,20 +2,20 @@ import { Link } from "@inertiajs/inertia-react";
 
 export const Footer = () => {
     return (
-        <footer className="bg-yellow-600">
+        <footer className="bg-primary">
             <div className="container p-6 mx-auto">
                 <div className="lg:flex">
                     <div className="w-full -mx-6 lg:w-2/5">
                         <div className="px-6">
                             <div className="flex space-x-5 items-center">
-                                <Link href="/">
+                                {/* <Link href="/">
                                     <img className="w-40 h-24" src='/images/logo.png' alt="" />
-                                </Link>
+                                </Link> */}
                                 <div className="text-start pr-5">
-                                    <h1 className="xl:text-2xl text-gray-900 font-bold tracking-tight">
+                                    <h1 className="text-2xl text-gray-900 font-bold tracking-tight">
                                         South Sudan Global
                                     </h1>
-                                    <p className="max-w-sm mt-2 text-white">Join 31,000+ other and never miss out on new tips, tutorials, and more.</p>
+                                    <p className="lg:max-w-sm mt-2 text-white">Join 31,000+ other and never miss out on new tips, tutorials, and more.</p>
                                 </div>
                             </div>
 
@@ -79,7 +79,7 @@ export const Footer = () => {
                             <div>
                                 <h3 className="text-gray-700 uppercase dark:text-white">Contact</h3>
                                 <span className="block mt-2 text-sm white text-white hover:underline">+1 526 654 8965</span>
-                                <span className="block mt-2 text-sm white text-white hover:underline">example@email.com</span>
+                                <span className="block mt-2 text-xs md:text-sm white text-white hover:underline">southsudanglobal@gmail.com</span>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,11 @@ export const Footer = () => {
                 <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-700" />
 
                 <div>
-                    <p className="text-center text-white">© South Sudan Global TV 2023 - All rights reserved</p>
+                    <p className="text-center text-white text-sm">
+                        Copyright © South Sudan Global 2023. All rights reserved •
+                        <Link href="/terms-of-use" className="hover:underline"> Terms of Use</Link> •
+                        <Link href="/privacy-policy" className="hover:underline"> Privacy Policy</Link>
+                    </p>
                 </div>
             </div>
         </footer>

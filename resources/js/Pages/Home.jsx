@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Footer } from './Component/Footer'
+import React from 'react'
 import BlogListCard from './Component/BlogListCard';
 import BlogListCard2 from './Component/BlogListCard2';
 import BlogAsideCard from './Component/BlogAsideCard';
@@ -18,14 +17,14 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                     </Link>
                 </div>
                 <div className="lg:flex-1 space-y-4 mt-2 sm:text-center text-left">
-                    <h1 className="text-2xl lg:text-3xl font-bold text-yellow-500 hover:underline">
+                    <h1 className="text-2xl lg:text-3xl font-bold text-primary hover:underline text-left">
                         <Link href={"/" + latest.slug}>{latest.title}</Link>
                     </h1>
-                    <p className="max-w-xl text-lg leading-relaxed text-gray-300 sm:mx-auto lg:ml-0">
+                    <p className="max-w-xl text-lg leading-relaxed text-gray-300 sm:mx-auto lg:ml-0 text-left">
                         {latest.description}
                     </p>
-                    <Link href={"/" + latest.slug} className="block text-yellow-500 rounded-md hover:underline">
-                        Read More
+                    <Link href={"/" + latest.slug} className="block text-primary rounded-md hover:underline text-left">
+                        Read more
                     </Link>
                 </div>
                 <div className='hidden md:block w-full lg:w-1/4 text-gray-200'>
@@ -35,7 +34,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                             <VideoListCard image={post.imageurl} title={post.title} />
                         </Link>
                     )}
-                    <Link href='/ssgtv' className='flex space-x-2 items-center font-semibold text-base text-yellow-500 float-right hover:underline'>
+                    <Link href='/ssgtv' className='flex space-x-2 items-center font-semibold text-base text-primary float-right hover:underline'>
                         <span>See more videos</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 animate-pulse">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />

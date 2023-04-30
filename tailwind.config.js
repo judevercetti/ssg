@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 
+const withMT = require("@material-tailwind/react/utils/withMT");
 
-module.exports = {
+module.exports = withMT({
   content: [
     "./resources/**/*.{js,jsx,ts,tsx}",
     {
@@ -11,6 +12,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      primary: '#ca8a04',
+      'primary-hover': '#ff8a04'
+    }
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
@@ -22,4 +27,4 @@ module.exports = {
     '!delay-0',
     'html.js :where([class*="taos:"]:not(.taos-init))'
   ]
-}
+})

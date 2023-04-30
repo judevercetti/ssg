@@ -7,12 +7,24 @@ import {
   Popover,
   PopoverHandler,
   PopoverContent,
+  Button,
+  Dialog,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Input,
+  Checkbox,
 } from "@material-tailwind/react";
 import { Link, useForm, usePage } from '@inertiajs/inertia-react';
 
 
 
 function Navbar() {
+  const [openSubDialog, setOpenSubDialog] = React.useState(false);
+  const handleOpenSubDialog = () => setOpenSubDialog((cur) => !cur);
+
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const { auth } = usePage().props
   const searchForm = useForm();
@@ -27,10 +39,10 @@ function Navbar() {
 
   return (
     <>
-      <div className='hidden md:block bg-gray-900 h-8 sticky top-0'>
+      <div className='hidden md:block bg-gray-900 h-8 sticky top-0 z-50'>
         <div className='flex justify-between content-center pt-1'>
           <div className="flex items-center justify-center ml-4">
-            <Link href="#" className="mx-2 text-white transition-colors duration-300  hover:text-yellow-600" aria-label="Facebook">
+            <Link href="#" className="mx-2 text-white transition-colors duration-300  hover:text-primary" aria-label="Facebook">
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -38,38 +50,38 @@ function Navbar() {
                 </path>
               </svg>
             </Link>
-            <Link href="/" className="mx-2 text-white transition-colors duration-300  hover:text-yellow-600 ">
+            <Link href="/" className="mx-2 text-white transition-colors duration-300  hover:text-primary ">
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-current">
                 <path d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z" />
               </svg>
             </Link>
-            <Link href="/" className="mx-2 text-white transition-colors duration-300  hover:text-yellow-600">
+            <Link href="/" className="mx-2 text-white transition-colors duration-300  hover:text-primary">
               <svg viewBox="0 0 30 30" fill="currentColor" className="w-5 h-5 fill-current">
                 <circle cx="15" cy="15" r="4" />
                 <path d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z" />
               </svg>
             </Link>
-            <Link href="/" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-yellow-600">
+            <Link href="/advertise" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               Advertise
             </Link>
-            <Link href="/" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-yellow-600">
+            <Link href="/about-us" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               About us
             </Link>
-            <Link href="/" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-yellow-600">
+            <Link href="/contact-us" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               Contact us
             </Link>
           </div>
 
           <div className='flex mr-10'>
             {auth.user && <>
-              <span className="ml-10 text-white text-md transition-colors duration-300  hover:text-yellow-600">
+              <span className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 <Link href={auth.user.role == 1 ? '/admin' : '/'}>
                   {auth.user.name}
                 </Link>
               </span>
               <Link
                 href="/logout" method='post' as='button'
-                className="ml-10 text-white text-md transition-colors duration-300  hover:text-yellow-600"
+                className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary"
               >
                 Logout
               </Link>
@@ -78,19 +90,49 @@ function Navbar() {
             {!auth.user && <>
               <Link
                 href="/login"
-                className="ml-10 text-white text-md transition-colors duration-300  hover:text-yellow-600">
+                className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 Login
               </Link>
-              <button className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-yellow-600 rounded-xl  hover:bg-yellow-700">
+              <React.Fragment>
+                <button onClick={handleOpenSubDialog} className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-yellow-700">
                 Subscribe
               </button>
+                <Dialog
+                  size="md"
+                  open={openSubDialog}
+                  handler={handleOpenSubDialog}
+                  className="bg-transparent shadow-none"
+                >
+                  <Card className="mx-auto w-full">
+                    <CardHeader
+                      variant="gradient"
+                      className="mb-4 grid h-20 place-items-center bg-primary"
+                    >
+                      <Typography variant="h5" color="white">
+                        Subscribe to our news letter
+                      </Typography>
+                    </CardHeader>
+                    <CardBody className="flex flex-col gap-4">
+                      <Typography>
+                        By subscribing to our newsletter, you'll gain access to exclusive content, stay updated with the latest news, receive special promotions, and be the first to know about our exciting events, product launches, and industry insights delivered straight to your inbox.
+                        </Typography>
+                      <Input label="Email" size="lg" />
+                    </CardBody>
+                    <CardFooter className="pt-2">
+                      <Button variant="gradient" onClick={handleOpenSubDialog} fullWidth className='bg-primary'>
+                        Subscribe now
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </Dialog>
+              </React.Fragment>
             </>}
           </div>
         </div>
       </div>
 
-      <nav className="flex flex-wrap items-center justify-between pr-2 shadow-lg bg-yellow-600 sticky top-0 ">
-        <div className="container pr-4 flex flex-wrap items-center justify-between">
+      <nav className="flex flex-wrap items-center justify-between shadow-lg bg-primary sticky top-0 z-50">
+        <div className="container flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <div className='flex lg:hidden items-center py-2 px-4 bg-white'>
               <Link href='/'>
@@ -114,7 +156,7 @@ function Navbar() {
             </button>
           </div>
 
-          <div className={"lg:flex flex-grow flex-col md:flex-row" + (navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
+          <div onClick={() => setNavbarOpen(false)} className={"lg:flex flex-grow flex-col md:flex-row" + (navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
             <div className='hidden lg:flex items-center py-2 px-8 bg-white'>
               <Link href='/'>
                 <img className='h-12 object-contain' src='/images/logo.png' alt="" />
@@ -126,21 +168,21 @@ function Navbar() {
               </Link>
             </div>
 
-            <div className="w-full flex justify-around py-4 border-b border-white lg:hidden items-center">
-              <Link href="/" className="text-white transition-colors duration-300  hover:text-yellow-600">
+            <div className="w-full flex justify-around py-4 mb-4 border-b border-white lg:hidden items-center">
+              <Link href="/advertise" className="text-white transition-colors duration-300">
                 Advertise
               </Link>
-              <Link href="/about-us" className="text-white transition-colors duration-300  hover:text-yellow-600">
+              <Link href="/about-us" className="text-white transition-colors duration-300">
                 About us
               </Link>
-              <Link href="/login" className="text-white transition-colors duration-300  hover:text-yellow-600">
+              <Link href="/login" className="text-white transition-colors duration-300">
                 Login
               </Link>
             </div>
 
             {/* News (National, Regional (East Africa), Africa, world)), Politics, Business and Innovation, Agribusiness and Economy, Opinion, Health and Wellness, Diaspora, Science, Culture, Environment and Climate change, videos */}
 
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+            <ul className="flex flex-col lg:flex-row items-center list-none lg:ml-auto">
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
@@ -229,7 +271,15 @@ function Navbar() {
                   </MenuList>
                 </Menu>
               </li>
-              <li className="nav-item">
+              <li className="nav-item md:hidden">
+                <Link
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
+                  href="/search"
+                >
+                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Search</span>
+                </Link>
+              </li>
+              <li className="nav-item hidden md:block">
                 <span
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
                   href="#pablo">
@@ -251,7 +301,7 @@ function Navbar() {
                               value={searchForm.data.search_text ?? ''}
                               onChange={(event) => searchForm.setData('search_text', event.target.value)}
                             />
-                            <button type='submit' disabled={searchForm.processing} className='bg-yellow-600 px-4 rounded-r-md shadow text-white'>
+                            <button type='submit' disabled={searchForm.processing} className='bg-primary px-4 rounded-r-md shadow text-white'>
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                               </svg>

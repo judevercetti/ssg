@@ -51,7 +51,7 @@ function LoginScreen() {
                 <Link href="#" className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
               </div>
 
-              <button type="submit" className="w-full block bg-yellow-600 hover:bg-yellow-700 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Log In</button>
+              <button type="submit" className="w-full block bg-primary hover:bg-yellow-700 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Log In</button>
             </form>
 
             <hr className="my-6 border-gray-300 w-full" />

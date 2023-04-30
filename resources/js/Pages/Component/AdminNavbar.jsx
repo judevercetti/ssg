@@ -23,7 +23,7 @@ function AdminNavbar() {
       <div className='bg-gray-900 h-8 sticky top-0'>
         <div className='flex justify-between content-center pt-1'>
           <div className="flex items-center justify-center ml-4">
-            <Link href="#" className="mx-2 text-white transition-colors duration-300  hover:text-yellow-600" aria-label="Facebook">
+            <Link href="#" className="mx-2 text-white transition-colors duration-300  hover:text-primary" aria-label="Facebook">
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -31,36 +31,36 @@ function AdminNavbar() {
                 </path>
               </svg>
             </Link>
-            <Link href="/" className="mx-2 text-white transition-colors duration-300  hover:text-yellow-600 ">
+            <Link href="/" className="mx-2 text-white transition-colors duration-300  hover:text-primary ">
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-current">
                 <path d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z" />
               </svg>
             </Link>
-            <Link href="/" className="mx-2 text-white transition-colors duration-300  hover:text-yellow-600">
+            <Link href="/" className="mx-2 text-white transition-colors duration-300  hover:text-primary">
               <svg viewBox="0 0 30 30" fill="currentColor" className="w-5 h-5 fill-current">
                 <circle cx="15" cy="15" r="4" />
                 <path d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z" />
               </svg>
             </Link>
-            <Link href="/admin" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-yellow-600">
+            <Link href="/admin" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               Dashboard
             </Link>
-            <Link href="/admin/blog" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-yellow-600">
+            <Link href="/admin/blog" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               Blog
             </Link>
-            <Link href="/admin/ssgtv" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-yellow-600">
+            <Link href="/admin/ssgtv" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               SSGTV
             </Link>
           </div>
 
           <div className='flex mr-10'>
             {auth.user && <>
-              <span className="ml-10 text-white text-md transition-colors duration-300  hover:text-yellow-600">
+              <span className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 {auth.user.name}
               </span>
               <Link
                 href="/logout" method='post' as='button'
-                className="ml-10 text-white text-md transition-colors duration-300  hover:text-yellow-600"
+                className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary"
               >
                 Logout
               </Link>
@@ -69,10 +69,10 @@ function AdminNavbar() {
             {!auth.user && <>
               <Link
                 href="/login"
-                className="ml-10 text-white text-md transition-colors duration-300  hover:text-yellow-600">
+                className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 Login
               </Link>
-              <button className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-yellow-600 rounded-xl  hover:bg-yellow-700">
+              <button className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-yellow-700">
                 Subscribe
               </button>
             </>}

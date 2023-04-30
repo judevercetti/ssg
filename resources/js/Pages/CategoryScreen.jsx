@@ -1,7 +1,4 @@
 import React from 'react'
-import Navbar from './Component/Navbar'
-import { Footer } from './Component/Footer'
-import BlogListCard2 from './Component/BlogListCard2'
 import { Link } from '@inertiajs/inertia-react'
 import Layout from './Component/Layout'
 import BlogListCard from './Component/BlogListCard'

@@ -60,7 +60,7 @@ function RegisterScreen() {
 
 
 
-                                <button type="submit" className="w-full block bg-yellow-600 hover:bg-yellow-700 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Register</button>
+                                <button type="submit" className="w-full block bg-primary hover:bg-yellow-700 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Register</button>
                             </form>
 
                             <hr className="my-6 border-gray-300 w-full" />

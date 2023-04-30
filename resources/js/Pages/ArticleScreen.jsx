@@ -50,7 +50,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
                         <div className="bg-white flex flex-col justify-start px-5">
                             <div className="text-3xl font-bold hover:text-gray-700 pb-4">{blog.title}</div>
-                            <div className="text-yellow-600 text-sm font-bold uppercase pb-4">{category_name.name}</div>
+                            <div className="text-primary text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
                                 By <span className="font-semibold hover:text-gray-800">{blog.user.name}</span>, <br />
                                 Published on {new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -171,7 +171,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                                 </Link>
                             )}
                         </div>
-                        <a href="#" className="w-full bg-yellow-500 text-white font-bold text-sm uppercase rounded hover:bg-yellow-700 flex items-center justify-center px-2 py-3 mt-6">
+                        <a href="#" className="w-full bg-primary text-white font-bold text-sm uppercase rounded hover:bg-yellow-700 flex items-center justify-center px-2 py-3 mt-6">
                             Subscribe
                         </a>
                     </div>
