@@ -15,19 +15,33 @@ import {
   CardFooter,
   Typography,
   Input,
-  Checkbox,
 } from "@material-tailwind/react";
 import { Link, useForm, usePage } from '@inertiajs/inertia-react';
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Navbar() {
+  const {errors} = usePage().props;
   const [openSubDialog, setOpenSubDialog] = React.useState(false);
   const handleOpenSubDialog = () => setOpenSubDialog((cur) => !cur);
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const { auth } = usePage().props
   const searchForm = useForm();
+  const subscribeForm = useForm();
+
+  const handleSubscribe = e => {
+    e.preventDefault();
+    subscribeForm.clearErrors();
+    subscribeForm.post('/subscribe', {
+      preserveScroll: true, preserveState: true,
+      onSuccess: ()=> {
+        subscribeForm.reset();
+        setOpenSubDialog(false);
+        toast.success('Thank you for subscribing!');
+      }
+    });
+  }
 
   const handleSearch = e => {
     e.preventDefault();
@@ -39,6 +53,7 @@ function Navbar() {
 
   return (
     <>
+    <ToastContainer />
       <div className='hidden md:block bg-gray-900 h-8 sticky top-0 z-50'>
         <div className='flex justify-between content-center pt-1'>
           <div className="flex items-center justify-center ml-4">
@@ -93,39 +108,42 @@ function Navbar() {
                 className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 Login
               </Link>
-              <React.Fragment>
-                <button onClick={handleOpenSubDialog} className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-yellow-700">
-                Subscribe
-              </button>
-                <Dialog
-                  size="md"
-                  open={openSubDialog}
-                  handler={handleOpenSubDialog}
-                  className="bg-transparent shadow-none"
-                >
-                  <Card className="mx-auto w-full">
-                    <CardHeader
-                      variant="gradient"
-                      className="mb-4 grid h-20 place-items-center bg-primary"
-                    >
-                      <Typography variant="h5" color="white">
-                        Subscribe to our news letter
-                      </Typography>
-                    </CardHeader>
-                    <CardBody className="flex flex-col gap-4">
-                      <Typography>
-                        By subscribing to our newsletter, you'll gain access to exclusive content, stay updated with the latest news, receive special promotions, and be the first to know about our exciting events, product launches, and industry insights delivered straight to your inbox.
+                <React.Fragment>
+                  <button onClick={handleOpenSubDialog} className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-yellow-700">
+                    Subscribe
+                  </button>
+                  <Dialog
+                    size="md"
+                    open={openSubDialog}
+                    handler={handleOpenSubDialog}
+                    className="bg-transparent shadow-none"
+                  >
+                  <form onSubmit={handleSubscribe}>
+                    <Card className="mx-auto w-full">
+                      <CardHeader
+                        variant="gradient"
+                        className="mb-4 grid h-20 place-items-center bg-primary"
+                      >
+                        <Typography variant="h5" color="white">
+                          Subscribe to our news letter
                         </Typography>
-                      <Input label="Email" size="lg" />
-                    </CardBody>
-                    <CardFooter className="pt-2">
-                      <Button variant="gradient" onClick={handleOpenSubDialog} fullWidth className='bg-primary'>
-                        Subscribe now
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </Dialog>
-              </React.Fragment>
+                      </CardHeader>
+                      <CardBody className="flex flex-col gap-4">
+                        <Typography>
+                          By subscribing to our newsletter, you'll gain access to exclusive content, stay updated with the latest news, receive special promotions, and be the first to know about our exciting events, product launches, and industry insights delivered straight to your inbox.
+                        </Typography>
+                        <Input label="Email" size="lg" value={subscribeForm.data.email ?? ''} onChange={e => subscribeForm.setData('email', e.target.value)} error={errors.email} />
+                        {errors.email && <span className='text-xs text-red-500'>{errors.email}</span>}
+                      </CardBody>
+                      <CardFooter className="pt-2">
+                        <Button variant="gradient" type='submit' disabled={subscribeForm.processing} fullWidth className='bg-primary'>
+                          Subscribe now
+                        </Button>
+                      </CardFooter>
+                    </Card>
+              </form>
+                  </Dialog>
+                </React.Fragment>
             </>}
           </div>
         </div>

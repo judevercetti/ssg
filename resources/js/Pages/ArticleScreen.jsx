@@ -6,7 +6,7 @@ import BlogAsideCard from './Component/BlogAsideCard'
 import { Link, useForm, usePage } from '@inertiajs/inertia-react'
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CommentCard from './Component/CommentCard'
 import Layout from './Component/Layout'
@@ -43,7 +43,6 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
     return (
         <div>
-            <ToastContainer autoClose={2000} />
             <div className='container mx-auto flex flex-wrap py-6'>
                 <section className="w-full md:w-2/3 flex flex-col items-center px-3">
                     <article className="flex flex-col shadow my-4">

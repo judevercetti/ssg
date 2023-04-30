@@ -8,9 +8,9 @@ export const Footer = () => {
                     <div className="w-full -mx-6 lg:w-2/5">
                         <div className="px-6">
                             <div className="flex space-x-5 items-center">
-                                {/* <Link href="/">
+                                <Link href="/" className="bg-white p-3 rounded">
                                     <img className="w-40 h-24" src='/images/logo.png' alt="" />
-                                </Link> */}
+                                </Link>
                                 <div className="text-start pr-5">
                                     <h1 className="text-2xl text-gray-900 font-bold tracking-tight">
                                         South Sudan Global
@@ -56,30 +56,30 @@ export const Footer = () => {
                     <div className="mt-6 lg:mt-0 lg:flex-1">
                         <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                             <div>
-                                <h3 className="text-gray-700 uppercase dark:text-white">About</h3>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Company</a>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">community</a>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Careers</a>
+                                <h3 className="text-gray-300 uppercase dark:text-white">About</h3>
+                                <a href="/about-us" className="block mt-2 text-sm white text-white hover:underline">About us</a>
+                                <a href="/contact-us" className="block mt-2 text-sm white text-white hover:underline">Contact us</a>
+                                <a href="/advertise" className="block mt-2 text-sm white text-white hover:underline">Advertise</a>
                             </div>
 
                             <div>
-                                <h3 className="text-gray-700 uppercase dark:text-white">Blog</h3>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Tec</a>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Music</a>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Videos</a>
+                                <h3 className="text-gray-300 uppercase dark:text-white">News</h3>
+                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">National</a>
+                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Africa</a>
+                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">World</a>
                             </div>
 
                             <div>
-                                <h3 className="text-gray-700 uppercase dark:text-white">Products</h3>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Mega cloud</a>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Aperion UI</a>
-                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Meraki UI</a>
+                                <h3 className="text-gray-300 uppercase dark:text-white">Categories</h3>
+                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Diaspora</a>
+                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Health & Fitness</a>
+                                <a href="#" className="block mt-2 text-sm white text-white hover:underline">Education</a>
                             </div>
 
                             <div>
-                                <h3 className="text-gray-700 uppercase dark:text-white">Contact</h3>
-                                <span className="block mt-2 text-sm white text-white hover:underline">+1 526 654 8965</span>
-                                <span className="block mt-2 text-xs md:text-sm white text-white hover:underline">southsudanglobal@gmail.com</span>
+                                <h3 className="text-gray-300 uppercase dark:text-white">Contact</h3>
+                                <a href="tel:+15266548965" className="block mt-2 text-sm white text-white hover:underline">+1 526 654 8965</a>
+                                <a href="mailto:southsudanglobal@gmail.com" className="block mt-2 text-xs md:text-sm white text-white hover:underline">southsudanglobal@gmail.com</a>
                             </div>
                         </div>
                     </div>

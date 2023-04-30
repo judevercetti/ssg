@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdvertiseRequestController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,8 +22,12 @@ Route::get('/', [BlogController::class, 'index']);
 Route::get('/about-us', fn()=>Inertia::render('AboutUs'));
 Route::get('/contact-us', fn()=>Inertia::render('ContactUs'));
 Route::get('/advertise', fn()=>Inertia::render('Advertise'));
-Route::get('/terms-of-use', fn()=>Inertia::render('TermsOfUse'));
+Route::post('/advertise', [AdvertiseRequestController::class, 'store']);
+Route::get('/terms-of-use', fn() => Inertia::render('TermsOfUse'));
 Route::get('/privacy-policy', fn()=>Inertia::render('PrivacyPolicy'));
+
+
+Route::post('/subscribe', [SubscriptionController::class, 'store']);
 Route::get('/search', [BlogController::class, 'search']);
 Route::post('/comment', [BlogController::class, 'comment']);
 Route::post('/like', [BlogController::class, 'like']);

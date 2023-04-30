@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const CookieConsent = () => {
     const [show, setShow] = useState(true);
