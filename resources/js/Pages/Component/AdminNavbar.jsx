@@ -1,9 +1,4 @@
 import React from 'react'
-import {
-  Popover,
-  PopoverHandler,
-  PopoverContent,
-} from "@material-tailwind/react";
 import { Link, useForm, usePage } from '@inertiajs/inertia-react';
 
 function AdminNavbar() {
@@ -20,7 +15,7 @@ function AdminNavbar() {
 
   return (
     <>
-      <div className='bg-gray-900 h-8 sticky top-0'>
+      <div className='bg-gray-900 h-8 sticky top-0 z-50'>
         <div className='flex justify-between content-center pt-1'>
           <div className="flex items-center justify-center ml-4">
             <Link href="#" className="mx-2 text-white transition-colors duration-300  hover:text-primary" aria-label="Facebook">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdvertiseRequestController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SubscriptionController;
@@ -33,12 +34,14 @@ Route::post('/comment', [BlogController::class, 'comment']);
 Route::post('/like', [BlogController::class, 'like']);
 
 Route::middleware('admin')->group(function () {
-    Route::get('/admin', [BlogController::class, 'displayUploadArticle']);
+    Route::get('/admin', fn()=>redirect('/admin/blog'));
+    Route::get('/admin/ssgtv', fn()=>redirect('/admin/blog'));
+    Route::resource('/admin/blog', AdminBlogController::class)->only('index', 'show', 'store', 'update', 'destroy');
 });
 
-Route::get('/category/{category}', [BlogController::class, 'dispayCategoryBlogs']);
 
 Auth::routes();
 Route::get('/home', [BlogController::class, 'index'])->name('home');
 
+Route::get('/category/{category}', [BlogController::class, 'dispayCategoryBlogs']);
 Route::get('/{id}', [BlogController::class, 'show']);

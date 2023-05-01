@@ -1,169 +1,216 @@
 {
+  "resources/js/app.css": {
+    "file": "assets/app-bb2df0cf.css",
+    "src": "resources/js/app.css"
+  },
   "ReactToastify.css": {
     "file": "assets/ReactToastify-2a37359d.css",
     "src": "ReactToastify.css"
   },
-  "resources/js/app.css": {
-    "file": "assets/app-40dcbb57.css",
-    "src": "resources/js/app.css"
-  },
-  "resources/js/Pages/TermsOfUse.jsx": {
-    "file": "assets/TermsOfUse-8b9dff4f.js",
-    "src": "resources/js/Pages/TermsOfUse.jsx",
-    "isDynamicEntry": true,
+  "_jsx-runtime-3bd19ed4.js": {
+    "file": "assets/jsx-runtime-3bd19ed4.js",
     "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js",
-      "_Layout-89c996b4.js",
-      "_ReactToastify-b6d83cce.js"
-    ]
-  },
-  "resources/js/Pages/LoginScreen.jsx": {
-    "file": "assets/LoginScreen-f525a7b7.js",
-    "src": "resources/js/Pages/LoginScreen.jsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "_jsx-runtime-3611cead.js",
       "resources/js/app.js"
     ]
   },
   "resources/js/Pages/Advertise.jsx": {
-    "file": "assets/Advertise-2f078a23.js",
+    "file": "assets/Advertise-2116e351.js",
     "src": "resources/js/Pages/Advertise.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "_jsx-runtime-3611cead.js",
+      "_jsx-runtime-3bd19ed4.js",
       "resources/js/app.js",
-      "_Layout-89c996b4.js",
-      "_ReactToastify-b6d83cce.js"
-    ]
-  },
-  "_BlogAsideCard-7babfc9b.js": {
-    "file": "assets/BlogAsideCard-7babfc9b.js",
-    "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js"
-    ]
-  },
-  "resources/js/Pages/CategoryScreen.jsx": {
-    "file": "assets/CategoryScreen-51bd9cf7.js",
-    "src": "resources/js/Pages/CategoryScreen.jsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js",
-      "_Layout-89c996b4.js",
-      "_BlogListCard-dbde26d9.js",
-      "_BlogAsideCard-7babfc9b.js",
-      "_ReactToastify-b6d83cce.js"
-    ]
-  },
-  "resources/js/Pages/AboutUs.jsx": {
-    "file": "assets/AboutUs-ec1f8941.js",
-    "src": "resources/js/Pages/AboutUs.jsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js",
-      "_Layout-89c996b4.js",
-      "_ReactToastify-b6d83cce.js"
-    ]
-  },
-  "resources/js/Pages/PrivacyPolicy.jsx": {
-    "file": "assets/PrivacyPolicy-fec7c62b.js",
-    "src": "resources/js/Pages/PrivacyPolicy.jsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js",
-      "_Layout-89c996b4.js",
-      "_ReactToastify-b6d83cce.js"
-    ]
-  },
-  "resources/js/Pages/RegisterScreen.jsx": {
-    "file": "assets/RegisterScreen-deda54fc.js",
-    "src": "resources/js/Pages/RegisterScreen.jsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js"
-    ]
-  },
-  "_BlogListCard-dbde26d9.js": {
-    "file": "assets/BlogListCard-dbde26d9.js",
-    "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js"
-    ]
-  },
-  "_Layout-89c996b4.js": {
-    "file": "assets/Layout-89c996b4.js",
-    "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js",
-      "_ReactToastify-b6d83cce.js"
-    ]
-  },
-  "_jsx-runtime-3611cead.js": {
-    "file": "assets/jsx-runtime-3611cead.js",
-    "imports": [
-      "resources/js/app.js"
+      "_Layout-4952f28b.js",
+      "_ReactToastify-55504e39.js"
     ]
   },
   "resources/js/Pages/ContactUs.jsx": {
-    "file": "assets/ContactUs-860e344b.js",
+    "file": "assets/ContactUs-09f6357f.js",
     "src": "resources/js/Pages/ContactUs.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "_jsx-runtime-3611cead.js",
+      "_jsx-runtime-3bd19ed4.js",
       "resources/js/app.js",
-      "_Layout-89c996b4.js",
-      "_ReactToastify-b6d83cce.js"
+      "_Layout-4952f28b.js",
+      "_ReactToastify-55504e39.js"
     ]
   },
-  "resources/js/Pages/Home.jsx": {
-    "file": "assets/Home-a5914214.js",
-    "src": "resources/js/Pages/Home.jsx",
+  "resources/js/Pages/CategoryScreen.jsx": {
+    "file": "assets/CategoryScreen-c802dacf.js",
+    "src": "resources/js/Pages/CategoryScreen.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "_jsx-runtime-3611cead.js",
+      "_jsx-runtime-3bd19ed4.js",
       "resources/js/app.js",
-      "_BlogListCard-dbde26d9.js",
-      "_BlogAsideCard-7babfc9b.js",
-      "_Layout-89c996b4.js",
-      "_ReactToastify-b6d83cce.js"
+      "_Layout-4952f28b.js",
+      "_BlogListCard-9055f6b0.js",
+      "_BlogAsideCard-82226771.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "resources/js/Pages/LoginScreen.jsx": {
+    "file": "assets/LoginScreen-7d1fee28.js",
+    "src": "resources/js/Pages/LoginScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/AdminBlog.jsx": {
+    "file": "assets/AdminBlog-edf75229.js",
+    "src": "resources/js/Pages/AdminBlog.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_BlogListCard-9055f6b0.js",
+      "_AdminLayout-24797b5f.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "_BlogAsideCard-82226771.js": {
+    "file": "assets/BlogAsideCard-82226771.js",
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_BlogListCard-9055f6b0.js": {
+    "file": "assets/BlogListCard-9055f6b0.js",
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/AboutUs.jsx": {
+    "file": "assets/AboutUs-2fb7f8c1.js",
+    "src": "resources/js/Pages/AboutUs.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_Layout-4952f28b.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "resources/js/Pages/TermsOfUse.jsx": {
+    "file": "assets/TermsOfUse-a2246e11.js",
+    "src": "resources/js/Pages/TermsOfUse.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_Layout-4952f28b.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "_AdminLayout-24797b5f.js": {
+    "file": "assets/AdminLayout-24797b5f.js",
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "resources/js/Pages/PrivacyPolicy.jsx": {
+    "file": "assets/PrivacyPolicy-1c5977df.js",
+    "src": "resources/js/Pages/PrivacyPolicy.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_Layout-4952f28b.js",
+      "_ReactToastify-55504e39.js"
     ]
   },
   "resources/js/Pages/SearchArticleScreen.jsx": {
-    "file": "assets/SearchArticleScreen-88d44709.js",
+    "file": "assets/SearchArticleScreen-5dbdfc0e.js",
     "src": "resources/js/Pages/SearchArticleScreen.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "_jsx-runtime-3611cead.js",
+      "_jsx-runtime-3bd19ed4.js",
       "resources/js/app.js",
-      "_BlogListCard-dbde26d9.js",
-      "_ReactToastify-b6d83cce.js",
-      "_Layout-89c996b4.js"
+      "_BlogListCard-9055f6b0.js",
+      "_Layout-4952f28b.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "resources/js/Pages/Home.jsx": {
+    "file": "assets/Home-e5676be6.js",
+    "src": "resources/js/Pages/Home.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_BlogListCard-9055f6b0.js",
+      "_BlogAsideCard-82226771.js",
+      "_Layout-4952f28b.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "resources/js/Pages/RegisterScreen.jsx": {
+    "file": "assets/RegisterScreen-c8e56ebe.js",
+    "src": "resources/js/Pages/RegisterScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/UploadArticleScreen.jsx": {
+    "file": "assets/UploadArticleScreen-41577000.js",
+    "src": "resources/js/Pages/UploadArticleScreen.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_ckeditor-d2a73288.js",
+      "_AdminLayout-24797b5f.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "resources/js/Pages/AdminBlogDetail.jsx": {
+    "file": "assets/AdminBlogDetail-4394bb47.js",
+    "src": "resources/js/Pages/AdminBlogDetail.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_ckeditor-d2a73288.js",
+      "_AdminLayout-24797b5f.js",
+      "_ReactToastify-55504e39.js"
+    ]
+  },
+  "_ReactToastify-55504e39.js": {
+    "file": "assets/ReactToastify-55504e39.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/ReactToastify-2a37359d.css"
     ]
   },
   "resources/js/Pages/ArticleScreen.jsx": {
-    "file": "assets/ArticleScreen-c22a2fb2.js",
+    "file": "assets/ArticleScreen-c63d7fc7.js",
     "src": "resources/js/Pages/ArticleScreen.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "_jsx-runtime-3611cead.js",
+      "_jsx-runtime-3bd19ed4.js",
       "resources/js/app.js",
-      "_ReactToastify-b6d83cce.js",
-      "_BlogAsideCard-7babfc9b.js",
-      "_Layout-89c996b4.js"
+      "_Layout-4952f28b.js",
+      "_ReactToastify-55504e39.js",
+      "_BlogAsideCard-82226771.js"
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-2a384167.js",
+    "file": "assets/app-2b8926cf.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
       "resources/js/Pages/AboutUs.jsx",
+      "resources/js/Pages/AdminBlog.jsx",
+      "resources/js/Pages/AdminBlogDetail.jsx",
       "resources/js/Pages/Advertise.jsx",
       "resources/js/Pages/ArticleScreen.jsx",
       "resources/js/Pages/CategoryScreen.jsx",
@@ -177,26 +224,21 @@
       "resources/js/Pages/UploadArticleScreen.jsx"
     ],
     "css": [
-      "assets/app-40dcbb57.css"
+      "assets/app-bb2df0cf.css"
     ]
   },
-  "resources/js/Pages/UploadArticleScreen.jsx": {
-    "file": "assets/UploadArticleScreen-30d7f482.js",
-    "src": "resources/js/Pages/UploadArticleScreen.jsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "_jsx-runtime-3611cead.js",
-      "resources/js/app.js",
-      "_ReactToastify-b6d83cce.js"
-    ]
-  },
-  "_ReactToastify-b6d83cce.js": {
-    "file": "assets/ReactToastify-b6d83cce.js",
+  "_ckeditor-d2a73288.js": {
+    "file": "assets/ckeditor-d2a73288.js",
     "imports": [
       "resources/js/app.js"
-    ],
-    "css": [
-      "assets/ReactToastify-2a37359d.css"
+    ]
+  },
+  "_Layout-4952f28b.js": {
+    "file": "assets/Layout-4952f28b.js",
+    "imports": [
+      "_jsx-runtime-3bd19ed4.js",
+      "resources/js/app.js",
+      "_ReactToastify-55504e39.js"
     ]
   }
 }

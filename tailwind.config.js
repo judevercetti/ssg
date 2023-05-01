@@ -14,7 +14,7 @@ module.exports = withMT({
     extend: {},
     colors: {
       primary: '#ca8a04',
-      'primary-hover': '#ff8a04'
+      'primary-hover': '#aa8a04'
     }
   },
   plugins: [

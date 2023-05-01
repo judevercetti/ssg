@@ -157,7 +157,7 @@ function Navbar() {
                 <img className='h-8 object-contain' src='/images/logo.png' alt="" />
               </Link>
               <Link href='/'>
-                <h1 className="relative pl-5 text-lg text-gray-900 font-bold tracking-tight">
+                <h1 className="relative pl-5 text-lg text-gray-800 font-bold tracking-tight">
                   South Sudan Global
                 </h1>
               </Link>
@@ -180,7 +180,7 @@ function Navbar() {
                 <img className='h-12 object-contain' src='/images/logo.png' alt="" />
               </Link>
               <Link href='/'>
-                <h1 className="relative pl-5 xl:text-2xl ml-3 text-gray-900 font-bold tracking-tight">
+                <h1 className="relative pl-5 xl:text-2xl ml-3 text-gray-800 font-bold tracking-tight">
                   South Sudan Global
                 </h1>
               </Link>
@@ -216,7 +216,7 @@ function Navbar() {
                       News
                     </div>
                   </MenuHandler>
-                  <MenuList className='flex flex-col space-y-5 w-32 py-4 font-semibold text-base text-start text-gray-600'>
+                  <MenuList className='w-32 font-semibold text-base text-start text-gray-600'>
                     <Menu placement="right-start" offset={5}>
                       <MenuHandler>
                         <MenuItem className='flex justify-between items-center'>
@@ -226,16 +226,24 @@ function Navbar() {
                           </svg>
                         </MenuItem>
                       </MenuHandler>
-                      <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-gray-600'>
+                      <MenuList className='w-62 font-semibold text-base text-start text-gray-600'>
+                        <MenuItem><Link href={"/category/politics"}>Politics</Link></MenuItem>
                         <MenuItem><Link href={"/category/Economy"}>Economy</Link></MenuItem>
                         <MenuItem><Link href={"/category/Education"}></Link>Education</MenuItem>
                         <MenuItem><Link href={"/category/Health"}>Health</Link></MenuItem>
-                        <MenuItem><Link href={"/category/Entertainment"}>Entertainment</Link></MenuItem>
+                        <MenuItem><Link href={"/category/agriculture"}>Agriculture</Link></MenuItem>
+                        <MenuItem><Link href={"/category/sports"}>Sports</Link></MenuItem>
+                        <MenuItem><Link href={"/category/entertainment"}>Entertainment</Link></MenuItem>
+                        <MenuItem><Link href={"/category/technology"}>Technology</Link></MenuItem>
+                        <MenuItem><Link href={"/category/environment"}>Environment</Link></MenuItem>
+                        <MenuItem><Link href={"/category/arts-culture-and-beauty"}>Arts, Culture & Beauty</Link></MenuItem>
+                        <MenuItem><Link href={"/category/peace-and-justice"}>Peace & Justice</Link></MenuItem>
+                        <MenuItem><Link href={"/category/states"}>States</Link></MenuItem>
                       </MenuList>
                     </Menu>
-                    <MenuItem>Regional</MenuItem>
-                    <MenuItem>Africa</MenuItem>
-                    <MenuItem>World</MenuItem>
+                    <MenuItem><Link href={"/category/regional"}>Regional</Link></MenuItem>
+                    <MenuItem><Link href={"/category/africa"}>Africa</Link></MenuItem>
+                    <MenuItem><Link href={"/category/world"}>World</Link></MenuItem>
                   </MenuList>
                 </Menu>
               </li>
@@ -261,6 +269,14 @@ function Navbar() {
                   href="/category/diaspora"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Diaspora</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
+                  href="/category/editorial"
+                >
+                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Editorial</span>
                 </Link>
               </li>
               <li className="nav-item cursor-pointer">

@@ -11,14 +11,14 @@ export default function Layout({ children }) {
             <Navbar />
 
             <main className='min-h-screen'>
-            {children}
+                {children}
             </main>
 
-            {!cookiesAccepted && <div className='sticky bottom-10 transform transition-all duration-5000 ease-out'>
+            <Footer />
+
+            {!cookiesAccepted && <div className='absolute sticky bottom-16 md:bottom-8 rounded-mb transform transition-all duration-5000 ease-out'>
                 <CookieConsent />
             </div>}
-
-            <Footer />
         </div>
     )
 }

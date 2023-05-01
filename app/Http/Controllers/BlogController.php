@@ -84,9 +84,6 @@ class BlogController extends Controller
             'uploadedby' => auth()->id(),
             'imageurl' => $path
         ]);
-
-
-
     }
 
     public function show($blog)
