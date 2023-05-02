@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useForm } from '@inertiajs/inertia-react'
-import BlogListCard from './Component/BlogListCard'
 import AdminLayout from './Component/AdminLayout'
+import AdminBlogListCard from './Component/AdminBlogListCard';
 
 function AdminBlog({ posts, categories }) {
   const { data, setData, get, processing } = useForm();
@@ -9,7 +9,7 @@ function AdminBlog({ posts, categories }) {
   const handleSearch = e => {
     e.preventDefault();
 
-    get('/search', {
+    get('/admin/blog', {
       preserveState: true, preserveScroll: true
     });
   }
@@ -21,8 +21,8 @@ function AdminBlog({ posts, categories }) {
   }, []);
 
   return (
-    <div className='flex max-w-screen-lg space-x-10 mx-auto p-5'>
-      <div className='w-3/4'>
+    <div className='flex flex-col-reverse md:flex-row max-w-screen-lg md:space-x-10 mx-auto p-5'>
+      <div className='md:w-3/4 mt-10 md:mt-0'>
         <div className='flex justify-between'>
           <h1 className='text-2xl font-semibold'>All Articles</h1>
           <Link href='/admin/blog/create' className="bg-primary hover:bg-primary-hover text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline">
@@ -56,16 +56,16 @@ function AdminBlog({ posts, categories }) {
           :
           posts.map((latest, index) =>
             <Link key={index} href={"/admin/blog/" + latest.slug}>
-              <BlogListCard title={latest.title} description={latest.description} time={latest.updated_at} image={latest.imageurl} />
+              <AdminBlogListCard title={latest.title} description={latest.description} time={latest.updated_at} image={latest.imageurl} />
             </Link>
           )}
 
       </div>
-      <div className='w-1/4'>
+      <div className='md:w-1/4'>
         <h1 className='text-2xl font-semibold'>Catgeories</h1>
         <div className='py-5 border-t-2'>
           {categories && categories.map((category, index) =>
-            <p className='shadow p-2'>{category.name}</p>
+            <p key={index} className='shadow p-2'>{category.name} ({category.blog_count ?? 0})</p>
           )}
         </div>
       </div>

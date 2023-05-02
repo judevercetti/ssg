@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminVideoController;
 use App\Http\Controllers\AdvertiseRequestController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SubscriptionController;
@@ -35,7 +36,7 @@ Route::post('/like', [BlogController::class, 'like']);
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin', fn()=>redirect('/admin/blog'));
-    Route::get('/admin/ssgtv', fn()=>redirect('/admin/blog'));
+    Route::resource('/admin/ssgtv', AdminVideoController::class);
     Route::resource('/admin/blog', AdminBlogController::class)->only('index', 'show', 'store', 'update', 'destroy');
 });
 

@@ -21,7 +21,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Navbar() {
-  const {errors} = usePage().props;
+  const { errors } = usePage().props;
   const [openSubDialog, setOpenSubDialog] = React.useState(false);
   const handleOpenSubDialog = () => setOpenSubDialog((cur) => !cur);
 
@@ -35,7 +35,7 @@ function Navbar() {
     subscribeForm.clearErrors();
     subscribeForm.post('/subscribe', {
       preserveScroll: true, preserveState: true,
-      onSuccess: ()=> {
+      onSuccess: () => {
         subscribeForm.reset();
         setOpenSubDialog(false);
         toast.success('Thank you for subscribing!');
@@ -53,7 +53,7 @@ function Navbar() {
 
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <div className='hidden md:block bg-gray-900 h-8 sticky top-0 z-50'>
         <div className='flex justify-between content-center pt-1'>
           <div className="flex items-center justify-center ml-4">
@@ -108,16 +108,16 @@ function Navbar() {
                 className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 Login
               </Link>
-                <React.Fragment>
-                  <button onClick={handleOpenSubDialog} className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-yellow-700">
-                    Subscribe
-                  </button>
-                  <Dialog
-                    size="md"
-                    open={openSubDialog}
-                    handler={handleOpenSubDialog}
-                    className="bg-transparent shadow-none"
-                  >
+              <React.Fragment>
+                <button onClick={handleOpenSubDialog} className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-yellow-700">
+                  Subscribe
+                </button>
+                <Dialog
+                  size="md"
+                  open={openSubDialog}
+                  handler={handleOpenSubDialog}
+                  className="bg-transparent shadow-none"
+                >
                   <form onSubmit={handleSubscribe}>
                     <Card className="mx-auto w-full">
                       <CardHeader
@@ -141,9 +141,9 @@ function Navbar() {
                         </Button>
                       </CardFooter>
                     </Card>
-              </form>
-                  </Dialog>
-                </React.Fragment>
+                  </form>
+                </Dialog>
+              </React.Fragment>
             </>}
           </div>
         </div>
@@ -193,9 +193,14 @@ function Navbar() {
               <Link href="/about-us" className="text-white transition-colors duration-300">
                 About us
               </Link>
-              <Link href="/login" className="text-white transition-colors duration-300">
+              {auth.user && <>
+                <Link href={auth.user.role == 1 ? '/admin' : '/'}>
+                  {auth.user.name}
+                </Link>
+              </>}
+              {!auth.user && <Link href="/login" className="text-white transition-colors duration-300">
                 Login
-              </Link>
+              </Link>}
             </div>
 
             {/* News (National, Regional (East Africa), Africa, world)), Politics, Business and Innovation, Agribusiness and Economy, Opinion, Health and Wellness, Diaspora, Science, Culture, Environment and Climate change, videos */}

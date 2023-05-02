@@ -38,12 +38,10 @@ const AdminBlogDetail = ({ postData, comments, categories }) => {
   }
 
 
-  const notify = () => toast('Article Uploaded');
-
   return (
     <div className='my-5'>
-      <form onSubmit={handleSubmit} className="flex space-x-10 bg-white rounded px-8 pt-6 pb-8 mb-4">
-        <div className="w-2/3 h-80">
+      <form onSubmit={handleSubmit} className="flex flex-col-reverse lg:flex-row lg:space-x-10 bg-white px-5">
+        <div className="lg:w-2/3 mt-10 lg:mt-0">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="articleContent">
             Article Content
           </label>
@@ -55,7 +53,7 @@ const AdminBlogDetail = ({ postData, comments, categories }) => {
           {errors.content && <span className='text-xs text-red-500'>{errors.content}</span>}
         </div>
 
-        <div className='w-1/3'>
+        <div className='w-full lg:w-1/3'>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="articleTitle">
               Article Title

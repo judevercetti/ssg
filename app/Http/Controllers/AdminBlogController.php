@@ -10,10 +10,14 @@ use Inertia\Inertia;
 
 class AdminBlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Blog::latest()->get();
-        $categories = BlogCategory::all();
+        $search_text = $request->input('search_text');
+
+        $posts = Blog::where('title', 'LIKE', "%{$search_text}%")
+            ->orWhere('content', 'LIKE', "%{$search_text}%")
+            ->latest()->get();
+        $categories = BlogCategory::withCount('blog')->get();
 
         return Inertia::render('AdminBlog', [
             'posts' => $posts,

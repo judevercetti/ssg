@@ -16,4 +16,9 @@ class BlogCategory extends Model
     {
         return $this->hasMany(Blog::class,'category');
     }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class, 'category_id');
+    }
 }
