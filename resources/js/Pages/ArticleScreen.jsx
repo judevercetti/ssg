@@ -144,9 +144,9 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         )}
 
 
-                    <div className="text-sm py-6 top-10">
+                    {/* <div className="text-sm py-6 top-10">
                         <div className="w-full text-center">
-                            {/* <Adsense
+                            <Adsense
                                 client='ca-pub-2005682797531342'
                                 slot='7046626912'
                                 adTest='on'
@@ -154,15 +154,15 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                                 format='auto'
                                 responsive='true'
                                 layoutKey='-gw-1+2a-9x+5c'
-                            /> */}
+                            />
                             <a className="uppercase mt-5" href="#">Advertisement</a>
                             <a href="#">
                                 <img className="mx-auto" src="/images/ads/250.jpg" alt="advertisement area" />
                             </a>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="w-full bg-white shadow flex flex-col my-4 p-6">
+                    <div className="w-full bg-white shadow flex flex-col my-4 p-6 sticky top-20">
                         <h1 className="ml-2 w-full mb-2 mt-5 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-2xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest Posts</span></h1>
                         <div className="grid grid-cols-3 gap-3">
                             {latests && latests.map((latest, index) =>
@@ -176,9 +176,9 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         </a>
                     </div>
 
-                    <div className="text-sm py-6 sticky top-20">
+                    {/* <div className="text-sm py-6 sticky top-20">
                         <div className="w-full text-center">
-                            {/* <Adsense
+                            <Adsense
                                 client='ca-pub-2005682797531342'
                                 slot='7046626912'
                                 adTest='on'
@@ -186,13 +186,13 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                                 format='auto'
                                 responsive='true'
                                 layoutKey='-gw-1+2a-9x+5c'
-                            /> */}
+                            />
                             <a className="uppercase mt-5" href="#">Advertisement</a>
                             <a href="#">
                                 <img className="mx-auto" src="/images/ads/250.jpg" alt="advertisement area" />
                             </a>
                         </div>
-                    </div>
+                    </div> */}
 
                 </aside>
             </div>
