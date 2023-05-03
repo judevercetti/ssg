@@ -26,7 +26,7 @@ function SearchArticleScreen({ posts }) {
     <div>
       <div className='max-w-screen-md mx-auto mt-5'>
         <form onSubmit={handleSearch}>
-          <div className='flex rounded-md mb-10'>
+          <div className='flex rounded-md mb-10 mx-5'>
             <input
               className="shadow appearance-none border rounded-l-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="articleTitle"

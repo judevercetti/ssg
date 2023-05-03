@@ -95,7 +95,17 @@ class BlogController extends Controller
         $category = Blog::where('category', $categoryid)->latest()->limit(4)->get();
         $latests = Blog::latest()->limit(6)->get();
         $comments = $blog->blogComments;
-        return Inertia::render('ArticleScreen', ['blog' => $blog, 'category_name' => $category_name, 'category' => $category, 'latests' => $latests, 'comments' => $comments]);
+        return Inertia::render('ArticleScreen', [
+            'blog' => $blog, 
+            'category_name' => $category_name, 
+            'category' => $category, 
+            'latests' => $latests, 
+            'comments' => $comments
+        ])->withViewData([
+            'title'=>$blog->title,
+            'description'=>$blog->description,
+            'image'=>url($blog->imageurl),
+        ]);
     }
 
     /**
@@ -156,6 +166,9 @@ class BlogController extends Controller
             'blogs' => $blogs,
             'category' => $category->name,
             'trending_posts' => $trending_posts,
+        ])->withViewData([
+            'title'=>$category->name,
+            'description'=>'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
         ]);
 
     }

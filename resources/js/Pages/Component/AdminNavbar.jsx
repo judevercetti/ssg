@@ -43,16 +43,16 @@ function AdminNavbar() {
             <Link href="/admin/blog" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               Blog
             </Link>
-            <Link href="/admin/ssgtv" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
+            {/* <Link href="/admin/ssgtv" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               SSGTV
-            </Link>
+            </Link> */}
           </div>
 
           <div className='hidden md:flex mr-10'>
             {auth.user && <>
-              <span className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
+              <Link href='/' as='button' className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 {auth.user.name}
-              </span>
+              </Link>
               <Link
                 href="/logout" method='post' as='button'
                 className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary"

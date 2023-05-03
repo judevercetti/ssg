@@ -3,7 +3,7 @@ import Navbar from './Component/Navbar'
 import { Footer } from './Component/Footer'
 import parse from 'html-react-parser'
 import BlogAsideCard from './Component/BlogAsideCard'
-import { Link, useForm, usePage } from '@inertiajs/inertia-react'
+import { Head, Link, useForm, usePage } from '@inertiajs/inertia-react'
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 
 import { toast } from 'react-toastify';
@@ -43,11 +43,14 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
     return (
         <div>
+            <Head>
+                <title>{blog.title}</title>
+            </Head>
             <div className='container mx-auto flex flex-wrap py-6'>
-                <section className="w-full md:w-2/3 flex flex-col items-center px-3">
-                    <article className="flex flex-col shadow my-4">
+                <section className="w-full md:w-2/3 flex flex-col items-center md:px-3">
+                    <article className="flex flex-col shadow my-2 md:my-4">
 
-                        <div className="bg-white flex flex-col justify-start px-5">
+                        <div className="bg-white flex flex-col justify-start px-3 md:px-5">
                             <div className="text-3xl font-bold hover:text-gray-700 pb-4">{blog.title}</div>
                             <div className="text-primary text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
@@ -61,14 +64,14 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                             <span className='text-sm italic text-gray-600'>Image: no description</span>
                         </div>
 
-                        <div className="pb-6 px-5 my-5">
+                        <div className="pb-6 px-3 md:px-5 my-5">
                             {parse(blog.content)}
                         </div>
 
 
-                        <h4 className='text-lg ml-7 font-semibold hover:text-gray-700 pb-1'>Share Post</h4>
+                        <h4 className='text-lg ml-7 font-semibold hover:text-gray-700 pb-2'>Share Post</h4>
 
-                        <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-2">
+                        <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-2 px-3">
                             <WhatsappShareButton title='Check this interesting article I found: ' url={currentUrl} className='flex space-x-3 items-center'>
                                 <WhatsappIcon round={true} size={30} />
                                 <span>WhatsApp</span>
@@ -127,7 +130,6 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                 </section>
 
                 <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
-                    <div>
                         <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Similar Posts</span></h1>
                         {category && category.map((blog, index) =>
                             <Link key={index} href={"/" + blog.slug}>
@@ -140,7 +142,6 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                                 />
                             </Link>
                         )}
-                    </div>
 
 
                     <div className="text-sm py-6 top-10">

@@ -3,15 +3,15 @@ import { Link } from "@inertiajs/inertia-react";
 export const Footer = () => {
     return (
         <footer className="bg-primary">
-            <div className="container p-6 mx-auto">
+            <div className="container p-3 md:p-6 mx-auto">
                 <div className="lg:flex">
-                    <div className="w-full -mx-6 lg:w-2/5">
-                        <div className="px-6">
+                    <div className="w-full md:-mx-6 lg:w-2/5">
+                        <div className="md:px-6">
                             <div className="flex space-x-5 items-center">
                                 <Link href="/" className="bg-white p-3 rounded">
-                                    <img className="w-40 h-24" src='/images/logo.png' alt="" />
+                                    <img className="w-40" src='/images/logo.png' alt="" />
                                 </Link>
-                                <div className="text-start pr-5">
+                                <div className="text-start mg:pr-5">
                                     <h1 className="text-2xl text-gray-900 font-bold tracking-tight">
                                         South Sudan Global
                                     </h1>

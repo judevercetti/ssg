@@ -163,15 +163,43 @@ function Navbar() {
               </Link>
             </div>
 
-            <button
-              className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-              type="button"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-              </svg>
-            </button>
+            <div className='flex items-center'>
+              <span className='text-white cursor-pointer text-xl leading-none border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'>
+                <Popover>
+                  <PopoverHandler>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                  </PopoverHandler>
+                  <PopoverContent className='w-full'>
+                    <form onSubmit={handleSearch}>
+                      <div className='flex rounded-md'>
+                        <input
+                          className="shadow appearance-none border rounded-l-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          id="articleTitle"
+                          type="text"
+                          placeholder="Search for an article"
+                          value={searchForm.data.search_text ?? ''}
+                          onChange={(event) => searchForm.setData('search_text', event.target.value)}
+                        />
+                        <button type='submit' disabled={searchForm.processing} className='bg-primary px-4 rounded-r-md shadow text-white'>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </form>
+                  </PopoverContent>
+                </Popover>
+              </span>
+              <button
+                className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                type="button" onClick={() => setNavbarOpen(!navbarOpen)}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           <div onClick={() => setNavbarOpen(false)} className={"lg:flex flex-grow flex-col md:flex-row" + (navbarOpen ? " flex" : " hidden")} id="example-navbar-danger">
@@ -309,14 +337,6 @@ function Navbar() {
                     <MenuItem><Link href={"/category/health-and-fitness"}>Health & Fitness</Link></MenuItem>
                   </MenuList>
                 </Menu>
-              </li>
-              <li className="nav-item md:hidden">
-                <Link
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
-                  href="/search"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Search</span>
-                </Link>
               </li>
               <li className="nav-item hidden md:block">
                 <span

@@ -9,7 +9,7 @@ import { InertiaProgress } from '@inertiajs/progress';
 InertiaProgress.init();
 
 createInertiaApp({
-    title: title => `${title} | SPILLZILLA`,
+    title: title => `${title}`,
     resolve: async (name) => {
         return (await import(`./Pages/${name}.jsx`)).default
     },
