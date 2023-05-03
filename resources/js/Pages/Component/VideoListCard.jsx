@@ -4,7 +4,7 @@ export default function VideoListCard({ title, time, image }) {
 
     return (
         <div>
-            <div className="py-2 border-t border-gray-600">
+            <div className="py-2 border-t border-gray-400">
                 <div className="flex flex-wrap lg:flex-nowrap items-center">
                     <div className="w-full lg:w-auto mr-2 mb-8 lg:mb-0">
                         <img className="block w-40 h-16 object-cover" src={'/' + image} alt="" />

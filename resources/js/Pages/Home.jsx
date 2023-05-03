@@ -10,31 +10,31 @@ import Layout from './Component/Layout';
 function Home({ latest, latests, blog, blog_category, trending_posts }) {
     return (
         <>
-            <section className="flex flex-col lg:flex-row lg:space-x-5 justify-between items-center bg-black p-2 lg:p-10">
+            <section className="flex flex-col lg:flex-row lg:space-x-5 justify-between items-center bg-gray-50 p-2 lg:p-10">
                 <div className='w-full lg:w-2/4'>
                     <Link href={"/" + latest.slug}>
                         <img src={latest.imageurl} className="h-72 lg:h-96 w-full object-cover" />
                     </Link>
                 </div>
                 <div className="lg:flex-1 space-y-4 mt-2 sm:text-center text-left">
-                    <h1 className="text-2xl lg:text-3xl font-bold text-primary hover:underline text-left">
+                    <h1 className="text-2xl lg:text-3xl font-bold text-primary hover:underline text-left line-clamp-4">
                         <Link href={"/" + latest.slug}>{latest.title}</Link>
                     </h1>
-                    <p className="max-w-xl text-lg leading-relaxed text-gray-300 sm:mx-auto lg:ml-0 text-left">
+                    <p className="max-w-xl text-lg leading-relaxed text-gray-800 sm:mx-auto lg:ml-0 text-left line-clamp-5">
                         {latest.description}
                     </p>
                     <Link href={"/" + latest.slug} className="block text-primary rounded-md hover:underline text-left">
                         Read more
                     </Link>
                 </div>
-                <div className='hidden md:block w-full lg:w-1/4 text-gray-200'>
+                <div className='hidden md:block w-full lg:w-1/4 text-gray-800'>
                     <h1 className='font-semibold text-lg'>LATEST VIDEOS</h1>
                     {trending_posts && trending_posts.map((post, index) =>
                         <Link key={index} href={'/' + post.slug}>
                             <VideoListCard image={post.imageurl} title={post.title} />
                         </Link>
                     )}
-                    <Link href='/ssgtv' className='flex space-x-2 items-center font-semibold text-base text-primary float-right hover:underline'>
+                    <Link href='https://www.youtube.com/@SSGTVSouthSudanGlobal' className='flex space-x-2 items-center font-semibold text-base text-primary float-right hover:underline'>
                         <span>See more videos</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 animate-pulse">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
@@ -43,7 +43,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                 </div>
             </section>
 
-            <div id='whole-page' className='container mx-auto flex flex-wrap py-6'>
+            <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start mb-5' >
                         <h1 className="ml-6 mb-2 mt-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest</span></h1>
