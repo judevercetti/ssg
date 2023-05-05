@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminVideoController;
 use App\Http\Controllers\AdvertiseRequestController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +24,9 @@ use Inertia\Inertia;
 
 Route::get('/', [BlogController::class, 'index']);
 Route::get('/about-us', [StaticController::class, 'about_us']);
-Route::get('/contact-us', [StaticController::class, 'contact_us']);
 Route::get('/terms-of-use', [StaticController::class, 'terms_of_use']);
 Route::get('/privacy-policy', [StaticController::class, 'privacy_policy']);
+Route::resource('/contact-us', ContactUsController::class);
 Route::resource('/advertise', AdvertiseRequestController::class);
 
 Route::post('/subscribe', [SubscriptionController::class, 'store']);

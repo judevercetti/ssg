@@ -18,14 +18,6 @@ class StaticController extends Controller
         ]);
     }
 
-    public function contact_us()
-    {
-        return Inertia::render('ContactUs')->withViewData([
-            'title' => 'Contact Us',
-            'description' => 'Have a news tip, feedback, or a press inquiry? Get in touch with our team at [News Site Name]. We welcome your input and are committed to delivering accurate and timely news. Contact us today to connect with our dedicated staff and contribute to our mission of keeping you informed.',
-        ]);
-    }
-
     public function terms_of_use()
     {
         return Inertia::render('TermsOfUse')->withViewData([
