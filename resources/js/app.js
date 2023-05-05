@@ -5,6 +5,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
+import reportWebVitals from './reportWebVitals';
 import ReactGA from 'react-ga4';
 
 InertiaProgress.init();
