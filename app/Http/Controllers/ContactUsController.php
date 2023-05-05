@@ -26,7 +26,7 @@ class ContactUsController extends Controller
             'email' => 'required|email',
         ]);
 
-        Mail::to('judevercetti@gmail.com')->queue(new ContactUsEmail([
+        Mail::to('southsudanglobal@gmail.com')->queue(new ContactUsEmail([
             'name' => $request->name,
             'email' => $request->email,
             'telephone' => $request->telephone,

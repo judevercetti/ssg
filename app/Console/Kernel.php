@@ -7,6 +7,11 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+    // protected $commands = [
+    //         // Other commands...
+    //     Commands\GenerateSitemap::class,
+    // ];
+
     /**
      * Define the application's command schedule.
      *
@@ -16,6 +21,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->command('sitemap:generate')->daily();
+
         $schedule->command('queue:work --stop-when-empty')
             ->everyMinute()
             ->withoutOverlapping();
