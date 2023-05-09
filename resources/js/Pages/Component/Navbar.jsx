@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Menu,
   MenuHandler,
@@ -87,7 +87,7 @@ function Navbar() {
             </Link>
           </div>
 
-          <div className='flex mr-10'>
+          <div className='flex md:mr-5'>
             {auth.user && <div className="hidden md:block">
               <span className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 <Link href={auth.user.role == 1 ? '/admin' : '/'}>
@@ -105,11 +105,11 @@ function Navbar() {
             {!auth.user && <>
               <Link
                 href="/login"
-                className="hidden md:block ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
+                className="md:block ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 Login
               </Link>
               <React.Fragment>
-                <button onClick={handleOpenSubDialog} className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-primary-hover">
+                <button onClick={handleOpenSubDialog} className=" ml-5 md:ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-primary-hover">
                   Subscribe
                 </button>
                 <Dialog

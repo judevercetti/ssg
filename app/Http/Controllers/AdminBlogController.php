@@ -61,7 +61,8 @@ class AdminBlogController extends Controller
             'category' => $request->input('category'),
             'content' => $request->input('content'),
             'uploadedby' => auth()->id(),
-            'imageurl' => $path
+            'imageurl' => $path,
+            'image_description' => $request->input('image_description')
         ]);
 
         return redirect('/admin/blog');
@@ -82,6 +83,7 @@ class AdminBlogController extends Controller
         $blog->content = $request->input('content');
         $blog->description = $request->input('description');
         $blog->category = $request->input('category');
+        $blog->image_description = $request->input('image_description');
 
         // $file = $request->file('image');
         // if ($file) {
@@ -98,5 +100,23 @@ class AdminBlogController extends Controller
     {
         Blog::where('slug', $slug)->delete();
         return redirect('/admin/blog');
+    }
+
+    
+    public function update_image(Request $request, $slug)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $blog = Blog::where('slug', $slug)->first();
+        $file = $request->file('image');
+        if ($file) {
+            $filename = $blog->slug . '.' . $file->extension();
+            $path = $file->storeAs('/images/blog', $filename, ['disk' => 'public_uploads']);
+            $blog->imageurl = $path;
+        }
+
+        $blog->save();
     }
 }

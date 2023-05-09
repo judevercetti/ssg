@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import AdminLayout from './Component/AdminLayout';
 import { toast } from 'react-toastify';
 import { useForm } from '@inertiajs/inertia-react';
+import { Inertia } from '@inertiajs/inertia';
 
 
 const AdminBlogDetail = ({ postData, comments, categories }) => {
-  const { data, setData, post, put, errors, delete:deleteBlog } = useForm(postData);
-  
+  const { data, setData, post, put, errors, delete: deleteBlog } = useForm(postData);
+  const [imageSrc, setImageSrc] = useState(null);
+
   const setValue = e => setData(e.target.id, e.target.value)
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(data)
 
     if (data.slug) {
       put('', {
@@ -35,6 +36,28 @@ const AdminBlogDetail = ({ postData, comments, categories }) => {
 
   const handleDelete = e => {
     deleteBlog('');
+  }
+
+
+  function handleImageChange(event) {
+    const image = event.target.files[0];
+    const fileReader = new FileReader();
+
+    if (postData) {
+      Inertia.post(`/admin/blog/${postData.slug}/image`, { image }, {
+        preserveScroll: true, preserveState: true,
+        onSuccess: () => {
+          fileReader.readAsDataURL(image);
+          fileReader.onload = () => setImageSrc(fileReader.result);
+          toast.success('Image saved')
+        }
+      })
+    }
+    else {
+      fileReader.readAsDataURL(image);
+      fileReader.onload = () => setImageSrc(fileReader.result);
+      setData('image', image);
+    }
   }
 
 
@@ -99,14 +122,31 @@ const AdminBlogDetail = ({ postData, comments, categories }) => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="articleImage">
               Article Image
             </label>
+            {(imageSrc || data.imageurl) &&
+              <img src={imageSrc ?? `/${data.imageurl}`} alt="Selected image" />
+            }
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="image"
               type="file"
               accept="image/*"
-              onChange={(event) => setData('image', event.target.files[0])}
+              onChange={handleImageChange}
             />
             {errors.image && <span className='text-xs text-red-500'>{errors.image}</span>}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image_description">
+              Image description
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="image_description"
+              type="text"
+              placeholder="Image description"
+              value={data.image_description ?? ''}
+              onChange={setValue}
+            />
+            {errors.image_description && <span className='text-xs text-red-500'>{errors.image_description}</span>}
           </div>
           <div className="flex items-center justify-between">
             <button className="bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">

@@ -61,7 +61,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
                         <div className='py-5 text-center'>
                             <img src={'/' + blog.imageurl} className='w-full' />
-                            <span className='text-sm italic text-gray-600'>Image: no description</span>
+                            <span className='text-sm italic text-gray-600'>Image: {blog.image_description ?? 'no description'}</span>
                         </div>
 
                         <div className="pb-6 px-3 md:px-5 my-5">

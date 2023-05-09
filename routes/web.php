@@ -37,6 +37,7 @@ Route::post('/like', [BlogController::class, 'like']);
 Route::middleware('admin')->group(function () {
     Route::get('/admin', fn()=>redirect('/admin/blog'));
     Route::resource('/admin/ssgtv', AdminVideoController::class);
+    Route::post('/admin/blog/{slug}/image', [AdminBlogController::class, 'update_image']);
     Route::resource('/admin/blog', AdminBlogController::class)->only('index', 'show', 'store', 'update', 'destroy');
 });
 

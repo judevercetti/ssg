@@ -32,7 +32,6 @@ function AdminVideos({ videos, categories }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(videoForm.data)
     videoForm.post('/admin/ssgtv', {
       preserveState: true, preserveScroll: true,
       onSuccess: () => {

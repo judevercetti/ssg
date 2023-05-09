@@ -18,10 +18,15 @@ class Blog extends Model
         'category',
         'content',
         'imageurl',
+        'image_description',
         'uploadedby'
     ];
 
-
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'uploadedby');
