@@ -19,11 +19,8 @@ class BlogController extends Controller
         //
 
         $latest = Blog::latest()->first();
-        $latests = Blog::latest()->limit(4)->get();
+        $latests = Blog::latest()->where('id', '!=', $latest->id)->limit(4)->get();
         $trending_posts = Blog::latest()->limit(4)->get();
-        //$categories = BlogCategory::all();
-
-
 
         $blog_category = BlogCategory::with([
             'blog' => function ($query) {
@@ -92,8 +89,8 @@ class BlogController extends Controller
         $blog = Blog::where('slug', $blog)->with('user:id,name')->first();
         $categoryid = $blog->category;
         $category_name = BlogCategory::where('id', $categoryid)->first();
-        $category = Blog::where('category', $categoryid)->latest()->limit(4)->get();
-        $latests = Blog::latest()->limit(6)->get();
+        $category = Blog::where('category', $categoryid)->where('id', '!=', $blog->id)->latest()->limit(4)->get();
+        $latests = Blog::latest()->where('id', '!=', $blog->id)->limit(6)->get();
         $comments = $blog->blogComments;
         return Inertia::render('ArticleScreen', [
             'blog' => $blog, 

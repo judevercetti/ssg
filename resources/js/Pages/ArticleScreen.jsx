@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import Navbar from './Component/Navbar'
-import { Footer } from './Component/Footer'
 import parse from 'html-react-parser'
 import BlogAsideCard from './Component/BlogAsideCard'
 import { Head, Link, useForm, usePage } from '@inertiajs/inertia-react'
@@ -10,6 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CommentCard from './Component/CommentCard'
 import Layout from './Component/Layout'
+import ReactGA from 'react-ga4';
 
 
 function ArticleScreen({ blog, category, latests, category_name, comments }) {
@@ -17,6 +16,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
     const [copied, setCopied] = useState(false)
     const commentForm = useForm({ 'blog_id': blog.id });
     const { auth } = usePage().props;
+    console.log(category_name)
 
     const copyLink = () => {
         navigator.clipboard.writeText(currentUrl);
@@ -37,6 +37,14 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
             onSuccess: () => {
                 commentForm.setData('body', '');
                 toast.success('Comment Sent');
+
+                if (process.env.NODE_ENV === 'production') {
+                    ReactGA.event({
+                        category: 'Comment',
+                        action: 'Submit',
+                        label: 'Comment Submitted',
+                    });
+                }
             }
         })
     };
@@ -54,7 +62,9 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                             <div className="text-3xl font-bold hover:text-gray-700 pb-4">{blog.title}</div>
                             <div className="text-primary text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
-                                By <span className="font-semibold hover:text-gray-800">{blog.user.name}</span>, <br />
+                                {!['regional', 'africa', 'world'].includes(category_name.slug) && <>
+                                    By <span className="font-semibold hover:text-gray-800">{blog.user.name}</span>, <br />
+                                </>}
                                 Published on {new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </div>
                         </div>
@@ -130,18 +140,18 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                 </section>
 
                 <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
-                        <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Similar Posts</span></h1>
-                        {category && category.map((blog, index) =>
-                            <Link key={index} href={"/" + blog.slug}>
-                                {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
-                                <BlogAsideCard
-                                    key={blog.id}
-                                    image={blog.imageurl}
-                                    title={blog.title}
-                                    time={blog.created_at}
-                                />
-                            </Link>
-                        )}
+                    <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Similar Posts</span></h1>
+                    {category && category.map((blog, index) =>
+                        <Link key={index} href={"/" + blog.slug}>
+                            {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
+                            <BlogAsideCard
+                                key={blog.id}
+                                image={blog.imageurl}
+                                title={blog.title}
+                                time={blog.created_at}
+                            />
+                        </Link>
+                    )}
 
 
                     {/* <div className="text-sm py-6 top-10">
@@ -167,7 +177,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         <div className="grid grid-cols-3 gap-3">
                             {latests && latests.map((latest, index) =>
                                 <Link key={index} href={"/" + latest.slug}>
-                                        <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} title={latest.title} />
+                                    <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} title={latest.title} />
                                 </Link>
                             )}
                         </div>

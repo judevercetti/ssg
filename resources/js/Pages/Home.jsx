@@ -29,7 +29,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                 </div>
                 <div className='hidden md:block w-full lg:w-1/4 text-gray-800'>
                     <h1 className='font-semibold text-lg'>LATEST ARTICLES</h1>
-                    {trending_posts && trending_posts.map((post, index) =>
+                    {latests && latests.map((post, index) =>
                         <Link key={index} href={'/' + post.slug}>
                             <VideoListCard image={post.imageurl} title={post.title} />
                         </Link>
