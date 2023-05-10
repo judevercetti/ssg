@@ -5,6 +5,7 @@ import BlogAsideCard from './Component/BlogAsideCard';
 import { Link } from '@inertiajs/inertia-react';
 import VideoListCard from './Component/VideoListCard';
 import Layout from './Component/Layout';
+import { Adsense } from '@ctrl/react-adsense';
 
 
 function Home({ latest, latests, blog, blog_category, trending_posts }) {
@@ -63,17 +64,13 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                                     <h1 className="ml-6 mb-2 my-10 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">  {category.name}</span></h1>
                                     {category.blog.map((blogs, index) =>
                                         <Link key={index} href={"/" + blogs.slug}>
-
                                             <BlogListCard key={blogs.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} />
                                         </Link>
                                     )}
 
-                                    <div>
-                                        <Link href={"/category/" +
-                                            category.name} type="submit" className="m-2 p-2 mt-5 text-sm font-medium text-white bg-gradient-to-r to-black from-yellow-500  focus:ring-4 focus:outline-none">
-                                            {"More " + category.name}
-                                        </Link>
-                                    </div>
+                                    <Link href={"/category/" + category.slug} type="submit" className="m-2 p-2 text-sm font-medium text-white bg-gradient-to-r to-black from-yellow-500  focus:ring-4 focus:outline-none">
+                                        {"More " + category.name}
+                                    </Link>
                                 </>}
                             </div>
                             )}
@@ -81,6 +78,26 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                 </section>
 
                 <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>
+
+                    <div className="text-sm py-6 sticky top-20">
+                        <div className="w-full text-center">
+                            <Adsense
+                                client='ca-pub-8694698492521431'
+                                slot='6063218924'
+                                // adTest='on'
+                                style={{ display: 'block' }}
+                                format='auto'
+                                responsive='true'
+                                // layout="in-article"
+                                // format="fluid"
+                            />
+                            {/* <a className="uppercase mt-5" href="#">Advertisement</a>
+                            <a href="#">
+                                <img className="mx-auto" src="/images/ads/250.jpg" alt="advertisement area" />
+                            </a> */}
+                        </div>
+                    </div>
+
                     <div className='sticky top-20'>
                         <h1 className="ml-6 mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Trending Posts</span></h1>
                         {trending_posts && trending_posts.map((post, index) =>
