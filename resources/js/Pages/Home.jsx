@@ -24,7 +24,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                     <p className="max-w-xl text-lg leading-relaxed text-gray-800 sm:mx-auto lg:ml-0 text-left line-clamp-5">
                         {latest.description}
                     </p>
-                    <Link href={"/" + latest.slug} className="block text-primary rounded-md hover:underline text-left">
+                    <Link href={"/" + latest.slug} title={latest.title} className="block text-primary rounded-md hover:underline text-left">
                         Read more
                     </Link>
                 </div>

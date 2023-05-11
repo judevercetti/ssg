@@ -37,10 +37,10 @@ function AdminNavbar() {
                 <path d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z" />
               </svg>
             </Link>
-            <Link href="/admin" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
+            <Link href="/admin" className="md:ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               Dashboard
             </Link>
-            <Link href="/admin/blog" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
+            <Link href="/admin/blog" className="hidden md:block ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
               Blog
             </Link>
             {/* <Link href="/admin/ssgtv" className="ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
@@ -48,14 +48,14 @@ function AdminNavbar() {
             </Link> */}
           </div>
 
-          <div className='hidden md:flex mr-10'>
+          <div className='md:flex md:mr-10'>
             {auth.user && <>
               <Link href='/' as='button' className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 {auth.user.name}
               </Link>
               <Link
                 href="/logout" method='post' as='button'
-                className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary"
+                className="mx-5 md:ml-10 text-white text-md transition-colors duration-300  hover:text-primary"
               >
                 Logout
               </Link>
@@ -67,9 +67,6 @@ function AdminNavbar() {
                 className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 Login
               </Link>
-              <button className="ml-10 text-white px-5 text-md transition-colors duration-300 bg-primary rounded-xl  hover:bg-yellow-700">
-                Subscribe
-              </button>
             </>}
           </div>
         </div>

@@ -49,7 +49,6 @@ function AdminBlog({ posts, categories }) {
         {posts && posts.length == 0 ?
           <div className='flex items-center text-center font-semibold text-lg w-full bg-gray-100 p-10'>
             <span className='mx-auto'>
-
               No posts found matching that query
             </span>
           </div>

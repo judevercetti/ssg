@@ -88,7 +88,7 @@ function Navbar() {
           </div>
 
           <div className='flex md:mr-5'>
-            {auth.user && <div className="hidden md:block">
+            {auth.user && <div className="block">
               <span className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary">
                 <Link href={auth.user.role == 1 ? '/admin' : '/'}>
                   {auth.user.name}
@@ -96,7 +96,7 @@ function Navbar() {
               </span>
               <Link
                 href="/logout" method='post' as='button'
-                className="ml-10 text-white text-md transition-colors duration-300  hover:text-primary"
+                className="mx-5 md:ml-10 text-white text-md transition-colors duration-300  hover:text-primary"
               >
                 Logout
               </Link>
@@ -221,11 +221,9 @@ function Navbar() {
               <Link href="/about-us" className="text-white transition-colors duration-300">
                 About us
               </Link>
-              {auth.user && <>
-                <Link href={auth.user.role == 1 ? '/admin' : '/'}>
-                  {auth.user.name}
-                </Link>
-              </>}
+              <Link href="/contact-us" className="text-white transition-colors duration-300">
+                Contact us
+              </Link>
               {!auth.user && <Link href="/login" className="text-white transition-colors duration-300">
                 Login
               </Link>}

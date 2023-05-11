@@ -7,6 +7,7 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use Intervention\Image\Facades\Image;
 
 class AdminBlogController extends Controller
 {
@@ -75,7 +76,6 @@ class AdminBlogController extends Controller
             'description' => 'required',
             'category' => 'required',
             'content' => 'required',
-            // 'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $blog = Blog::where('slug', $slug)->first();
@@ -84,13 +84,6 @@ class AdminBlogController extends Controller
         $blog->description = $request->input('description');
         $blog->category = $request->input('category');
         $blog->image_description = $request->input('image_description');
-
-        // $file = $request->file('image');
-        // if ($file) {
-        //     $filename = $slug . '.' . $file->extension();
-        //     $path = $file->storeAs('/images/blog', $filename, ['disk' => 'public_uploads']);
-        //     $blog->imageurl = $path;
-        // }
 
         $blog->save();
     }
@@ -102,7 +95,7 @@ class AdminBlogController extends Controller
         return redirect('/admin/blog');
     }
 
-    
+
     public function update_image(Request $request, $slug)
     {
         $request->validate([
@@ -110,11 +103,17 @@ class AdminBlogController extends Controller
         ]);
 
         $blog = Blog::where('slug', $slug)->first();
+
         $file = $request->file('image');
+
         if ($file) {
-            $filename = $blog->slug . '.' . $file->extension();
-            $path = $file->storeAs('/images/blog', $filename, ['disk' => 'public_uploads']);
-            $blog->imageurl = $path;
+            // $filename = $blog->slug . '.' . $file->extension();
+            $destinationPath = 'images/blog/' . $blog->slug . '.webp';
+            $imageResize = Image::make($file)->encode('webp', 70)->resize(960, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path($destinationPath));
+            // $path = $file->storeAs('/images/blog', $filename, ['disk' => 'public_uploads']);
+            $blog->imageurl = $destinationPath;
         }
 
         $blog->save();

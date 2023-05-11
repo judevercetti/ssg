@@ -10,7 +10,7 @@ function BlogListCard({ image, title, description, time }) {
               className="relative overflow-hidden bg-no-repeat bg-cover -z-50 ripple rounded-lg mb-3"
               data-mdb-ripple="true" data-mdb-ripple-color="light">
               <img src={'/'+image}
-                className="w-full h-36 object-cover" alt="Louvre" />
+                className="w-full h-48 md:h-36 object-cover" alt="Louvre" />
               {/* <a href="#!">
             <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
               ></div>
