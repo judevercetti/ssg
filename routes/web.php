@@ -10,6 +10,7 @@ use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,11 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/lol', function () {
+    $img = Image::canvas(800, 600, '#ccc');
+    return $img->response('jpg');
+});
 
 Route::get('/', [BlogController::class, 'index']);
 Route::get('/about-us', [StaticController::class, 'about_us']);
