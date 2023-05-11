@@ -27,9 +27,8 @@ const CookieConsent = () => {
                                     </p>
                             </div>
                             <div className="px-3 text-center">
-                                <button id="btn" className="py-2 px-8 bg-gray-400 hover:bg-gray-900 text-white rounded font-bold text-sm shadow-xl mr-3">Cookie settings</button>
-                                <button id="btn" onClick={handleAccept} className="py-2 px-8 bg-primary hover:bg-primary text-white rounded font-bold text-sm shadow-xl">
-                                    Accept cookies
+                                <button onClick={handleAccept} className="py-2 px-8 bg-primary hover:bg-primary text-white rounded font-bold text-sm shadow-xl">
+                                    GOT IT!
                                 </button>
                             </div>
                         </div >

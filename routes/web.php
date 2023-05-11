@@ -10,6 +10,7 @@ use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Intervention\Image\Image;
 
 /*
 |--------------------------------------------------------------------------

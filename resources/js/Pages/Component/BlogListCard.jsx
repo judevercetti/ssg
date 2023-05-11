@@ -19,7 +19,7 @@ function BlogListCard({ image, title, description, time }) {
           </div>
 
           <div className="grow-0 shrink-0 basis-auto w-full md:w-9/12 xl:w-7/12 px-3 mb-1 md:mb-0 mr-auto">
-            <h5 className="text-lg font-bold mb-1 line-clamp-2 hover:underline">{title}</h5>
+            <h3 className="text-lg font-bold mb-1 line-clamp-2 hover:underline">{title}</h3>
 
             <p className="text-gray-500 line-clamp-2">
               {description}

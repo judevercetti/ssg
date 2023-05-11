@@ -13,8 +13,8 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
         <>
             <section className="flex flex-col lg:flex-row lg:space-x-5 justify-between items-center bg-gray-50 p-2 lg:p-10">
                 <div className='w-full lg:w-2/4'>
-                    <Link href={"/" + latest.slug}>
-                        <img src={latest.imageurl} className="h-72 lg:h-96 w-full object-cover" />
+                    <Link href={"/" + latest.slug} title={latest.title}>
+                        <img src={latest.imageurl} alt={latest.title} className="h-72 lg:h-96 w-full object-cover" />
                     </Link>
                 </div>
                 <div className="lg:flex-1 space-y-4 mt-2 sm:text-center text-left">
@@ -29,7 +29,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                     </Link>
                 </div>
                 <div className='hidden md:block w-full lg:w-1/4 text-gray-800'>
-                    <h1 className='font-semibold text-lg'>LATEST ARTICLES</h1>
+                    <h2 className='font-semibold text-lg'>LATEST ARTICLES</h2>
                     {latests && latests.map((post, index) =>
                         <Link key={index} href={'/' + post.slug}>
                             <VideoListCard image={post.imageurl} title={post.title} />
@@ -47,7 +47,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
             <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start mb-5' >
-                        <h1 className="ml-6 mb-2 mt-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest</span></h1>
+                        <h2 className="ml-6 mb-2 mt-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest</span></h2>
                         <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-5">
                             {latests && latests.map((latest, index) =>
                                 <Link key={index} href={"/" + latest.slug}>
@@ -61,7 +61,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                         {blog_category &&
                             blog_category.map((category, index) => <div key={index}>
                                 {category.blog.length == 0 ? <></> : <>
-                                    <h1 className="ml-6 mb-2 my-10 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">  {category.name}</span></h1>
+                                    <h2 className="ml-6 mb-2 my-10 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">  {category.name}</span></h2>
                                     {category.blog.map((blogs, index) =>
                                         <Link key={index} href={"/" + blogs.slug}>
                                             <BlogListCard key={blogs.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} />
@@ -84,22 +84,15 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                             <Adsense
                                 client='ca-pub-8694698492521431'
                                 slot='6063218924'
-                                // adTest='on'
+                                adTest='on'
                                 style={{ display: 'block' }}
                                 format='auto'
-                                responsive='true'
-                                // layout="in-article"
-                                // format="fluid"
-                            />
-                            {/* <a className="uppercase mt-5" href="#">Advertisement</a>
-                            <a href="#">
-                                <img className="mx-auto" src="/images/ads/250.jpg" alt="advertisement area" />
-                            </a> */}
+                                responsive='true' />
                         </div>
                     </div>
 
                     <div className='sticky top-20'>
-                        <h1 className="ml-6 mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Trending Posts</span></h1>
+                        <h2 className="ml-6 mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Trending Posts</span></h2>
                         {trending_posts && trending_posts.map((post, index) =>
                             <Link key={index} href={'/' + post.slug} >
                                 <BlogAsideCard

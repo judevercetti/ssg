@@ -11,7 +11,7 @@ export default function VideoListCard({ title, time, image }) {
                     </div>
                     <div className="w-full lg:w-9/12 mr-2 mb-10 lg:mb-0">
                         <div className="max-w-2xl">
-                            <p className="text-sm font-semibold line-clamp-3 hover:underline">{title}</p>
+                            <h3 className="text-sm font-semibold line-clamp-3 hover:underline">{title}</h3>
                         </div>
                     </div>
                 </div>

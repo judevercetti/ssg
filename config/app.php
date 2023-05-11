@@ -186,6 +186,7 @@ return [
              * Package Service Providers...
              */
         Spatie\Sitemap\SitemapServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
             /*
              * Application Service Providers...
@@ -212,6 +213,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Sitemap' => Spatie\Sitemap\SitemapFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];

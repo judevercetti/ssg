@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CommentCard from './Component/CommentCard'
 import Layout from './Component/Layout'
 import ReactGA from 'react-ga4';
+import { Adsense } from '@ctrl/react-adsense';
 
 
 function ArticleScreen({ blog, category, latests, category_name, comments }) {
@@ -16,7 +17,6 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
     const [copied, setCopied] = useState(false)
     const commentForm = useForm({ 'blog_id': blog.id });
     const { auth } = usePage().props;
-    console.log(category_name)
 
     const copyLink = () => {
         navigator.clipboard.writeText(currentUrl);
@@ -59,7 +59,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                     <article className="flex flex-col shadow my-2 md:my-4">
 
                         <div className="bg-white flex flex-col justify-start px-3 md:px-5">
-                            <div className="text-3xl font-bold hover:text-gray-700 pb-4">{blog.title}</div>
+                            <h1 className="text-3xl font-bold hover:text-gray-700 pb-4">{blog.title}</h1>
                             <div className="text-primary text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
                                 {!['regional', 'africa', 'world'].includes(category_name.slug) && <>
@@ -70,7 +70,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         </div>
 
                         <div className='py-5 text-center'>
-                            <img src={'/' + blog.imageurl} className='w-full' />
+                            <img src={'/' + blog.imageurl} className='w-full' alt={blog.title} />
                             <span className='text-sm italic text-gray-600'>Image: {blog.image_description ?? 'no description'}</span>
                         </div>
 
@@ -154,6 +154,15 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                     )}
 
 
+                    <Adsense
+                        client='ca-pub-8694698492521431'
+                        slot='6063218924'
+                        adTest='on'
+                        style={{ display: 'block' }}
+                        format='auto'
+                        responsive='true' />
+
+
                     {/* <div className="text-sm py-6 top-10">
                         <div className="w-full text-center">
                             <Adsense
@@ -177,13 +186,13 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         <div className="grid grid-cols-3 gap-3">
                             {latests && latests.map((latest, index) =>
                                 <Link key={index} href={"/" + latest.slug}>
-                                    <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} title={latest.title} />
+                                    <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} title={latest.title} alt={latest.title} />
                                 </Link>
                             )}
                         </div>
-                        <a href="#" className="w-full bg-primary text-white font-bold text-sm uppercase rounded hover:bg-yellow-700 flex items-center justify-center px-2 py-3 mt-6">
+                        {/* <a href="#" className="w-full bg-primary text-white font-bold text-sm uppercase rounded hover:bg-yellow-700 flex items-center justify-center px-2 py-3 mt-6">
                             Subscribe
-                        </a>
+                        </a> */}
                     </div>
 
                     {/* <div className="text-sm py-6 sticky top-20">
