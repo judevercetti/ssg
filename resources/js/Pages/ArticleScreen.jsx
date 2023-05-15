@@ -9,7 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import CommentCard from './Component/CommentCard'
 import Layout from './Component/Layout'
 import ReactGA from 'react-ga4';
-import { Adsense } from '@ctrl/react-adsense';
+import AdsComponent from './Component/AdsComponent';
+// import { Adsense } from '@ctrl/react-adsense';
 
 
 function ArticleScreen({ blog, category, latests, category_name, comments }) {
@@ -78,6 +79,10 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                             {parse(blog.content)}
                         </div>
 
+
+                        <div className='w-full'>
+                            <AdsComponent dataAdSlot='6063218924' />
+                        </div>
 
                         <h4 className='text-lg ml-7 font-semibold hover:text-gray-700 pb-2'>Share Post</h4>
 
@@ -153,14 +158,18 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         </Link>
                     )}
 
+                    <div className='w-full'>
+                        <AdsComponent dataAdSlot='6063218924' />
+                    </div>
 
-                    <Adsense
+
+                    {/* <Adsense
                         client='ca-pub-8694698492521431'
                         slot='6063218924'
-                        adTest='on'
+                        // adTest='on'
                         style={{ display: 'block' }}
                         format='auto'
-                        responsive='true' />
+                        responsive='true' /> */}
 
 
                     {/* <div className="text-sm py-6 top-10">
@@ -183,16 +192,24 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
                     <div className="w-full bg-white shadow flex flex-col my-4 p-6 sticky top-20">
                         <h1 className="ml-2 w-full mb-2 mt-5 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-2xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest Posts</span></h1>
-                        <div className="grid grid-cols-3 gap-3">
-                            {latests && latests.map((latest, index) =>
-                                <Link key={index} href={"/" + latest.slug}>
-                                    <img className="hover:opacity-75 h-28 w-28 object-cover" src={'/' + latest.imageurl} title={latest.title} alt={latest.title} />
-                                </Link>
-                            )}
-                        </div>
+                        {latests && latests.map((blog, index) =>
+                            <Link key={index} href={"/" + blog.slug}>
+                                {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
+                                <BlogAsideCard
+                                    key={blog.id}
+                                    image={blog.imageurl}
+                                    title={blog.title}
+                                    time={blog.created_at}
+                                />
+                            </Link>
+                        )}
                         {/* <a href="#" className="w-full bg-primary text-white font-bold text-sm uppercase rounded hover:bg-yellow-700 flex items-center justify-center px-2 py-3 mt-6">
                             Subscribe
                         </a> */}
+                    </div>
+
+                    <div className='w-full'>
+                        <AdsComponent dataAdSlot='6063218924' />
                     </div>
 
                     {/* <div className="text-sm py-6 sticky top-20">

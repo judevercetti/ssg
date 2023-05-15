@@ -5,7 +5,8 @@ import BlogAsideCard from './Component/BlogAsideCard';
 import { Link } from '@inertiajs/inertia-react';
 import VideoListCard from './Component/VideoListCard';
 import Layout from './Component/Layout';
-import { Adsense } from '@ctrl/react-adsense';
+import AdsComponent from './Component/AdsComponent';
+// import { Adsense } from '@ctrl/react-adsense';
 
 
 function Home({ latest, latests, blog, blog_category, trending_posts }) {
@@ -57,6 +58,10 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                         </div>
                     </div>
 
+                    <div className='w-full'>
+                        <AdsComponent dataAdSlot='6063218924' />
+                    </div>
+
                     <div className='w-full justify-start'>
                         {blog_category &&
                             blog_category.map((category, index) => <div key={index}>
@@ -75,20 +80,29 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                             </div>
                             )}
                     </div>
+
+                    <div className='w-full'>
+                        <AdsComponent dataAdSlot='6063218924' />
+                    </div>
                 </section>
 
                 <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>
-
+                    {/* 
                     <div className="text-sm py-6 sticky top-20">
                         <div className="w-full text-center">
                             <Adsense
                                 client='ca-pub-8694698492521431'
                                 slot='6063218924'
-                                adTest='on'
+                                // adTest='on'
                                 style={{ display: 'block' }}
                                 format='auto'
                                 responsive='true' />
                         </div>
+                    </div> */}
+
+
+                    <div className='w-full'>
+                        <AdsComponent dataAdSlot='6063218924' />
                     </div>
 
                     <div className='sticky top-20'>
@@ -101,6 +115,10 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                                     time={post.created_at} />
                             </Link>
                         )}
+                    </div>
+
+                    <div className='w-full'>
+                        <AdsComponent dataAdSlot='6063218924' />
                     </div>
 
                     {/* <div className="text-sm py-6 sticky top-20">
