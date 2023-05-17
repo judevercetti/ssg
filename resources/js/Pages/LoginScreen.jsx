@@ -47,6 +47,8 @@ function LoginScreen() {
                 {errors.password && <div className='text-sm text-red-500'>{errors.password}</div>}
               </div>
 
+              <input class="hidden" type="checkbox" name="remember" id="remember" />
+
               <div className="text-right mt-2">
                 <Link href="#" className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
               </div>

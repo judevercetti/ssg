@@ -23,10 +23,11 @@ use Intervention\Image\Facades\Image;
 |
 */
 
-// Route::get('/payments', function () {
-//     return Inertia::render('Payments');
-// });
+Route::get('/payments', function () {
+    return Inertia::render('Payments');
+});
 
+Route::get('/', [BlogController::class, 'index']);
 Route::get('/about-us', [StaticController::class, 'about_us']);
 Route::get('/terms-of-use', [StaticController::class, 'terms_of_use']);
 Route::get('/privacy-policy', [StaticController::class, 'privacy_policy']);
@@ -38,16 +39,16 @@ Route::get('/search', [BlogController::class, 'search']);
 Route::post('/comment', [BlogController::class, 'comment']);
 Route::post('/like', [BlogController::class, 'like']);
 
-// Route::middleware('admin')->group(function () {
-//     Route::get('/admin', fn() => redirect('/admin/blog'));
-//     Route::resource('/admin/ssgtv', AdminVideoController::class);
-//     Route::post('/admin/blog/{slug}/image', [AdminBlogController::class, 'update_image']);
-//     Route::resource('/admin/blog', AdminBlogController::class)->only('index', 'show', 'store', 'update', 'destroy');
-// });
+Route::middleware('admin')->group(function () {
+    Route::get('/admin', fn()=>redirect('/admin/blog'));
+    Route::resource('/admin/ssgtv', AdminVideoController::class);
+    Route::post('/admin/blog/{slug}/image', [AdminBlogController::class, 'update_image']);
+    Route::resource('/admin/blog', AdminBlogController::class)->only('index', 'show', 'store', 'update', 'destroy')->names('admin');
+});
 
 
 Auth::routes();
-// Route::get('/home', [BlogController::class, 'index'])->name('home');
+Route::get('/home', [BlogController::class, 'index'])->name('home');
 
 Route::get('/category/{category}', [BlogController::class, 'dispayCategoryBlogs']);
-Route::resource('/', BlogController::class)->names('blog');
+Route::get('/{slug}', [BlogController::class, 'show'])->name('blog.show');
