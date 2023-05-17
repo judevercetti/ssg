@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class Blog extends Model
+class Blog extends Model implements Sitemapable
 {
     use HasFactory;
 
@@ -25,6 +28,13 @@ class Blog extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        // return route('blog.show', $this);
+        return Url::create(route('blog.show', $this))
+            ->setLastModificationDate(Carbon::parse($this->updated_at));
     }
     
     public function user()
