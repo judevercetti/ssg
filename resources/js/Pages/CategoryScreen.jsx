@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/inertia-react'
 import Layout from './Component/Layout'
 import BlogListCard from './Component/BlogListCard'
 import BlogAsideCard from './Component/BlogAsideCard'
+import AdsComponent from './Component/AdsComponent';
 
 function CategoryScreen({ blogs, category, trending_posts }) {
     return (
