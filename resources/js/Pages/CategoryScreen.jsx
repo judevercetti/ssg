@@ -29,10 +29,19 @@ function CategoryScreen({ blogs, category, trending_posts }) {
                                 </span>
                             </div>
                         }
+
+                        {/* <div className='w-full'> */}
+                            <AdsComponent dataAdSlot='6063218924' />
+                        {/* </div> */}
                     </div>
                 </section>
 
                 <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
+
+                    {/* <div className='w-full'> */}
+                        <AdsComponent dataAdSlot='6063218924' />
+                    {/* </div> */}
+
                     <div className='sticky top-20'>
                         <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Trending Posts</span></h1>
                         {trending_posts && trending_posts.map((post, index) =>
