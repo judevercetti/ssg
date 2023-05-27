@@ -31,17 +31,17 @@ function CategoryScreen({ blogs, category, trending_posts }) {
                             </div>
                         }
 
-                        {/* <div className='w-full'> */}
+                        <div className='w-full'>
                             <AdsComponent dataAdSlot='6063218924' />
-                        {/* </div> */}
+                        </div>
                     </div>
                 </section>
 
                 <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
 
-                    {/* <div className='w-full'> */}
+                    <div className='w-full'>
                         <AdsComponent dataAdSlot='6063218924' />
-                    {/* </div> */}
+                    </div>
 
                     <div className='sticky top-20'>
                         <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Trending Posts</span></h1>
@@ -54,24 +54,6 @@ function CategoryScreen({ blogs, category, trending_posts }) {
                             </Link>
                         )}
                     </div>
-
-                    {/* <div className="text-sm py-6 sticky top-20">
-                        <div className="w-full text-center">
-                            <Adsense
-                                client='ca-pub-2005682797531342'
-                                slot='7046626912'
-                                adTest='on'
-                                style={{ display: 'block' }}
-                                format='auto'
-                                responsive='true'
-                                layoutKey='-gw-1+2a-9x+5c'
-                            />
-                            <a className="uppercase mt-5" href="#">Advertisement</a>
-                            <a href="#">
-                                <img className="mx-auto" src="/images/ads/250.jpg" alt="advertisement area" />
-                            </a>
-                        </div>
-                    </div> */}
                 </aside>
             </div>
         </div>
