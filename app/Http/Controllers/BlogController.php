@@ -22,7 +22,7 @@ class BlogController extends Controller
         $latests = Blog::latest()->where('id', '!=', $latest->id)->limit(4)->get();
         $trending_posts = Blog::latest()->limit(4)->get();
 
-        $blog_category = BlogCategory::with(['blog'])->get();
+        $blog_category = BlogCategory::with(['blog' => fn($query) => $query->take(5)])->get();
         //return Response($entertainment);
         return Inertia::render('Home', [
             'latest' => $latest,
@@ -89,16 +89,16 @@ class BlogController extends Controller
         $latests = Blog::latest()->where('id', '!=', $blog->id)->limit(6)->get();
         $comments = $blog->blogComments;
         return Inertia::render('ArticleScreen', [
-            'blog' => $blog, 
-            'category_name' => $category_name, 
-            'category' => $category, 
-            'latests' => $latests, 
+            'blog' => $blog,
+            'category_name' => $category_name,
+            'category' => $category,
+            'latests' => $latests,
             'comments' => $comments
         ])->withViewData([
-            'title'=>$blog->title,
-            'description'=>$blog->description,
-            'image'=>url($blog->imageurl),
-        ]);
+                'title' => $blog->title,
+                'description' => $blog->description,
+                'image' => url($blog->imageurl),
+            ]);
     }
 
     /**
@@ -160,9 +160,9 @@ class BlogController extends Controller
             'category' => $category->name,
             'trending_posts' => $trending_posts,
         ])->withViewData([
-            'title'=>$category->name,
-            'description'=>'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
-        ]);
+                'title' => $category->name,
+                'description' => 'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
+            ]);
 
     }
 
