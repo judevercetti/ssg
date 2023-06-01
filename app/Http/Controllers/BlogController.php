@@ -22,12 +22,18 @@ class BlogController extends Controller
         $latests = Blog::latest()->where('id', '!=', $latest->id)->limit(4)->get();
         $trending_posts = Blog::latest()->limit(4)->get();
 
-        $blog_category = BlogCategory::with(['blog' => fn($query) => $query->take(5)])->get();
+        // $blog_category = BlogCategory::with(['blog' => fn($query) => $query->take(5)])->get();
         //return Response($entertainment);
+        $categories = BlogCategory::with('blog')->get();
+
+        $categories->each(function ($category) {
+            $category->blog = $category->blog->take(4);
+        });
+
         return Inertia::render('Home', [
             'latest' => $latest,
             'latests' => $latests,
-            'blog_category' => $blog_category,
+            'blog_category' => $categories,
             'trending_posts' => $trending_posts,
         ]);
     }
