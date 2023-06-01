@@ -14,7 +14,7 @@ class BlogCategory extends Model
 
     public function blog()
     {
-        return $this->hasMany(Blog::class,'category')->limit(5);
+        return $this->hasMany(Blog::class,'category');
     }
 
     public function videos()
