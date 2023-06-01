@@ -72,7 +72,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
 
                         <div className='py-5 text-center'>
                             <img src={'/' + blog.imageurl} className='w-full' alt={blog.title} />
-                            <span className='text-sm italic text-gray-600'>Image: {blog.image_description ?? 'no description'}</span>
+                            <span className='px-2 text-sm italic text-gray-600 break-all'>Image: {blog.image_description ?? 'no description'}</span>
                         </div>
 
                         <div className="pb-6 px-3 md:px-5 my-5">
@@ -206,10 +206,10 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         {/* <a href="#" className="w-full bg-primary text-white font-bold text-sm uppercase rounded hover:bg-yellow-700 flex items-center justify-center px-2 py-3 mt-6">
                             Subscribe
                         </a> */}
-                    </div>
 
-                    <div className='w-full'>
-                        <AdsComponent dataAdSlot='6063218924' />
+                        <div className='w-full'>
+                            <AdsComponent dataAdSlot='6063218924' />
+                        </div>
                     </div>
 
                     {/* <div className="text-sm py-6 sticky top-20">

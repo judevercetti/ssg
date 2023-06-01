@@ -115,10 +115,10 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                                     time={post.created_at} />
                             </Link>
                         )}
-                    </div>
 
-                    <div className='w-full'>
-                        <AdsComponent dataAdSlot='6063218924' />
+                        <div className='w-full'>
+                            <AdsComponent dataAdSlot='6063218924' />
+                        </div>
                     </div>
 
                     {/* <div className="text-sm py-6 sticky top-20">
