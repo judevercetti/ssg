@@ -54,31 +54,25 @@ export const Footer = () => {
 
                             <div>
                                 <h2 className="text-gray-300 uppercase dark:text-white">News</h2>
-                                <Link href="/national" className="block mt-2 text-sm white text-white hover:underline">National</Link>
-                                <Link href="/africa" className="block mt-2 text-sm white text-white hover:underline">Africa</Link>
-                                <Link href="/world" className="block mt-2 text-sm white text-white hover:underline">World</Link>
+                                <Link href="/category/national" className="block mt-2 text-sm white text-white hover:underline">National</Link>
+                                <Link href="/category/africa" className="block mt-2 text-sm white text-white hover:underline">Africa</Link>
+                                <Link href="/category/world" className="block mt-2 text-sm white text-white hover:underline">World</Link>
                             </div>
 
                             <div>
                                 <h2 className="text-gray-300 uppercase dark:text-white">Categories</h2>
-                                <Link href="/diaspora" className="block mt-2 text-sm white text-white hover:underline">Diaspora</Link>
-                                <Link href="/health-and-fitness" className="block mt-2 text-sm white text-white hover:underline">Health & Fitness</Link>
-                                <Link href="/education" className="block mt-2 text-sm white text-white hover:underline">Education</Link>
+                                <Link href="/category/diaspora" className="block mt-2 text-sm white text-white hover:underline">Diaspora</Link>
+                                <Link href="/category/health-and-fitness" className="block mt-2 text-sm white text-white hover:underline">Health & Fitness</Link>
+                                <Link href="/category/education" className="block mt-2 text-sm white text-white hover:underline">Education</Link>
                             </div>
 
                             <div>
                                 <h2 className="text-gray-300 uppercase dark:text-white"></h2>
-                                <Link href="/politics" className="block mt-2 text-sm white text-white hover:underline">Politics</Link>
-                                <Link href="/agriculture" className="block mt-2 text-sm white text-white hover:underline">Agriculture</Link>
-                                <Link href="/technology" className="block mt-2 text-sm white text-white hover:underline">Technology</Link>
-                                <Link href="/sports" className="block mt-2 text-sm white text-white hover:underline">Sports</Link>
+                                <Link href="/category/politics" className="block mt-2 text-sm white text-white hover:underline">Politics</Link>
+                                <Link href="/category/agriculture" className="block mt-2 text-sm white text-white hover:underline">Agriculture</Link>
+                                <Link href="/category/technology" className="block mt-2 text-sm white text-white hover:underline">Technology</Link>
+                                <Link href="/category/sports" className="block mt-2 text-sm white text-white hover:underline">Sports</Link>
                             </div>
-
-                            {/* <div>
-                                <h2 className="text-gray-300 uppercase dark:text-white">Contact</h2>
-                                <a href="tel:+15266548965" className="block mt-2 text-sm white text-white hover:underline">+1 526 654 8965</a>
-                                <a href="mailto:southsudanglobal@gmail.com" className="block mt-2 text-xs md:text-sm white text-white hover:underline">southsudanglobal@gmail.com</a>
-                            </div> */}
                         </div>
                     </div>
                 </div>

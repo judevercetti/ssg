@@ -69,8 +69,6 @@ class BlogController extends Controller
 
         $file = $request->file('articleImage');
         $filename = $slug . '.' . $file->extension();
-        ;
-        // $file-> move(public_path('/images/blogpictures'), $filename);
 
         $path = $file->storeAs('/images/blogpictures', $filename, ['disk' => 'public_uploads']);
 

@@ -12,7 +12,6 @@ function LoginScreen() {
       forceFormData: true,
       preserveScroll: true, preserveState: true
     })
-
   }
 
   return (
