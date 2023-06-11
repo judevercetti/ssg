@@ -15,7 +15,7 @@ export const Footer = () => {
                                     <h1 className="text-2xl text-gray-900 font-bold tracking-tight">
                                         South Sudan Global
                                     </h1>
-                                    <p className="lg:max-w-sm mt-2 mr-2 text-white">We Are Africa's News Leader</p>
+                                    <p className="lg:max-w-sm mt-2 mr-2 text-white">Africa's News Leader</p>
                                 </div>
                             </div>
 
