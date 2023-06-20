@@ -31,6 +31,7 @@ Route::get('/', [BlogController::class, 'index']);
 Route::get('/about-us', [StaticController::class, 'about_us']);
 Route::get('/terms-of-use', [StaticController::class, 'terms_of_use']);
 Route::get('/privacy-policy', [StaticController::class, 'privacy_policy']);
+Route::get('/cookie-policy', [StaticController::class, 'cookie_policy']);
 Route::resource('/contact-us', ContactUsController::class);
 Route::resource('/advertise', AdvertiseRequestController::class);
 

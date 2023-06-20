@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import parse from 'html-react-parser'
 import BlogAsideCard from './Component/BlogAsideCard'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Head, Link, useForm, usePage } from '@inertiajs/inertia-react'
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
-
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CommentCard from './Component/CommentCard'
 import Layout from './Component/Layout'
 import ReactGA from 'react-ga4';
 import AdsComponent from './Component/AdsComponent';
+import moment from 'moment';
+
 // import { Adsense } from '@ctrl/react-adsense';
 
 
@@ -60,27 +63,51 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                     <article className="flex flex-col shadow my-2 md:my-4">
 
                         <div className="bg-white flex flex-col justify-start px-3 md:px-5">
-                            <h1 className="text-3xl font-bold hover:text-gray-700 pb-4">{blog.title}</h1>
+                            <h1 className="text-3xl font-bold pb-4">{blog.title}</h1>
                             <div className="text-primary text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
                                 {!['regional', 'africa', 'world'].includes(category_name.slug) && <>
                                     By <span className="font-semibold hover:text-gray-800">{blog.user.name}</span>, <br />
                                 </>}
-                                Published on {new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                {/* Published on {new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} */}
+                                {/* Published on {formatDate(blog.created_at)} */}
+                                <div className='flex space-x-5 mt-2'>
+                                    <span className='flex items-center space-x-2 bg-gray-200 text-xs rounded py-1 px-3'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span>{formatDate(blog.created_at)}</span>
+                                    </span>
+                                    <span className='flex items-center space-x-2 bg-gray-200 text-xs rounded py-1 px-3'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                                        </svg>
+                                        <span>{blog.reading_time}</span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
                         <div className='py-5 text-center'>
                             <img src={'/' + blog.imageurl} className='w-full' alt={blog.title} />
-                            <span className='px-2 text-sm italic text-gray-600 break-all'>Image: {blog.image_description ?? 'no description'}</span>
+                            <span className='px-2 text-sm italic text-gray-600 break-all'>{blog.image_description ?? 'no description'}</span>
                         </div>
 
                         <div className="pb-6 px-3 md:px-5 my-5">
+                            {/* {blog.content} */}
                             {parse(blog.content)}
+                            {/* <CKEditor
+                                editor={ClassicEditor}
+                                data={blog.content}
+                                disabled={true}
+                                config={{ toolbar: [], readOnly: true }}
+                                style={{ border: 'none', boxShadow: 'none' }}
+                            /> */}
+                            {/* <div dangerouslySetInnerHTML={{ __html: blog.content }} /> */}
                         </div>
 
 
-                        <div className='w-full'>
+                        <div className='w-full mb-10'>
                             <AdsComponent dataAdSlot='6063218924' />
                         </div>
 
@@ -235,6 +262,18 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
         </div>
 
     )
+}
+
+
+function formatDate(date) {
+    const today = moment().startOf('day');
+    const dateObj = moment(date);
+
+    if (dateObj.isSame(today, 'd')) {
+        return dateObj.fromNow();
+    } else {
+        return dateObj.format('MMM D, YYYY');
+    }
 }
 
 ArticleScreen.layout = page => <Layout children={page} />

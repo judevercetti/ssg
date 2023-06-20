@@ -11,10 +11,9 @@ class BlogCategory extends Model
 
     protected $table = 'blog_category';
 
-
     public function blog()
     {
-        return $this->hasMany(Blog::class,'category');
+        return $this->hasMany(Blog::class, 'category')->latest();
     }
 
     public function videos()

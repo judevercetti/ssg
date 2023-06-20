@@ -4,6 +4,7 @@ import { Link, useForm } from '@inertiajs/inertia-react'
 import BlogListCard from './Component/BlogListCard'
 import Navbar from './Component/Navbar'
 import Layout from './Component/Layout'
+import AdsComponent from './Component/AdsComponent'
 
 function SearchArticleScreen({ posts }) {
   const { data, setData, get, processing } = useForm();
@@ -23,8 +24,8 @@ function SearchArticleScreen({ posts }) {
   }, []);
 
   return (
-    <div>
-      <div className='max-w-screen-md mx-auto mt-5'>
+    <div className='flex flex-col lg:flex-row'>
+      <div className='max-w-screen-md mt-5 ml-auto'>
         <form onSubmit={handleSearch}>
           <div className='flex rounded-md mb-10 mx-5'>
             <input
@@ -55,8 +56,13 @@ function SearchArticleScreen({ posts }) {
               <BlogListCard title={latest.title} description={latest.description} time={latest.updated_at} image={latest.imageurl} />
             </Link>
           )}
-
       </div>
+
+      <aside className='w-full lg:w-1/4 pt-5'>
+        <div className='w-full sticky top-20'>
+          <AdsComponent dataAdSlot='6063218924' />
+        </div>
+      </aside>
     </div>
   )
 }

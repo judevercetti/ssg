@@ -80,10 +80,10 @@ function Navbar() {
               Advertise
             </Link>
             <Link href="/about-us" className="hidden md:block ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
-              About us
+              About Us
             </Link>
             <Link href="/contact-us" className="hidden md:block ml-10 text-sm text-white transition-colors duration-300  hover:text-primary">
-              Contact us
+              Contact Us
             </Link>
           </div>
 
@@ -113,10 +113,10 @@ function Navbar() {
                   Subscribe
                 </button>
                 <Dialog
-                  size="xl"
+                  size="lg"
                   open={openSubDialog}
                   handler={handleOpenSubDialog}
-                  className="bg-transparent shadow-none"
+                  className="bg-transparent shadow-none w-full"
                 >
                   <form onSubmit={handleSubscribe}>
                     <Card className="mx-auto w-full">
@@ -219,10 +219,10 @@ function Navbar() {
                 Advertise
               </Link>
               <Link href="/about-us" className="text-white transition-colors duration-300">
-                About us
+                About Us
               </Link>
               <Link href="/contact-us" className="text-white transition-colors duration-300">
-                Contact us
+                Contact Us
               </Link>
               {!auth.user && <Link href="/login" className="text-white transition-colors duration-300">
                 Login

@@ -46,32 +46,31 @@ export const Footer = () => {
                     <div className="mt-6 lg:mt-0 lg:flex-1">
                         <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                             <div>
-                                <h2 className="text-gray-300 uppercase dark:text-white">About</h2>
+                                <h2 className="uppercase dark:text-white">About</h2>
                                 <Link href="/about-us" className="block mt-2 text-sm white text-white hover:underline">About us</Link>
                                 <Link href="/contact-us" className="block mt-2 text-sm white text-white hover:underline">Contact us</Link>
                                 <Link href="/advertise" className="block mt-2 text-sm white text-white hover:underline">Advertise</Link>
                             </div>
 
                             <div>
-                                <h2 className="text-gray-300 uppercase dark:text-white">News</h2>
+                                <h2 className="uppercase dark:text-white">News</h2>
                                 <Link href="/category/national" className="block mt-2 text-sm white text-white hover:underline">National</Link>
                                 <Link href="/category/africa" className="block mt-2 text-sm white text-white hover:underline">Africa</Link>
                                 <Link href="/category/world" className="block mt-2 text-sm white text-white hover:underline">World</Link>
                             </div>
 
                             <div>
-                                <h2 className="text-gray-300 uppercase dark:text-white">Categories</h2>
+                                <h2 className="uppercase dark:text-white">Categories</h2>
                                 <Link href="/category/diaspora" className="block mt-2 text-sm white text-white hover:underline">Diaspora</Link>
                                 <Link href="/category/health-and-fitness" className="block mt-2 text-sm white text-white hover:underline">Health & Fitness</Link>
                                 <Link href="/category/education" className="block mt-2 text-sm white text-white hover:underline">Education</Link>
                             </div>
 
                             <div>
-                                <h2 className="text-gray-300 uppercase dark:text-white"></h2>
-                                <Link href="/category/politics" className="block mt-2 text-sm white text-white hover:underline">Politics</Link>
-                                <Link href="/category/agriculture" className="block mt-2 text-sm white text-white hover:underline">Agriculture</Link>
-                                <Link href="/category/technology" className="block mt-2 text-sm white text-white hover:underline">Technology</Link>
-                                <Link href="/category/sports" className="block mt-2 text-sm white text-white hover:underline">Sports</Link>
+                                <h2 className="uppercase dark:text-white">Legal</h2>
+                                <Link href="/terms-of-use" className="block mt-2 text-sm white text-white hover:underline">Terms of Use</Link>
+                                <Link href="/privacy-policy" className="block mt-2 text-sm white text-white hover:underline">Privacy Policy</Link>
+                                <Link href="/cookie-policy" className="block mt-2 text-sm white text-white hover:underline">Cookie Policy</Link>
                             </div>
                         </div>
                     </div>
@@ -81,9 +80,7 @@ export const Footer = () => {
 
                 <div>
                     <p className="text-center text-white text-sm">
-                        © 2023 South Sudan Global. All rights reserved •
-                        <Link href="/terms-of-use" className="hover:underline"> Terms of Use</Link> •
-                        <Link href="/privacy-policy" className="hover:underline"> Privacy Policy</Link>
+                        © 2023 South Sudan Global. All rights reserved
                     </p>
                 </div>
             </div>

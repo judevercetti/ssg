@@ -33,4 +33,12 @@ class StaticController extends Controller
             'description' => 'Protecting your privacy is our top priority. Our Privacy Policy outlines how we collect, use, and safeguard your personal information. We are committed to maintaining the confidentiality of your data and ensuring transparency in our practices. Read our Privacy Policy to understand how we handle your information and uphold your privacy rights.',
         ]);
     }
+
+    public function cookie_policy()
+    {
+        return Inertia::render('CookiePolicy')->withViewData([
+            'title' => 'Cookie Policy',
+            'description' => 'We use cookies to improve your online experience. At any time, you can go to settings in your browser and manage your cookies settings.',
+        ]);
+    }
 }

@@ -24,7 +24,7 @@ const CookieConsent = () => {
                             <div className="md:flex-1 px-3 mb-5 md:mb-0">
                                 <p className="text-center md:text-left text-gray-600 text-xs leading-tight md:pr-12">
                                     We use cookies to improve your online experience. At any time, you can go to settings in your browser and manage your cookies settings.
-                                    </p>
+                                </p>
                             </div>
                             <div className="px-3 text-center">
                                 <button onClick={handleAccept} className="py-2 px-8 bg-primary hover:bg-primary text-white rounded font-bold text-sm shadow-xl">

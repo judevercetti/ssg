@@ -6,29 +6,35 @@ import { Link } from '@inertiajs/inertia-react';
 import VideoListCard from './Component/VideoListCard';
 import Layout from './Component/Layout';
 import AdsComponent from './Component/AdsComponent';
-// import { Adsense } from '@ctrl/react-adsense';
-
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
 
 function Home({ latest, latests, blog, blog_category, trending_posts }) {
     return (
         <>
             <section className="flex flex-col lg:flex-row lg:space-x-5 justify-between items-center bg-gray-50 p-2 lg:p-10">
-                <div className='w-full lg:w-2/4'>
-                    <Link href={"/" + latest.slug} title={latest.title}>
-                        <img src={latest.imageurl} alt={latest.title} className="h-72 lg:h-96 w-full object-cover" />
-                    </Link>
-                </div>
-                <div className="lg:flex-1 space-y-4 mt-2 sm:text-center text-left">
-                    <h1 className="text-2xl lg:text-3xl font-bold text-primary hover:underline text-left line-clamp-4">
-                        <Link href={"/" + latest.slug}>{latest.title}</Link>
-                    </h1>
-                    <p className="max-w-xl text-lg leading-relaxed text-gray-800 sm:mx-auto lg:ml-0 text-left line-clamp-5">
-                        {latest.description}
-                    </p>
-                    <Link href={"/" + latest.slug} title={latest.title} className="block text-primary rounded-md hover:underline text-left">
-                        Read more
-                    </Link>
-                </div>
+                <Splide options={{ autoplay: true, arrows: false, type: 'loop', interval: 4000, }} className='w-full lg:w-3/4'>
+                    {latests && latests.map((latest, index) =>
+                        <SplideSlide key={index} className='flex flex-col lg:flex-row lg:space-x-5 justify-between items-center md:px-1'>
+                            <div className="w-full lg:w-3/5">
+                                <Link href={"/" + latest.slug} title={latest.title}>
+                                    <img src={latest.imageurl} alt={latest.title} className="h-72 lg:h-96 w-full object-cover" />
+                                </Link>
+                            </div>
+                            <div className="lg:flex-1 space-y-4 mt-2 sm:text-center text-left">
+                                <h1 className="text-2xl lg:text-3xl font-bold text-primary hover:underline text-left line-clamp-4">
+                                    <Link href={"/" + latest.slug}>{latest.title}</Link>
+                                </h1>
+                                <p className="max-w-xl text-lg leading-relaxed text-gray-800 sm:mx-auto lg:ml-0 text-left line-clamp-5">
+                                    {latest.description}
+                                </p>
+                                <Link href={"/" + latest.slug} title={latest.title} className="block text-primary rounded-md hover:underline text-left">
+                                    Read more
+                                </Link>
+                            </div>
+                        </SplideSlide>
+                    )}
+                </Splide>
                 <div className='hidden md:block w-full lg:w-1/4 text-gray-800'>
                     <h2 className='font-semibold text-lg'>LATEST ARTICLES</h2>
                     {latests && latests.map((post, index) =>
@@ -36,8 +42,8 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                             <VideoListCard image={post.imageurl} title={post.title} />
                         </Link>
                     )}
-                    <Link href='https://www.youtube.com/@SSGTVSouthSudanGlobal' className='flex space-x-2 items-center font-semibold text-base text-primary float-right hover:underline'>
-                        <span>See more videos</span>
+                    <Link href='/search' className='flex space-x-2 items-center font-semibold text-base text-primary float-right hover:underline'>
+                        <span>See more articles</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 animate-pulse">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                         </svg>
@@ -76,14 +82,15 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                                     <Link href={"/category/" + category.slug} type="submit" className="m-2 p-2 text-sm font-medium text-white bg-gradient-to-r to-black from-yellow-500  focus:ring-4 focus:outline-none">
                                         {"More " + category.name}
                                     </Link>
+
+                                    <div className='w-full mt-5'>
+                                        <AdsComponent dataAdSlot='6063218924' />
+                                    </div>
                                 </>}
                             </div>
                             )}
                     </div>
 
-                    <div className='w-full'>
-                        <AdsComponent dataAdSlot='6063218924' />
-                    </div>
                 </section>
 
                 <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>

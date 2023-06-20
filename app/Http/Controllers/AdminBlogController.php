@@ -41,11 +41,11 @@ class AdminBlogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'title' => 'required|max:250',
+            'description' => 'required|max:250',
             'category' => 'required',
             'content' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         $value = $request->input('title') . ' ' . Str::random();
@@ -58,7 +58,7 @@ class AdminBlogController extends Controller
         $blog = Blog::create([
             'title' => $request->input('title'),
             'slug' => $slug,
-            'description' => $request->input('description'),
+            'description' => trim($request->input('description')),
             'category' => $request->input('category'),
             'content' => $request->input('content'),
             'uploadedby' => auth()->id(),

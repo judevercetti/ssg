@@ -15,7 +15,18 @@ module.exports = withMT({
     colors: {
       primary: '#ca8a04',
       'primary-hover': '#aa8a04'
-    }
+    },
+    dialog: {
+      styles: {
+        sizes: {
+          sm: {
+            width: "w-full",
+            minWidth: "min-w-[100%]",
+            maxWidth: "max-w-[100%]",
+          },
+        },
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/line-clamp'),

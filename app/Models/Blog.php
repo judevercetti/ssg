@@ -25,6 +25,8 @@ class Blog extends Model implements Sitemapable
         'uploadedby'
     ];
 
+    protected $appends = ['reading_time'];
+
     public function getRouteKeyName()
     {
         return 'slug';
@@ -36,7 +38,7 @@ class Blog extends Model implements Sitemapable
         return Url::create(route('blog.show', $this))
             ->setLastModificationDate(Carbon::parse($this->updated_at));
     }
-    
+
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'uploadedby');
@@ -52,5 +54,17 @@ class Blog extends Model implements Sitemapable
         return $this->hasMany(BlogComment::class)->with(['user:id,name', 'replies'])
             ->withCount('likes')
             ->whereNull('parent_id');
+    }
+
+    public function getReadingTimeAttribute()
+    {
+        return $this->getReadingTime($this->content);
+    }
+
+    private function getReadingTime($content)
+    {
+        $wordCount = str_word_count(strip_tags($content));
+        $readingTime = ceil($wordCount / 200); // assuming average reading speed of 200 words per minute
+        return $readingTime . ' Min read';
     }
 }
