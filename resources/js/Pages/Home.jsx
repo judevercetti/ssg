@@ -8,6 +8,7 @@ import Layout from './Component/Layout';
 import AdsComponent from './Component/AdsComponent';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import InfinityList from './InfinityList';
 
 function Home({ latest, latests, blog, blog_category, trending_posts }) {
     return (
@@ -69,26 +70,12 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                     </div>
 
                     <div className='w-full justify-start'>
-                        {blog_category &&
+                        <InfinityList blog_category={blog_category} />
+                        {/* {blog_category &&
                             blog_category.map((category, index) => <div key={index}>
-                                {category.blog.length == 0 ? <></> : <>
-                                    <h2 className="ml-6 mb-2 my-10 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">  {category.name}</span></h2>
-                                    {category.blog.map((blogs, index) =>
-                                        <Link key={index} href={"/" + blogs.slug}>
-                                            <BlogListCard key={blogs.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} />
-                                        </Link>
-                                    )}
-
-                                    <Link href={"/category/" + category.slug} type="submit" className="m-2 p-2 text-sm font-medium text-white bg-gradient-to-r to-black from-yellow-500  focus:ring-4 focus:outline-none">
-                                        {"More " + category.name}
-                                    </Link>
-
-                                    <div className='w-full mt-5'>
-                                        <AdsComponent dataAdSlot='6063218924' />
-                                    </div>
-                                </>}
+                                <BlogList />
                             </div>
-                            )}
+                            )} */}
                     </div>
 
                 </section>
@@ -150,6 +137,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
         </>
     );
 }
+
 
 Home.layout = page => <Layout children={page} />
 export default Home

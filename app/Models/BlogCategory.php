@@ -16,6 +16,11 @@ class BlogCategory extends Model
         return $this->hasMany(Blog::class, 'category')->latest();
     }
 
+    public function twoBlog()
+    {
+        return $this->hasMany(Blog::class, 'category')->latest()->take(2);
+    }
+
     public function videos()
     {
         return $this->hasMany(Video::class, 'category_id');
