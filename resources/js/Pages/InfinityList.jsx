@@ -19,7 +19,7 @@ const InfinityList = ({ defaultItems, Widget }) => {
 
     function handleScroll() {
         const halfScreenHeight = (window.innerHeight + document.documentElement.scrollTop) / 2;
-        if (window.innerHeight + document.documentElement.scrollTop < document.documentElement.offsetHeight - halfScreenHeight || isFetching || isDone) return;
+        if (window.innerHeight + document.documentElement.scrollTop < document.documentElement.offsetHeight - 1000 || isFetching || isDone) return;
         setIsFetching(true);
     }
 
