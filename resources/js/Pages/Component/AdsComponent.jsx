@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 
 const AdsComponent = ({ dataAdSlot }) => {
 
+    if (process.env.NODE_ENV !== 'production') {
+        return <></>
+    }
+
     useEffect(() => {
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
