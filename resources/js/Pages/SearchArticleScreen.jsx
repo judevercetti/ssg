@@ -46,7 +46,6 @@ function SearchArticleScreen({ posts }) {
         {posts && posts.length == 0 ?
           <div className='flex items-center text-center font-semibold text-lg w-full bg-gray-100 p-10'>
             <span className='mx-auto'>
-
               No posts found matching that query
             </span>
           </div>
@@ -59,7 +58,7 @@ function SearchArticleScreen({ posts }) {
       </div>
 
       <aside className='w-full lg:w-1/4 pt-5'>
-        <div className='w-full sticky top-20'>
+        <div className='w-full lg:h-screen lg:mb-20 sticky top-20'>
           <AdsComponent dataAdSlot='6063218924' />
         </div>
       </aside>

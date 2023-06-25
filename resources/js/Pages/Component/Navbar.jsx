@@ -19,6 +19,7 @@ import {
 import { Link, useForm, usePage } from '@inertiajs/inertia-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Inertia } from '@inertiajs/inertia';
 
 function Navbar() {
   const { errors } = usePage().props;
@@ -256,18 +257,18 @@ function Navbar() {
                         </MenuItem>
                       </MenuHandler>
                       <MenuList className='w-62 font-semibold text-base text-start text-gray-600'>
-                        <MenuItem><Link href={"/category/politics"}>Politics</Link></MenuItem>
-                        <MenuItem><Link href={"/category/Economy"}>Economy</Link></MenuItem>
-                        <MenuItem><Link href={"/category/Education"}></Link>Education</MenuItem>
-                        <MenuItem><Link href={"/category/Health"}>Health</Link></MenuItem>
-                        <MenuItem><Link href={"/category/agriculture"}>Agriculture</Link></MenuItem>
-                        <MenuItem><Link href={"/category/sports"}>Sports</Link></MenuItem>
-                        <MenuItem><Link href={"/category/entertainment"}>Entertainment</Link></MenuItem>
-                        <MenuItem><Link href={"/category/technology"}>Technology</Link></MenuItem>
-                        <MenuItem><Link href={"/category/environment"}>Environment</Link></MenuItem>
-                        <MenuItem><Link href={"/category/arts-culture-and-beauty"}>Arts, Culture & Beauty</Link></MenuItem>
-                        <MenuItem><Link href={"/category/peace-and-justice"}>Peace & Justice</Link></MenuItem>
-                        <MenuItem><Link href={"/category/states"}>States</Link></MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/politics")}>Politics</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/Economy")}>Economy</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/Education")}>Education</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/Health")}>Health</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/agriculture")}>Agriculture</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/sports")}>Sports</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/entertainment")}>Entertainment</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/technology")}>Technology</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/environment")}>Environment</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/arts-culture-and-beauty")}>Arts, Culture & Beauty</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/peace-and-justice")}>Peace & Justice</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/states")}>States</MenuItem>
                       </MenuList>
                     </Menu>
                     <MenuItem><Link href={"/category/regional"}>Regional</Link></MenuItem>

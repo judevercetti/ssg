@@ -43,6 +43,7 @@ class BlogController extends Controller
 
         $posts = Blog::where('title', 'LIKE', "%{$search_text}%")
             ->orWhere('content', 'LIKE', "%{$search_text}%")
+            ->latest()
             ->get();
 
         return Inertia::render('SearchArticleScreen', [

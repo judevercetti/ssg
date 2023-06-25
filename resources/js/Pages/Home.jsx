@@ -14,7 +14,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
     return (
         <>
             <section className="flex flex-col lg:flex-row lg:space-x-5 justify-between items-center bg-gray-50 p-2 lg:p-10">
-                <Splide options={{ autoplay: true, arrows: false, type: 'loop', interval: 4000, }} className='w-full lg:w-3/4'>
+                <Splide options={{ autoplay: true, arrows: false, type: 'loop', interval: 6000, }} className='w-full lg:w-3/4'>
                     {latests && latests.map((latest, index) =>
                         <SplideSlide key={index} className='flex flex-col lg:flex-row lg:space-x-5 justify-between items-center md:px-1'>
                             <div className="w-full lg:w-3/5">
