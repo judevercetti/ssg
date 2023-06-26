@@ -62,6 +62,7 @@ export const Footer = () => {
 
                             <div>
                                 <h2 className="uppercase dark:text-white">News</h2>
+                                <Link href="/category/national" className="block mt-2 text-sm white text-white hover:underline">National</Link>
                                 <Link href="/category/regional" className="block mt-2 text-sm white text-white hover:underline">Regional</Link>
                                 <Link href="/category/africa" className="block mt-2 text-sm white text-white hover:underline">Africa</Link>
                                 <Link href="/category/world" className="block mt-2 text-sm white text-white hover:underline">World</Link>

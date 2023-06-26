@@ -46,7 +46,7 @@ class Blog extends Model implements Sitemapable
 
     public function blogCategory()
     {
-        return $this->belongsTo(BlogCategory::class);
+        return $this->belongsTo(BlogCategory::class, 'category', 'id');
     }
 
     public function blogComments()

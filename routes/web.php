@@ -51,5 +51,6 @@ Route::middleware('admin')->group(function () {
 Auth::routes();
 Route::get('/home', [BlogController::class, 'index'])->name('home');
 
+Route::get('/category/national', [BlogController::class, 'dispayCategoryNational']);
 Route::get('/category/{category}', [BlogController::class, 'dispayCategoryBlogs']);
 Route::get('/{slug}', [BlogController::class, 'show'])->name('blog.show');

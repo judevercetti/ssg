@@ -98,10 +98,10 @@ class BlogController extends Controller
             'latests' => $latests,
             'comments' => $comments
         ])->withViewData([
-                'title' => $blog->title,
-                'description' => $blog->description,
-                'image' => url($blog->imageurl),
-            ]);
+                    'title' => $blog->title,
+                    'description' => $blog->description,
+                    'image' => url($blog->imageurl),
+                ]);
     }
 
     /**
@@ -163,9 +163,27 @@ class BlogController extends Controller
             'category' => $category->name,
             'trending_posts' => $trending_posts,
         ])->withViewData([
-                'title' => $category->name,
-                'description' => 'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
-            ]);
+                    'title' => $category->name,
+                    'description' => 'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
+                ]);
+    }
+
+    public function dispayCategoryNational(Request $request)
+    {
+
+        $blogs = Blog::whereHas('blogCategory', function ($query) {
+            $query->whereNotIn('slug', ['regional', 'africa', 'world']);
+        })->latest()->get();
+        $trending_posts = Blog::latest()->limit(4)->get();
+
+        return Inertia::render('CategoryScreen', [
+            'blogs' => $blogs,
+            'category' => 'National',
+            'trending_posts' => $trending_posts,
+        ])->withViewData([
+                    'title' => 'National',
+                    'description' => 'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
+                ]);
 
     }
 
