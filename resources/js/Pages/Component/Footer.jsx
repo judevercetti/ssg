@@ -108,7 +108,7 @@ export const Footer = () => {
 
                 <div>
                     <p className="text-center text-white text-sm">
-                        © 2023 South Sudan Global. All Rights Reserved
+                        © 2023 South Sudan Global. All Rights Reserved.
                     </p>
                 </div>
             </div>
