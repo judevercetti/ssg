@@ -120,7 +120,10 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                             </WhatsappShareButton>
 
                             <TwitterShareButton title='Check this interesting article I found: ' url={currentUrl} className='flex space-x-3 items-center'>
-                                <TwitterIcon round={true} size={30} />
+                                {/* <TwitterIcon round={true} size={30} /> */}
+                                <svg width="1200" height="1227" className='bg-black h-7 w-7 p-1.5 rounded-lg' viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="white" />
+                                </svg>
                                 <span>Twitter</span>
                             </TwitterShareButton>
 
@@ -172,7 +175,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                 </section>
 
                 <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
-                    <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Similar Posts</span></h1>
+                    <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Similar Posts</span></h1>
                     {category && category.map((blog, index) =>
                         <Link key={index} href={"/" + blog.slug}>
                             {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
@@ -218,7 +221,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                     </div> */}
 
                     <div className="w-full bg-white shadow flex flex-col my-4 p-6 sticky top-20">
-                        <h1 className="ml-2 w-full mb-2 mt-5 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-2xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest Posts</span></h1>
+                        <h1 className="ml-2 w-full mb-2 mt-5 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Latest Updates</span></h1>
                         {latests && latests.map((blog, index) =>
                             <Link key={index} href={"/" + blog.slug}>
                                 {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}

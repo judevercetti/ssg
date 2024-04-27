@@ -230,7 +230,7 @@ function Navbar() {
               </Link>}
             </div>
 
-            <ul className="flex flex-col lg:flex-row items-center list-none lg:ml-auto">
+            <ul className="flex flex-col lg:flex-row items-center justify-end list-none lg:ml-auto">
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-white hover:opacity-75"
@@ -246,7 +246,7 @@ function Navbar() {
                       News
                     </div>
                   </MenuHandler>
-                  <MenuList className='w-32 font-semibold text-base text-start text-gray-600'>
+                  <MenuList className='w-32 font-semibold text-base text-start text-primary'>
                     <Menu placement="right-start" offset={5}>
                       <MenuHandler>
                         <MenuItem className='flex justify-between items-center'>
@@ -256,7 +256,7 @@ function Navbar() {
                           </svg>
                         </MenuItem>
                       </MenuHandler>
-                      <MenuList className='w-62 font-semibold text-base text-start text-gray-600'>
+                      <MenuList className='w-62 font-semibold text-base text-start text-primary hover:text-primary'>
                         <MenuItem onClick={() => Inertia.get("/category/politics")}>Politics</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/Economy")}>Economy</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/Education")}>Education</MenuItem>
@@ -316,7 +316,7 @@ function Navbar() {
                       Economy
                     </div>
                   </MenuHandler>
-                  <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-gray-600'>
+                  <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-primary'>
                     <MenuItem><Link href={"/category/agribusiness"}>Agribusiness</Link></MenuItem>
                     <MenuItem><Link href={"/category/mining"}>Mining</Link></MenuItem>
                   </MenuList>
@@ -329,7 +329,7 @@ function Navbar() {
                       Lifestyle
                     </div>
                   </MenuHandler>
-                  <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-gray-600'>
+                  <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-primary'>
                     <MenuItem><Link href={"/category/fashion"}>Fashion</Link></MenuItem>
                     <MenuItem><Link href={"/category/health-and-fitness"}>Health & Fitness</Link></MenuItem>
                   </MenuList>

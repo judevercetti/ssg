@@ -37,7 +37,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                     )}
                 </Splide>
                 <div className='hidden md:block w-full lg:w-1/4 text-gray-800'>
-                    <h2 className='font-semibold text-lg'>LATEST ARTICLES</h2>
+                    <h2 className='font-semibold text-lg'>Must Read</h2>
                     {latests && latests.map((post, index) =>
                         <Link key={index} href={'/' + post.slug}>
                             <VideoListCard image={post.imageurl} title={post.title} />
@@ -55,7 +55,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
             <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start mb-5' >
-                        <h2 className="ml-6 mb-2 mt-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Latest</span></h2>
+                        <h2 className="ml-6 mb-2 mt-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-primary">Latest</span></h2>
                         <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-5">
                             {latests && latests.map((latest, index) =>
                                 <Link key={index} href={"/" + latest.slug}>
@@ -71,13 +71,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
 
                     <div className='w-full justify-start'>
                         <InfinityList defaultItems={blog_category} Widget={BlogList} />
-                        {/* {blog_category &&
-                            blog_category.map((category, index) => <div key={index}>
-                                <BlogList />
-                            </div>
-                            )} */}
                     </div>
-
                 </section>
 
                 <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>
@@ -100,7 +94,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                     </div>
 
                     <div className='sticky top-20'>
-                        <h2 className="ml-6 mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Trending Posts</span></h2>
+                        <h2 className="ml-6 mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-base"><span className="text-transparent bg-clip-text bg-primary">Most Popular</span></h2>
                         {trending_posts && trending_posts.map((post, index) =>
                             <Link key={index} href={'/' + post.slug} >
                                 <BlogAsideCard
@@ -140,9 +134,9 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
 
 
 function BlogList({ item }) {
-    return item.two_blog.length == 0 ? <></> : <>
+    return item.two_blog.length == 0 ? <></> : <div className="divide-y-2 divide-yellow-200">
         <h2 className="ml-6 mb-2 my-10 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">
+            <span className="text-transparent bg-clip-text bg-primary">
                 {item.name}
             </span>
         </h2>
@@ -152,14 +146,14 @@ function BlogList({ item }) {
             </Link>
         )}
 
-        <Link href={"/category/" + item.slug} type="submit" className="m-2 p-2 text-sm font-medium text-white bg-gradient-to-r to-black from-yellow-500  focus:ring-4 focus:outline-none">
+        <Link href={"/category/" + item.slug} type="submit" className="m-2 p-2 text-sm font-medium text-white bg-primary focus:ring-4 focus:outline-none">
             {"More " + item.name}
         </Link>
 
         <div className='w-full mt-5'>
             <AdsComponent dataAdSlot='6063218924' />
         </div>
-    </>
+    </div>
 }
 
 
