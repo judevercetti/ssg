@@ -167,7 +167,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                 </section>
 
                 <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
-                    <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Similar Posts</span></h1>
+                    <h1 className="w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Similar Posts</span></h1>
                     {category && category.map((blog, index) =>
                         <Link key={index} href={"/" + blog.slug}>
                             {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
@@ -213,7 +213,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                     </div> */}
 
                     <div className="w-full bg-white shadow flex flex-col my-4 p-6 sticky top-32">
-                        <h1 className="ml-2 w-full mb-2 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Latest Updates</span></h1>
+                        <h1 className="w-full mb-2 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Latest Updates</span></h1>
                         {latests && latests.map((blog, index) =>
                             <Link key={index} href={"/" + blog.slug}>
                                 {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}

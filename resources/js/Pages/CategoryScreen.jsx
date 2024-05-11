@@ -39,8 +39,8 @@ function CategoryScreen({ blogs, category, trending_posts }) {
                         <AdsComponent dataAdSlot='6063218924' />
                     </div>
 
-                    <div className='sticky top-20'>
-                        <h1 className="ml-6 w-full mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-sm"><span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">Most Popular</span></h1>
+                    <div className='sticky top-32'>
+                        <h2 className="mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-base"><span className="text-transparent bg-clip-text bg-primary">Most Popular</span></h2>
                         {trending_posts && trending_posts.map((post, index) =>
                             <Link key={index} href={'/' + post.slug}>
                                 <BlogAsideCard key={index}

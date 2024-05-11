@@ -26,7 +26,7 @@ function SearchArticleScreen({ posts }) {
   return (
     <div className='flex flex-col lg:flex-row'>
       <div className='max-w-screen-md mt-5 ml-auto'>
-        <form onSubmit={handleSearch}>
+        {/* <form onSubmit={handleSearch}>
           <div className='flex rounded-md mb-10 mx-5'>
             <input
               className="shadow appearance-none border rounded-l-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -42,7 +42,7 @@ function SearchArticleScreen({ posts }) {
               </svg>
             </button>
           </div>
-        </form>
+        </form> */}
         {posts && posts.length == 0 ?
           <div className='flex items-center text-center font-semibold text-lg w-full bg-gray-100 p-10'>
             <span className='mx-auto'>

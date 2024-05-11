@@ -26,6 +26,7 @@ function Navbar() {
   const [openSubDialog, setOpenSubDialog] = React.useState(false);
   const handleOpenSubDialog = () => setOpenSubDialog((cur) => !cur);
 
+  const [isFormVisible, setFormVisible] = React.useState(false);
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const { auth } = usePage().props
   const searchForm = useForm();
@@ -178,32 +179,31 @@ function Navbar() {
                 </svg>
               </button>
               <span className='text-gray-800 ml-2 cursor-pointer text-xl leading-none border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'>
-                <Popover style={{ zIndex: 9999 }}>
-                  <PopoverHandler>
+                {isFormVisible ? (
+                  <form onSubmit={handleSearch} className='transition-all duration-500 ease-in-out transform translate-x-0 opacity-100'>
+                    <div className='flex rounded-md'>
+                      <input
+                        className="shadow appearance-none border rounded-l-md w-full py-1.5 px-3 text-gray-700 text-sm font-normal leading-tight focus:outline-none focus:shadow-outline"
+                        id="articleTitle"
+                        type="text"
+                        placeholder="Search for an article"
+                        value={searchForm.data.search_text ?? ''}
+                        onChange={(event) => searchForm.setData('search_text', event.target.value)}
+                      />
+                      <button type='submit' disabled={searchForm.processing} className='bg-primary px-4 rounded-r-md shadow text-white'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <button onClick={() => setFormVisible(!isFormVisible)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                     </svg>
-                  </PopoverHandler>
-                  <PopoverContent className='w-full'>
-                    <form onSubmit={handleSearch}>
-                      <div className='flex rounded-md'>
-                        <input
-                          className="shadow appearance-none border rounded-l-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          id="articleTitle"
-                          type="text"
-                          placeholder="Search for an article"
-                          value={searchForm.data.search_text ?? ''}
-                          onChange={(event) => searchForm.setData('search_text', event.target.value)}
-                        />
-                        <button type='submit' disabled={searchForm.processing} className='bg-primary px-4 rounded-r-md shadow text-white'>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                          </svg>
-                        </button>
-                      </div>
-                    </form>
-                  </PopoverContent>
-                </Popover>
+                  </button>
+                )}
               </span>
             </div>
           </div>
@@ -345,32 +345,31 @@ function Navbar() {
                   className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
                   href="#pablo">
                   <span className="ml-2">
-                    <Popover>
-                      <PopoverHandler>
+                    {isFormVisible ? (
+                      <form onSubmit={handleSearch} className='transition-all duration-500 ease-in-out transform translate-x-0 opacity-100'>
+                        <div className='flex rounded-md'>
+                          <input
+                            className="shadow appearance-none border rounded-l-md w-full py-1.5 px-3 text-gray-700 text-sm font-normal leading-tight focus:outline-none focus:shadow-outline"
+                            id="articleTitle"
+                            type="text"
+                            placeholder="Search for an article"
+                            value={searchForm.data.search_text ?? ''}
+                            onChange={(event) => searchForm.setData('search_text', event.target.value)}
+                          />
+                          <button type='submit' disabled={searchForm.processing} className='bg-primary px-4 rounded-r-md shadow text-white'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg>
+                          </button>
+                        </div>
+                      </form>
+                    ) : (
+                      <button onClick={() => setFormVisible(!isFormVisible)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>
-                      </PopoverHandler>
-                      <PopoverContent>
-                        <form onSubmit={handleSearch}>
-                          <div className='flex rounded-md'>
-                            <input
-                              className="shadow appearance-none border rounded-l-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="articleTitle"
-                              type="text"
-                              placeholder="Search for an article"
-                              value={searchForm.data.search_text ?? ''}
-                              onChange={(event) => searchForm.setData('search_text', event.target.value)}
-                            />
-                            <button type='submit' disabled={searchForm.processing} className='bg-primary px-4 rounded-r-md shadow text-white'>
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                              </svg>
-                            </button>
-                          </div>
-                        </form>
-                      </PopoverContent>
-                    </Popover>
+                      </button>
+                    )}
                   </span>
                 </span>
               </li>

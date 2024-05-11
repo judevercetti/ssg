@@ -9,23 +9,23 @@ import {
 
 export const Footer = () => {
     return (
-        <footer className="bg-primary">
+        <footer className="bg-gray-50">
             <div className="container p-3 md:p-6 mx-auto">
                 <div className="lg:flex mx-auto">
                     <div className="w-full md:-mx-6 lg:w-2/5">
                         <div className="md:px-6">
                             <div className="flex space-x-5 items-center">
-                                <Link href="/" className="bg-white p-3 rounded">
+                                <Link href="/" className="p-3 rounded">
                                     <img className="w-40" src='/images/logo.png' alt="SSG logo" />
                                 </Link>
                                 <div className="text-start mg:pr-5">
                                     <h1 className="text-2xl text-gray-900 font-bold tracking-tight">
                                         South Sudan Global
                                     </h1>
-                                    <p className="lg:max-w-sm mt-2 mr-2 text-white">Africa's News Leader</p>
+                                    <p className="lg:max-w-sm mt-2 mr-2">Africa's News Leader</p>
 
                                     <div className="flex mt-6 -mx-2">
-                                        <a href="https://www.facebook.com/SouthSudanGlobal.SSGTV" title='Visit our Facebook' className="mx-2 text-white transition-colors duration-300  hover:text-primary-hover" aria-label="Facebook">
+                                        <a href="https://www.facebook.com/SouthSudanGlobal.SSGTV" title='Visit our Facebook' className="mx-2 hover:text-primary transition-colors duration-300" aria-label="Facebook">
                                             <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -33,12 +33,12 @@ export const Footer = () => {
                                                 </path>
                                             </svg>
                                         </a>
-                                        <a href="https://twitter.com/ssgglobal-ssg" title='Visit our Twitter' className="mx-2 text-white transition-colors duration-300  hover:text-primary-hover ">
-                                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-current">
-                                                <path d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z" />
+                                        <a href="https://twitter.com/ssgglobal-ssg" title='Visit our Twitter' className="mx-2 hover:text-primary transition-colors duration-300 ">
+                                            <svg className='h-4 w-4 fill-current' viewBox="0 0 1200 1227" fill="currentColor">
+                                                <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
                                             </svg>
                                         </a>
-                                        <a href="https://youtube.com/@SSGTVSouthSudanGlobal" title='Visit our Youtube' className="mx-2 text-white transition-colors duration-300  hover:text-primary-hover">
+                                        <a href="https://youtube.com/@SSGTVSouthSudanGlobal" title='Visit our Youtube' className="mx-2 hover:text-primary transition-colors duration-300">
                                             <svg viewBox="0 0 30 30" fill="currentColor" className="w-5 h-5 fill-current">
                                                 <circle cx="15" cy="15" r="4" />
                                                 <path d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z" />
@@ -54,28 +54,28 @@ export const Footer = () => {
                     <div className="mt-6 lg:mt-0 lg:flex-1">
                         <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                             <div>
-                                <h2 className="uppercase dark:text-white">About</h2>
-                                <Link href="/about-us" className="block mt-2 text-sm white text-white hover:underline">About Us</Link>
-                                <Link href="/contact-us" className="block mt-2 text-sm white text-white hover:underline">Contact Us</Link>
-                                <Link href="/advertise" className="block mt-2 text-sm white text-white hover:underline">Advertise</Link>
+                                <h2 className="uppercase dark:hover:text-primary font-semibold">About</h2>
+                                <Link href="/about-us" className="block mt-2 text-sm white hover:text-primary hover:underline">About Us</Link>
+                                <Link href="/contact-us" className="block mt-2 text-sm white hover:text-primary hover:underline">Contact Us</Link>
+                                <Link href="/advertise" className="block mt-2 text-sm white hover:text-primary hover:underline">Advertise</Link>
                             </div>
 
                             <div>
-                                <h2 className="uppercase dark:text-white">News</h2>
-                                <Link href="/category/national" className="block mt-2 text-sm white text-white hover:underline">National</Link>
-                                <Link href="/category/regional" className="block mt-2 text-sm white text-white hover:underline">Regional</Link>
-                                <Link href="/category/africa" className="block mt-2 text-sm white text-white hover:underline">Africa</Link>
-                                <Link href="/category/world" className="block mt-2 text-sm white text-white hover:underline">World</Link>
+                                <h2 className="uppercase dark:hover:text-primary font-semibold">News</h2>
+                                <Link href="/category/national" className="block mt-2 text-sm white hover:text-primary hover:underline">National</Link>
+                                <Link href="/category/regional" className="block mt-2 text-sm white hover:text-primary hover:underline">Regional</Link>
+                                <Link href="/category/africa" className="block mt-2 text-sm white hover:text-primary hover:underline">Africa</Link>
+                                <Link href="/category/world" className="block mt-2 text-sm white hover:text-primary hover:underline">World</Link>
                             </div>
 
                             <div>
-                                <h2 className="uppercase dark:text-white">Categories</h2>
-                                <Link href="/category/diaspora" className="block mt-2 text-sm white text-white hover:underline">Diaspora</Link>
-                                <Link href="/category/health-and-fitness" className="block mt-2 text-sm white text-white hover:underline">Health & Fitness</Link>
-                                <Link href="/category/education" className="block mt-2 text-sm white text-white hover:underline">Education</Link>
+                                <h2 className="uppercase dark:hover:text-primary font-semibold">Categories</h2>
+                                <Link href="/category/diaspora" className="block mt-2 text-sm white hover:text-primary hover:underline">Diaspora</Link>
+                                <Link href="/category/health-and-fitness" className="block mt-2 text-sm white hover:text-primary hover:underline">Health & Fitness</Link>
+                                <Link href="/category/education" className="block mt-2 text-sm white hover:text-primary hover:underline">Education</Link>
                                 <Menu placement="top" offset={5}>
                                     <MenuHandler>
-                                        <span className="cursor-pointer block mt-2 text-sm white text-white hover:underline">More Categories</span>
+                                        <span className="cursor-pointer block mt-2 text-sm white hover:text-primary hover:underline">More Categories</span>
                                     </MenuHandler>
                                     <MenuList className='w-62 font-semibold text-base text-start text-gray-600'>
                                         <MenuItem onClick={() => Inertia.get("/category/politics")}>Politics</MenuItem>
@@ -95,10 +95,10 @@ export const Footer = () => {
                             </div>
 
                             <div>
-                                <h2 className="uppercase dark:text-white">Legal</h2>
-                                <Link href="/terms-of-use" className="block mt-2 text-sm white text-white hover:underline">Terms Of Use</Link>
-                                <Link href="/privacy-policy" className="block mt-2 text-sm white text-white hover:underline">Privacy Policy</Link>
-                                <Link href="/cookie-policy" className="block mt-2 text-sm white text-white hover:underline">Cookie Policy</Link>
+                                <h2 className="uppercase dark:hover:text-primary font-semibold">Legal</h2>
+                                <Link href="/terms-of-use" className="block mt-2 text-sm white hover:text-primary hover:underline">Terms Of Use</Link>
+                                <Link href="/privacy-policy" className="block mt-2 text-sm white hover:text-primary hover:underline">Privacy Policy</Link>
+                                <Link href="/cookie-policy" className="block mt-2 text-sm white hover:text-primary hover:underline">Cookie Policy</Link>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ export const Footer = () => {
                 <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-700" />
 
                 <div>
-                    <p className="text-center text-white text-sm">
+                    <p className="text-center text-sm">
                         ©️2024 South Sudan Global. All Rights Reserved.
                     </p>
                 </div>
