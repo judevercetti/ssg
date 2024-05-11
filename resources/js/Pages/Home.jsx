@@ -55,7 +55,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
             <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start mb-5' >
-                        <h2 className="ml-6 mb-2 mt-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl"><span className="text-transparent bg-clip-text bg-primary">Latest</span></h2>
+                        <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Latest</span></h2>
                         <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-5">
                             {latests && latests.map((latest, index) =>
                                 <Link key={index} href={"/" + latest.slug}>
@@ -93,7 +93,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                         <AdsComponent dataAdSlot='6063218924' />
                     </div>
 
-                    <div className='sticky top-20'>
+                    <div className='sticky top-32'>
                         <h2 className="ml-6 mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-base"><span className="text-transparent bg-clip-text bg-primary">Most Popular</span></h2>
                         {trending_posts && trending_posts.map((post, index) =>
                             <Link key={index} href={'/' + post.slug} >
@@ -135,7 +135,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
 
 function BlogList({ item }) {
     return item.two_blog.length == 0 ? <></> : <div className="divide-y-2 divide-yellow-200">
-        <h2 className="ml-6 mb-2 my-10 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl">
+        <h2 className="mb-2 my-10 text-lg font-extrabold text-gray-900 dark:text-white">
             <span className="text-transparent bg-clip-text bg-primary">
                 {item.name}
             </span>

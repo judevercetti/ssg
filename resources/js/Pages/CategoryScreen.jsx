@@ -12,11 +12,7 @@ function CategoryScreen({ blogs, category, trending_posts }) {
 
                 <section className="w-full md:w-2/3 flex flex-col items-center px-3">
                     <div className='w-full justify-start mb-5' >
-                        <h1 className="ml-6 mb-4 w-full mt-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl capitalize">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r to-black from-yellow-500">
-                                {category}
-                            </span>
-                        </h1>
+                        <h2 className="mb-4 mt-5 text-2xl font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">{category}</span></h2>
                         {blogs && blogs.map((blog, index) =>
                             <Link key={index} href={"/" + blog.slug}>
                                 <BlogListCard title={blog.title} description={blog.description} time={blog.updated_at} image={blog.imageurl} />

@@ -60,7 +60,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
             </Head>
             <div className='container mx-auto flex flex-wrap py-6'>
                 <section className="w-full md:w-2/3 flex flex-col items-center md:px-3">
-                    <article className="flex flex-col shadow my-2 md:my-4">
+                    <article className="flex flex-col my-2 md:my-4">
 
                         <div className="bg-white flex flex-col justify-start px-3 md:px-5">
                             <h1 className="text-3xl font-bold pb-4">{blog.title}</h1>
@@ -94,16 +94,8 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         </div>
 
                         <div className="pb-6 px-3 md:px-5 my-5">
-                            {/* {blog.content} */}
+                            <AdsComponent dataAdSlot='6908428125' />
                             {parse(blog.content)}
-                            {/* <CKEditor
-                                editor={ClassicEditor}
-                                data={blog.content}
-                                disabled={true}
-                                config={{ toolbar: [], readOnly: true }}
-                                style={{ border: 'none', boxShadow: 'none' }}
-                            /> */}
-                            {/* <div dangerouslySetInnerHTML={{ __html: blog.content }} /> */}
                         </div>
 
 
@@ -220,8 +212,8 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         </div>
                     </div> */}
 
-                    <div className="w-full bg-white shadow flex flex-col my-4 p-6 sticky top-20">
-                        <h1 className="ml-2 w-full mb-2 mt-5 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Latest Updates</span></h1>
+                    <div className="w-full bg-white shadow flex flex-col my-4 p-6 sticky top-32">
+                        <h1 className="ml-2 w-full mb-2 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Latest Updates</span></h1>
                         {latests && latests.map((blog, index) =>
                             <Link key={index} href={"/" + blog.slug}>
                                 {/* <BlogListCard key={blog.id} image={blogs.imageurl} title={blogs.title} description={blogs.description} time={blogs.created_at} /> */}
