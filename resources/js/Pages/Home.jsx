@@ -10,7 +10,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import InfinityList from './InfinityList';
 
-function Home({ latest, latests, blog, blog_category, trending_posts }) {
+function Home({ latest, latests, blog, blog_category, trending_posts, editorial_posts }) {
     return (
         <>
             <section className="bg-gray-50 p-2 lg:p-10">
@@ -19,7 +19,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                         <h2 className='text-2xl lg:text-3xl font-bold text-primary'>Latest</h2>
                         {latests && latests.map((post, index) =>
                             <Link key={index} href={'/' + post.slug}>
-                                <VideoListCard image={post.imageurl} title={post.title} />
+                                <VideoListCard image={post.imageurl} title={post.title} time={post.created_at} />
                             </Link>
                         )}
                         <Link href='/search' className='flex space-x-2 items-center font-semibold text-base text-primary float-right hover:underline'>
@@ -47,6 +47,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
                                     <Link href={"/" + latest.slug} title={latest.title} className="block text-primary rounded-md hover:underline text-left">
                                         Read more
                                     </Link>
+                                    <span className="block text-xs text-gray-400 mt-1 text-left">{new Date(latest.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                                 </div>
                             </SplideSlide>
                         )}
@@ -56,12 +57,12 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
 
             <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
-                    <div className='w-full justify-start mb-5' >
-                        <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Latest</span></h2>
-                        <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-5">
-                            {latests && latests.map((latest, index) =>
-                                <Link key={index} href={"/" + latest.slug}>
-                                    <BlogListCard2 title={latest.title} content={latest.description} time={latest.updated_at} image={latest.imageurl} />
+                    <div className='w-full justify-start mb-5'>
+                        <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Editorial</span></h2>
+                        <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-5">
+                            {editorial_posts && editorial_posts.map((post, index) =>
+                                <Link key={index} href={"/" + post.slug}>
+                                    <BlogListCard2 title={post.title} content={post.description} time={post.updated_at} image={post.imageurl} />
                                 </Link>
                             )}
                         </div>
@@ -133,7 +134,6 @@ function Home({ latest, latests, blog, blog_category, trending_posts }) {
         </>
     );
 }
-
 
 function BlogList({ item }) {
     return item.two_blog.length == 0 ? <></> : <div className="divide-y-2 divide-yellow-200">

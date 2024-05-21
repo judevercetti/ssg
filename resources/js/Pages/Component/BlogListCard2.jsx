@@ -6,15 +6,15 @@ function BlogListCard2({ title, content, time, image }) {
     <div>
       <div className="w-full rounded-lg lg:max-w-sm" >
         <img
-          className="object-cover w-full h-48"
+          className="object-cover w-full h-48 rounded-md"
           src={'/' + image}
           alt="image"
         />
-        <div className="p-4">
+        <div className="p-1">
           <h3 className="text-lg font-bold mb-1 line-clamp-2 hover:underline">
             {title}
           </h3>
-          <p className="mb-2 leading-normal text-gray-500 line-clamp-2">
+          <p className="mb-1 leading-normal text-gray-500 line-clamp-2">
             {content}
           </p>
           <p className="text-gray-500 mb-1">

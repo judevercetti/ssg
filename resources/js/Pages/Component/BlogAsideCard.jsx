@@ -12,7 +12,7 @@ function BlogAsideCard({ title, time, image }) {
                     <span className="block text-xs text-gray-400 mb-1">{new Date(time).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                     <h3 className="text-sm font-semibold text-gray-900 line-clamp-3 hover:underline cursor-pointer">{title}</h3>
                 </div>
-                <div className="hidden md:block w-full lg:w-auto px-4 ml-auto text-right">
+                <div className="hidden lg:block w-full lg:w-auto px-4 ml-auto text-right">
                     <div className="flex space-x-1 items-center text-xs font-semibold text-orange-900 hover:text-gray-900">
                         <span className="mr-1">Read</span>
                         <svg className="animate-bounce -z-50 w-2 h-2" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

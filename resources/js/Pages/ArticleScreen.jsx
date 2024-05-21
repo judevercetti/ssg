@@ -94,7 +94,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         </div>
 
                         <div className="pb-6 px-3 md:px-5 my-5">
-                            <AdsComponent dataAdSlot='6908428125' />
+                            <AdsComponent dataAdSlot='6908428125' className="mb-2" />
                             {parse(blog.content)}
                         </div>
 
@@ -152,7 +152,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                                         placeholder="Write a comment..." required></textarea>
                                 </div>
                                 <button type="submit"
-                                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-red-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-gray-900 hover:bg-black rounded-md hover:shadow-md">
                                     Post comment
                                 </button>
                             </form>

@@ -22,17 +22,21 @@ class BlogController extends Controller
         $latests = Blog::latest()->limit(4)->get();
         $trending_posts = Blog::latest()->limit(4)->get();
 
-        $categories = BlogCategory::with('twoBlog')->take(1)->get();
+        $categories = BlogCategory::where('name', '!=', 'Editorial')->with('twoBlog')->take(1)->get();
 
         // $categories->each(function ($category) {
         //     $category->blog = $category->blog->take(5); // limit the number of blogs per category to 2
         // });
+
+        $editorial_posts = BlogCategory::where('name', 'Editorial')->with('threeBlog')->first()->threeBlog;
+
 
         return Inertia::render('Home', [
             'latest' => $latest,
             'latests' => $latests,
             'blog_category' => $categories,
             'trending_posts' => $trending_posts,
+            'editorial_posts' => $editorial_posts,
         ]);
     }
 
