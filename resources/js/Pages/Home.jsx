@@ -16,14 +16,14 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
             <section className="bg-gray-50 p-2 lg:p-10">
                 <div className='container mx-auto flex flex-col lg:flex-row lg:space-x-5 justify-between items-center'>
                     <div className='hidden md:block w-full lg:w-1/3 text-gray-800'>
-                        <h2 className='text-2xl lg:text-3xl font-bold text-primary'>Latest</h2>
+                        <h2 className='text-lg font-bold text-primary'>Latest News</h2>
                         {latests && latests.map((post, index) =>
                             <Link key={index} href={'/' + post.slug}>
                                 <VideoListCard image={post.imageurl} title={post.title} time={post.created_at} />
                             </Link>
                         )}
                         <Link href='/search' className='flex space-x-2 items-center font-semibold text-base text-primary float-right hover:underline'>
-                            <span>See more articles</span>
+                            <span>See more news</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 animate-pulse">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                             </svg>
@@ -47,7 +47,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                                     <Link href={"/" + latest.slug} title={latest.title} className="block text-primary rounded-md hover:underline text-left">
                                         Read more
                                     </Link>
-                                    <span className="block text-xs text-gray-400 mt-1 text-left">{new Date(latest.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                                    <span className="block text-xs text-gray-400 mt-1 text-left underline">{new Date(latest.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                                 </div>
                             </SplideSlide>
                         )}
@@ -71,33 +71,19 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                     <div className='w-full'>
                         <AdsComponent dataAdSlot='6063218924' />
                     </div>
-
-                    <div className='w-full justify-start'>
-                        <InfinityList defaultItems={blog_category} Widget={BlogList} />
-                    </div>
                 </section>
 
                 <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>
-                    {/* 
-                    <div className="text-sm py-6 sticky top-20">
-                        <div className="w-full text-center">
-                            <Adsense
-                                client='ca-pub-8694698492521431'
-                                slot='6063218924'
-                                // adTest='on'
-                                style={{ display: 'block' }}
-                                format='auto'
-                                responsive='true' />
-                        </div>
-                    </div> */}
-
-
                     <div className='w-full'>
                         <AdsComponent dataAdSlot='6063218924' />
                     </div>
 
                     <div className='sticky top-32'>
-                        <h2 className="mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-base"><span className="text-transparent bg-clip-text bg-primary">Most Popular</span></h2>
+                        <h2 className="mb-2 mt-5 text-sm font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-base">
+                            <span className="text-transparent bg-clip-text bg-primary">
+                                Most Popular
+                            </span>
+                        </h2>
                         {trending_posts && trending_posts.map((post, index) =>
                             <Link key={index} href={'/' + post.slug} >
                                 <BlogAsideCard
@@ -106,10 +92,6 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                                     time={post.created_at} />
                             </Link>
                         )}
-
-                        <div className='w-full'>
-                            <AdsComponent dataAdSlot='6063218924' />
-                        </div>
                     </div>
 
                     {/* <div className="text-sm py-6 sticky top-20">
@@ -129,6 +111,20 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                             </a>
                         </div>
                     </div> */}
+                </aside>
+            </div>
+
+            <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
+                <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
+                    <div className='w-full justify-start'>
+                        <InfinityList defaultItems={blog_category} Widget={BlogList} />
+                    </div>
+                </section>
+
+                <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>
+                    <div className='w-full sticky top-32'>
+                        <AdsComponent dataAdSlot='6063218924' />
+                    </div>
                 </aside>
             </div>
         </>

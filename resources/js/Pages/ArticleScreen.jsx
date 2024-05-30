@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import parse from 'html-react-parser'
 import BlogAsideCard from './Component/BlogAsideCard'
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Head, Link, useForm, usePage } from '@inertiajs/inertia-react'
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 import { toast } from 'react-toastify';
@@ -13,14 +11,17 @@ import ReactGA from 'react-ga4';
 import AdsComponent from './Component/AdsComponent';
 import moment from 'moment';
 
-// import { Adsense } from '@ctrl/react-adsense';
-
-
 function ArticleScreen({ blog, category, latests, category_name, comments }) {
     const currentUrl = location.href;
     const [copied, setCopied] = useState(false)
     const commentForm = useForm({ 'blog_id': blog.id });
     const { auth } = usePage().props;
+
+    const contentParts = blog.content.split(/(?<=\s)/g); // split by whitespace
+    const midPoint = Math.floor(contentParts.length / 2);
+
+    const contentBeforeAd = contentParts.slice(0, midPoint).join("");
+    const contentAfterAd = contentParts.slice(midPoint).join("");
 
     const copyLink = () => {
         navigator.clipboard.writeText(currentUrl);
@@ -53,16 +54,49 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
         })
     };
 
+    const jsonLd = {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": currentUrl
+        },
+        "headline": blog.title,
+        "image": [
+            blog.imageurl
+        ],
+        "datePublished": blog.created_at,
+        "dateModified": blog.created_at,
+        "author": {
+            "@type": "Person",
+            "name": blog.user.name
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "South Sudan Global",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://southsudanglobal.com/images/logo.png"
+            }
+        },
+        "description": blog.description,
+        "articleBody": blog.content
+    };
+
     return (
         <div>
             <Head>
                 <title>{blog.title}</title>
+                <meta name="description" content={blog.description} />
+                <script type="application/ld+json">
+                    {JSON.stringify(jsonLd)}
+                </script>
             </Head>
             <div className='container mx-auto flex flex-wrap py-6'>
                 <section className="w-full md:w-2/3 flex flex-col items-center md:px-3">
                     <article className="flex flex-col my-2 md:my-4">
 
-                        <div className="bg-white flex flex-col justify-start px-3 md:px-5">
+                        <div className="w-full bg-white flex flex-col justify-start mx-3 px-5">
                             <h1 className="text-3xl font-bold pb-4">{blog.title}</h1>
                             <div className="text-primary text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
@@ -93,9 +127,19 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                             <span className='px-2 text-sm italic text-gray-600 break-all'>{blog.image_description ?? 'no description'}</span>
                         </div>
 
-                        <div className="pb-6 px-3 md:px-5 my-5">
-                            <AdsComponent dataAdSlot='6908428125' className="mb-2" />
-                            {parse(blog.content)}
+                        <div className="w-full pb-6 px-5 my-5">
+                            {/* <AdsComponent dataAdSlot='6908428125' className="mb-2" />
+                            {parse(blog.content)} */}
+
+                            <div className='mb-2'>
+                                <AdsComponent dataAdSlot='6908428125' />
+                            </div>
+
+                            {parse(contentBeforeAd)}
+                            <div className='my-2'>
+                                <AdsComponent dataAdSlot='6908428125' />
+                            </div>
+                            {parse(contentAfterAd)}
                         </div>
 
 

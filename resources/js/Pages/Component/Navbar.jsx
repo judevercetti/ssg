@@ -263,7 +263,7 @@ function Navbar() {
                       </MenuHandler>
                       <MenuList className='w-62 font-semibold text-base text-start text-primary hover:text-primary'>
                         <MenuItem onClick={() => Inertia.get("/category/politics")}>Politics</MenuItem>
-                        <MenuItem onClick={() => Inertia.get("/category/Economy")}>Economy</MenuItem>
+                        <MenuItem onClick={() => Inertia.get("/category/Economy")}>Business</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/Education")}>Education</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/Health")}>Health</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/agriculture")}>Agriculture</MenuItem>
@@ -271,6 +271,20 @@ function Navbar() {
                         <MenuItem onClick={() => Inertia.get("/category/entertainment")}>Entertainment</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/technology")}>Technology</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/environment")}>Environment</MenuItem>
+                        <Menu placement="right-start" offset={5}>
+                          <MenuHandler>
+                            <MenuItem className='flex justify-between items-center'>
+                              <span>Lifestyle</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                              </svg>
+                            </MenuItem>
+                          </MenuHandler>
+                          <MenuList className='w-62 font-semibold text-base text-start text-primary hover:text-primary'>
+                            <MenuItem onClick={() => Inertia.get("/category/fashion")}>Fashion</MenuItem>
+                            <MenuItem onClick={() => Inertia.get("/category/health-and-fitness")}>Health & Fitness</MenuItem>
+                          </MenuList>
+                        </Menu>
                         <MenuItem onClick={() => Inertia.get("/category/arts-culture-and-beauty")}>Arts, Culture & Beauty</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/peace-and-justice")}>Peace & Justice</MenuItem>
                         <MenuItem onClick={() => Inertia.get("/category/states")}>States</MenuItem>
@@ -307,38 +321,32 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
-                  href="/category/editorial"
-                >
+                <Link className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary" href="/category/editorial">
                   <span className="ml-2">Editorial</span>
                 </Link>
               </li>
-              <li className="nav-item cursor-pointer">
+              {/* <li className="nav-item cursor-pointer">
                 <Menu>
                   <MenuHandler>
                     <div className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary">
-                      Economy
+                      Business
                     </div>
                   </MenuHandler>
-                  <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-primary'>
-                    <MenuItem><Link href={"/category/agribusiness"}>Agribusiness</Link></MenuItem>
-                    <MenuItem><Link href={"/category/mining"}>Mining</Link></MenuItem>
+                  <MenuList className='flex flex-col w-40 py-4 font-semibold text-base text-start text-primary'>
+                    <MenuItem><Link href="/category/technology">Tech & Science</Link></MenuItem>
+                    <MenuItem><Link href="/category/mining">Mining</Link></MenuItem>
                   </MenuList>
                 </Menu>
+              </li> */}
+              <li className="nav-item">
+                <Link className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary" href="/category/economy">
+                  <span className="ml-2">Economy</span>
+                </Link>
               </li>
-              <li className="nav-item cursor-pointer">
-                <Menu>
-                  <MenuHandler>
-                    <div className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary">
-                      Lifestyle
-                    </div>
-                  </MenuHandler>
-                  <MenuList className='flex flex-col space-y-5 w-40 py-4 font-semibold text-base text-start text-primary'>
-                    <MenuItem><Link href={"/category/fashion"}>Fashion</Link></MenuItem>
-                    <MenuItem><Link href={"/category/health-and-fitness"}>Health & Fitness</Link></MenuItem>
-                  </MenuList>
-                </Menu>
+              <li className="nav-item">
+                <Link className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary" href="/category/sports">
+                  <span className="ml-2">Sport</span>
+                </Link>
               </li>
               <li className="nav-item hidden md:block">
                 <span
