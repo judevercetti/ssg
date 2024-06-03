@@ -16,7 +16,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
             <section className="bg-gray-50 p-2 lg:p-10">
                 <div className='container mx-auto flex flex-col lg:flex-row lg:space-x-5 justify-between items-center'>
                     <div className='hidden md:block w-full lg:w-1/3 text-gray-800'>
-                        <h2 className='text-lg font-bold text-primary'>Latest News</h2>
+                        <h2 className='text-lg font-bold text-primary'>Latest &nbsp;News</h2>
                         {latests && latests.map((post, index) =>
                             <Link key={index} href={'/' + post.slug}>
                                 <VideoListCard image={post.imageurl} title={post.title} time={post.created_at} />
@@ -38,7 +38,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                                     </Link>
                                 </div>
                                 <div className="lg:flex-1 space-y-4 mt-2 sm:text-center text-left">
-                                    <h1 className="text-2xl lg:text-3xl font-bold text-primary hover:underline text-left line-clamp-4">
+                                    <h1 className="text-xl lg:text-2xl font-bold text-primary hover:underline text-left line-clamp-4">
                                         <Link href={"/" + latest.slug}>{latest.title}</Link>
                                     </h1>
                                     <p className="max-w-xl text-lg leading-relaxed text-gray-800 sm:mx-auto lg:ml-0 text-left line-clamp-5">
@@ -114,7 +114,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                 </aside>
             </div>
 
-            <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
+            <div id='whole-page' className='container mx-auto flex pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start'>
                         <InfinityList defaultItems={blog_category} Widget={BlogList} />
