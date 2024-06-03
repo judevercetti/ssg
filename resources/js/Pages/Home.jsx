@@ -122,7 +122,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                 </section>
 
                 <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>
-                    <div className='w-full sticky top-32'>
+                    <div className='w-full sticky top-40'>
                         <AdsComponent dataAdSlot='6063218924' />
                     </div>
                 </aside>

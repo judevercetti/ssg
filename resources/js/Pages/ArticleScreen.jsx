@@ -256,7 +256,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                         </div>
                     </div> */}
 
-                    <div className="w-full bg-white shadow flex flex-col my-4 p-6 sticky top-32">
+                    <div className="w-full flex flex-col my-10 sticky top-40">
                         <h1 className="w-full mb-2 text-md font-extrabold text-gray-900 dark:text-white md:text-xs lg:text-lg"><span className="text-transparent bg-clip-text bg-primary">Latest Updates</span></h1>
                         {latests && latests.map((blog, index) =>
                             <Link key={index} href={"/" + blog.slug}>
@@ -269,9 +269,6 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                                 />
                             </Link>
                         )}
-                        {/* <a href="#" className="w-full bg-primary text-white font-bold text-sm uppercase rounded hover:bg-yellow-700 flex items-center justify-center px-2 py-3 mt-6">
-                            Subscribe
-                        </a> */}
 
                         <div className='w-full'>
                             <AdsComponent dataAdSlot='6063218924' />

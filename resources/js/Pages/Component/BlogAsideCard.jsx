@@ -3,7 +3,7 @@ import React from 'react'
 function BlogAsideCard({ title, time, image }) {
 
     return (
-        <div className="py-2 border-t-2 border-gray-100">
+        <div className="py-2">
             <div className="flex space-x-3 items-center">
                 <div className="lg:w-auto lg:mr-2 mb-1 lg:mb-0">
                     <img className="w-32 md:w-40 h-20 object-cover" src={'/' + image} alt={title} />
