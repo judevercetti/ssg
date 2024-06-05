@@ -1,12 +1,13 @@
 import React from 'react'
 
-function BlogAsideCard({ title, time, image }) {
+function BlogAsideCard({ title, time, image, number }) {
 
     return (
-        <div className="py-2">
+        <div className="py-2 border-t-2 border-gray-100">
             <div className="flex space-x-3 items-center">
-                <div className="lg:w-auto lg:mr-2 mb-1 lg:mb-0">
-                    <img className="w-32 md:w-40 h-20 object-cover" src={'/' + image} alt={title} />
+                <div className="lg:mr-2 mb-1 lg:mb-0 w-32 md:w-40 h-20 object-cover text-2xl md:text-5xl bg-gray-200 text-center content-center text-gray-700 font-body">
+                    {!number && <img className="w-32 md:w-40 h-20 object-cover" src={'/' + image} alt={title} />}
+                    {number && <span>{number}</span>}
                 </div>
                 <div className="w-full lg:w-9/12 mb-2 lg:mb-0">
                     <span className="block text-xs text-gray-400 mb-1">{new Date(time).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>

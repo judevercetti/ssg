@@ -89,7 +89,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                                 <BlogAsideCard
                                     image={post.imageurl}
                                     title={post.title}
-                                    time={post.created_at} />
+                                    time={post.created_at} number={index + 1} />
                             </Link>
                         )}
                     </div>
