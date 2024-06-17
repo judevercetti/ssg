@@ -205,7 +205,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                 </div>
             }
 
-            <div id='whole-page' className='container mx-auto flex pb-6'>
+            <div id='whole-page' className='container mx-auto flex flex-col md:flex-row pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start'>
                         <InfinityList defaultItems={blog_category} Widget={BlogList} />
