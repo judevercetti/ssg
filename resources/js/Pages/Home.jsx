@@ -142,20 +142,22 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
 
             {world_news_posts && world_news_posts.length > 0 &&
                 <div className='container mx-auto px-5 md:px-0'>
-                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">World News</span></h2>
+                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
+                        <span className="text-transparent bg-clip-text bg-primary">World News</span>
+                    </h2>
                     <div className="grid grid-cols-1 md:gap-x-10 sm:grid-cols-3 lg:grid-cols-4">
                         <div className="col-span-2" >
-                            <BlogListCard2 post={world_news_posts[0]} />
+                            {world_news_posts[0] && <BlogListCard2 post={world_news_posts[0]} />}
                         </div>
                         <div className="flex flex-col divide-y gap-2">
-                            <PlainPostCard post={world_news_posts[1]} showImage={true} />
-                            <PlainPostCard post={world_news_posts[2]} />
-                            <PlainPostCard post={world_news_posts[3]} />
+                            {world_news_posts[1] && <PlainPostCard post={world_news_posts[1]} showImage={true} />}
+                            {world_news_posts[2] && <PlainPostCard post={world_news_posts[2]} />}
+                            {world_news_posts[3] && <PlainPostCard post={world_news_posts[3]} />}
                         </div>
                         <div className="flex flex-col divide-y gap-2">
-                            <PlainPostCard post={world_news_posts[4]} showImage={true} />
-                            <PlainPostCard post={world_news_posts[5]} />
-                            <PlainPostCard post={world_news_posts[6]} />
+                            {world_news_posts[4] && <PlainPostCard post={world_news_posts[4]} showImage={true} />}
+                            {world_news_posts[5] && <PlainPostCard post={world_news_posts[5]} />}
+                            {world_news_posts[6] && <PlainPostCard post={world_news_posts[6]} />}
                         </div>
                     </div>
                 </div>
@@ -188,17 +190,17 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                     </h2>
                     <div className="grid grid-cols-1 md:gap-10 sm:grid-cols-3 lg:grid-cols-3">
                         <div className="" >
-                            <BlogListCard2 post={africa_posts[0]} square />
+                            {africa_posts[0] && <BlogListCard2 post={africa_posts[0]} square />}
                         </div>
                         <div className="flex flex-col divide-y gap-2">
-                            <PlainPostCard post={africa_posts[1]} showImage={true} />
-                            <PlainPostCard2 post={africa_posts[2]} />
-                            <PlainPostCard2 post={africa_posts[3]} />
+                            {africa_posts[1] && <PlainPostCard post={africa_posts[1]} showImage={true} />}
+                            {africa_posts[2] && <PlainPostCard2 post={africa_posts[2]} />}
+                            {africa_posts[3] && <PlainPostCard2 post={africa_posts[3]} />}
                         </div>
                         <div className="flex flex-col divide-y gap-2">
-                            <PlainPostCard post={africa_posts[4]} showImage={true} />
-                            <PlainPostCard2 post={africa_posts[5]} />
-                            <PlainPostCard2 post={africa_posts[6]} />
+                            {africa_posts[4] && <PlainPostCard post={africa_posts[4]} showImage={true} />}
+                            {africa_posts[5] && <PlainPostCard2 post={africa_posts[5]} />}
+                            {africa_posts[6] && <PlainPostCard2 post={africa_posts[6]} />}
                         </div>
                     </div>
                 </div>
