@@ -5,11 +5,11 @@ export default function PostSmallCard({ post: { imageurl, title, created_at, des
     return (
         <div>
             <div className="py-2">
-                <div className="flex flex-wrap lg:flex-nowrap items-center">
-                    <div className="w-full lg:w-auto mr-2 mb-8 lg:mb-0">
-                        <img className="block w-32 aspect-square object-cover" src={'/' + imageurl} alt="" />
+                <div className="flex flex-wrap lg:flex-nowrap items-center gap-2">
+                    <div className="w-full lg:w-auto">
+                        <img className="block w-full md:w-32 aspect-auto md:aspect-square object-cover" src={'/' + imageurl} alt="" />
                     </div>
-                    <div className="w-full lg:w-9/12 mr-2 mb-10 lg:mb-0">
+                    <div className="w-full lg:w-9/12">
                         <div className="max-w-2xl">
                             <h3 className="text-base font-semibold line-clamp-2 hover:underline">{title}</h3>
                             <p className="mb-1 leading-normal text-gray-500 line-clamp-2">

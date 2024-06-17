@@ -120,13 +120,13 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
 
 
             {politics_posts && politics_posts.length > 0 &&
-                <div className='container mx-auto'>
+                <div className='container mx-auto px-5 md:px-0'>
                     <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
                         <span className="text-transparent bg-clip-text bg-primary">Politics</span>
                     </h2>
-                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:grid-cols-4">
+                    <div className="grid grid-cols-1 md:gap-x-10 sm:grid-cols-3 lg:grid-cols-4">
                         <BlogListCard2 post={politics_posts[0]} square />
-                        <div className="col-span-2 flex flex-col divide-y gap-2">
+                        <div className="col-span-2 flex flex-col md:divide-y gap-2">
                             {latests && latests.slice(1).map((post, index) =>
                                 <Link key={index} href={'/' + post.slug}>
                                     <PostSmallCard post={post} />
@@ -141,9 +141,9 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
             }
 
             {world_news_posts && world_news_posts.length > 0 &&
-                <div className='container mx-auto'>
+                <div className='container mx-auto px-5 md:px-0'>
                     <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">World News</span></h2>
-                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:grid-cols-4">
+                    <div className="grid grid-cols-1 md:gap-x-10 sm:grid-cols-3 lg:grid-cols-4">
                         <div className="col-span-2" >
                             <BlogListCard2 post={world_news_posts[0]} />
                         </div>
@@ -162,11 +162,11 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
             }
 
             {regional_posts && regional_posts.length > 0 &&
-                <div className='container mx-auto'>
+                <div className='container mx-auto px-5 md:px-0'>
                     <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Regional</span></h2>
-                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:grid-cols-4">
+                    <div className="grid grid-cols-1 md:gap-10 sm:grid-cols-3 lg:grid-cols-4">
                         <BlogListCard2 post={regional_posts[0]} square />
-                        <div className="col-span-2 flex flex-col divide-y gap-2">
+                        <div className="col-span-2 flex flex-col md:divide-y gap-2">
                             {latests && latests.slice(1).map((post, index) =>
                                 <Link key={index} href={'/' + post.slug}>
                                     <PostSmallCard post={post} />
@@ -182,11 +182,11 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
 
 
             {africa_posts && africa_posts.length > 0 &&
-                <div className='container mx-auto'>
+                <div className='container mx-auto px-5 md:px-0'>
                     <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
                         <span className="text-transparent bg-clip-text bg-primary">Africa</span>
                     </h2>
-                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 md:gap-10 sm:grid-cols-3 lg:grid-cols-3">
                         <div className="" >
                             <BlogListCard2 post={africa_posts[0]} square />
                         </div>
