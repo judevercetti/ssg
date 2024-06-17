@@ -22,13 +22,21 @@ class BlogController extends Controller
         $latests = Blog::latest()->limit(4)->get();
         $trending_posts = Blog::latest()->limit(4)->get();
 
-        $categories = BlogCategory::where('name', '!=', 'Editorial')->with('twoBlog')->take(1)->get();
+        
+        $categories = BlogCategory::whereNotIn('name', ['Editorial', 'Politics', 'World', 'Regional', 'Africa'])
+                    ->with('twoBlog')
+                    ->take(1)
+                    ->get();
 
         // $categories->each(function ($category) {
         //     $category->blog = $category->blog->take(5); // limit the number of blogs per category to 2
         // });
 
+        $politics_posts = BlogCategory::where('name', 'Politics')->first()?->posts(5)->get() ?? collect();
         $editorial_posts = BlogCategory::where('name', 'Editorial')->with('threeBlog')->first()->threeBlog;
+        $world_news_posts = BlogCategory::where('name', 'Politics')->first()?->posts(7)->get() ?? collect();
+        $regional_posts = BlogCategory::where('name', 'Politics')->first()?->posts(5)->get() ?? collect();
+        $africa_posts = BlogCategory::where('name', 'Politics')->first()?->posts(7)->get() ?? collect();
 
 
         return Inertia::render('Home', [
@@ -37,6 +45,10 @@ class BlogController extends Controller
             'blog_category' => $categories,
             'trending_posts' => $trending_posts,
             'editorial_posts' => $editorial_posts,
+            'world_news_posts' => $world_news_posts,
+            'regional_posts' => $regional_posts,
+            'politics_posts' => $politics_posts,
+            'africa_posts' => $africa_posts,
         ]);
     }
 

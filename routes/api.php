@@ -24,7 +24,8 @@ Route::get('/categories', function (Request $request) {
     $perPage = 1;
     $page = $request->input('page', 1);
 
-    $categories = BlogCategory::has('twoBlog')
+    $categories = BlogCategory::whereNotIn('name', ['Editorial', 'Politics', 'World', 'Regional', 'Africa'])
+        ->has('twoBlog')
         ->with('twoBlog')->latest()
         ->skip(($page - 1) * $perPage)
         ->take($perPage)

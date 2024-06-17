@@ -9,8 +9,12 @@ import AdsComponent from './Component/AdsComponent';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import InfinityList from './InfinityList';
+import PlainPostCard from './Component/PlainPostCard';
+import PostSmallCard from './Component/PostSmallCard';
+import PlainPostCard2 from './Component/PlainPostCard2';
 
-function Home({ latest, latests, blog, blog_category, trending_posts, editorial_posts }) {
+function Home({ latest, latests, blog, blog_category, trending_posts, editorial_posts, world_news_posts, regional_posts, politics_posts, africa_posts }) {
+    console.log(blog_category);
     return (
         <>
             <section className="bg-gray-50 p-2 lg:p-10">
@@ -19,7 +23,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                         <h2 className='text-lg font-bold text-primary'>Latest &nbsp;News</h2>
                         {latests && latests.map((post, index) =>
                             <Link key={index} href={'/' + post.slug}>
-                                <VideoListCard image={post.imageurl} title={post.title} time={post.created_at} />
+                                <VideoListCard post={post} />
                             </Link>
                         )}
                         <Link href='/search' className='flex space-x-2 items-center font-semibold text-base text-primary float-right hover:underline'>
@@ -113,6 +117,92 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                     </div> */}
                 </aside>
             </div>
+
+
+            {politics_posts && politics_posts.length > 0 &&
+                <div className='container mx-auto'>
+                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
+                        <span className="text-transparent bg-clip-text bg-primary">Politics</span>
+                    </h2>
+                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:grid-cols-4">
+                        <BlogListCard2 post={politics_posts[0]} square />
+                        <div className="col-span-2 flex flex-col divide-y gap-2">
+                            {latests && latests.slice(1).map((post, index) =>
+                                <Link key={index} href={'/' + post.slug}>
+                                    <PostSmallCard post={post} />
+                                </Link>
+                            )}
+                        </div>
+                        <div>
+                            <AdsComponent dataAdSlot='6063218924' />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            {world_news_posts && world_news_posts.length > 0 &&
+                <div className='container mx-auto'>
+                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">World News</span></h2>
+                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:grid-cols-4">
+                        <div className="col-span-2" >
+                            <BlogListCard2 post={world_news_posts[0]} />
+                        </div>
+                        <div className="flex flex-col divide-y gap-2">
+                            <PlainPostCard post={world_news_posts[1]} showImage={true} />
+                            <PlainPostCard post={world_news_posts[2]} />
+                            <PlainPostCard post={world_news_posts[3]} />
+                        </div>
+                        <div className="flex flex-col divide-y gap-2">
+                            <PlainPostCard post={world_news_posts[4]} showImage={true} />
+                            <PlainPostCard post={world_news_posts[5]} />
+                            <PlainPostCard post={world_news_posts[6]} />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            {regional_posts && regional_posts.length > 0 &&
+                <div className='container mx-auto'>
+                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Regional</span></h2>
+                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:grid-cols-4">
+                        <BlogListCard2 post={regional_posts[0]} square />
+                        <div className="col-span-2 flex flex-col divide-y gap-2">
+                            {latests && latests.slice(1).map((post, index) =>
+                                <Link key={index} href={'/' + post.slug}>
+                                    <PostSmallCard post={post} />
+                                </Link>
+                            )}
+                        </div>
+                        <div>
+                            <AdsComponent dataAdSlot='6063218924' />
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            {africa_posts && africa_posts.length > 0 &&
+                <div className='container mx-auto'>
+                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
+                        <span className="text-transparent bg-clip-text bg-primary">Africa</span>
+                    </h2>
+                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:grid-cols-3">
+                        <div className="" >
+                            <BlogListCard2 post={africa_posts[0]} square />
+                        </div>
+                        <div className="flex flex-col divide-y gap-2">
+                            <PlainPostCard post={africa_posts[1]} showImage={true} />
+                            <PlainPostCard2 post={africa_posts[2]} />
+                            <PlainPostCard2 post={africa_posts[3]} />
+                        </div>
+                        <div className="flex flex-col divide-y gap-2">
+                            <PlainPostCard post={africa_posts[4]} showImage={true} />
+                            <PlainPostCard2 post={africa_posts[5]} />
+                            <PlainPostCard2 post={africa_posts[6]} />
+                        </div>
+                    </div>
+                </div>
+            }
 
             <div id='whole-page' className='container mx-auto flex pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
