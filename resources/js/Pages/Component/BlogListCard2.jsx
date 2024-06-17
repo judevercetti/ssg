@@ -6,7 +6,7 @@ function BlogListCard2({ post: { title, description, imageurl, updated_at }, squ
     <div>
       <div className="w-full rounded-lg" >
         <img
-          className={`w-full aspect-auto md:${square ? 'aspect-square' : 'aspect-auto'} object-cover rounded-md`}
+          className={`w-full aspect-video md:${square ? 'aspect-square' : 'aspect-auto'} object-cover rounded-md`}
           src={'/' + imageurl}
           alt="image"
         />
