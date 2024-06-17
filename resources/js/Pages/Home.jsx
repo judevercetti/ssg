@@ -14,7 +14,6 @@ import PostSmallCard from './Component/PostSmallCard';
 import PlainPostCard2 from './Component/PlainPostCard2';
 
 function Home({ latest, latests, blog, blog_category, trending_posts, editorial_posts, world_news_posts, regional_posts, politics_posts, africa_posts }) {
-    console.log(blog_category);
     return (
         <>
             <section className="bg-gray-50 p-2 lg:p-10">
@@ -66,7 +65,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                         <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-5">
                             {editorial_posts && editorial_posts.map((post, index) =>
                                 <Link key={index} href={"/" + post.slug}>
-                                    <BlogListCard2 title={post.title} content={post.description} time={post.updated_at} image={post.imageurl} />
+                                    <BlogListCard2 post={post} />
                                 </Link>
                             )}
                         </div>
