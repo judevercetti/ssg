@@ -31,6 +31,10 @@ function Navbar() {
   const { auth } = usePage().props
   const searchForm = useForm();
   const subscribeForm = useForm();
+  
+  const { url } = usePage();
+
+  const isActive = paths => paths.includes(url) && url != '/' ? 'border-b-2 border-gray-800' : '';
 
   const handleSubscribe = e => {
     e.preventDefault();
@@ -235,19 +239,19 @@ function Navbar() {
               </Link>}
             </div>
 
-            <ul className="flex flex-col lg:flex-row items-center justify-center list-none py-2 lg:mx-auto">
-              <li className="nav-item">
+            <ul className="flex flex-col lg:flex-row items-end justify-center list-none lg:mx-auto">
+              <li className="">
                 <Link
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
+                  className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary`}
                   href="/">
                   <span className="ml-2">Home</span>
                 </Link>
               </li>
 
-              <li className="nav-item cursor-pointer">
+              <li className=" cursor-pointer">
                 <Menu>
                   <MenuHandler>
-                    <div className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary">
+                    <div className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive(['/category/regional', '/category/africa', '/category/world'])}`}>
                       News
                     </div>
                   </MenuHandler>
@@ -296,39 +300,39 @@ function Navbar() {
                   </MenuList>
                 </Menu>
               </li>
-              <li className="nav-item">
+              <li className="">
                 <Link
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
+                  className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/opinion')}`}
                   href="/category/opinion"
                 >
                   <span className="ml-2">Opinion</span>
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="">
                 <a
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
+                  className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary`}
                   href="https://www.youtube.com/@SSGTVSouthSudanGlobal" target='_blank'
                 >
                   <span className="ml-2">SSGTV</span>
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="">
                 <Link
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
+                  className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/diaspora')}`}
                   href="/category/diaspora"
                 >
                   <span className="ml-2">Diaspora</span>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary" href="/category/editorial">
+              <li className="">
+                <Link className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/editorial')}`} href="/category/editorial">
                   <span className="ml-2">Editorial</span>
                 </Link>
               </li>
-              {/* <li className="nav-item cursor-pointer">
+              {/* <li className=" cursor-pointer">
                 <Menu>
                   <MenuHandler>
-                    <div className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary">
+                    <div className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/')}`}>
                       Business
                     </div>
                   </MenuHandler>
@@ -338,19 +342,19 @@ function Navbar() {
                   </MenuList>
                 </Menu>
               </li> */}
-              <li className="nav-item">
-                <Link className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary" href="/category/economy">
+              <li className="">
+                <Link className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/economy')}`} href="/category/economy">
                   <span className="ml-2">Economy</span>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary" href="/category/sports">
+              <li className="">
+                <Link className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/sports')}`} href="/category/sports">
                   <span className="ml-2">Sport</span>
                 </Link>
               </li>
-              <li className="nav-item hidden md:block">
+              <li className="hidden md:block">
                 <span
-                  className="px-3 py-2 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
+                  className="px-3 py-1 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
                   href="#pablo">
                   <span className="ml-2">
                     {isFormVisible ? (

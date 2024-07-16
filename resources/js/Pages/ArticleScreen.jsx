@@ -96,7 +96,7 @@ function ArticleScreen({ blog, category, latests, category_name, comments }) {
                 <section className="w-full md:w-2/3 flex flex-col items-center md:px-3">
                     <article className="flex flex-col my-2 md:my-4">
 
-                        <div className="w-full bg-white flex flex-col justify-start mx-3 px-5">
+                        <div className="w-full bg-white flex flex-col justify-start px-5">
                             <h1 className="text-3xl font-bold pb-4">{blog.title}</h1>
                             <div className="text-primary text-sm font-bold uppercase pb-4">{category_name.name}</div>
                             <div className="text-sm pb-3">
