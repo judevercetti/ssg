@@ -16,24 +16,20 @@ class BlogController extends Controller
 {
     public function index()
     {
-        //
-
         $latest = Blog::latest()->first();
         $latests = Blog::latest()->limit(4)->get();
         $trending_posts = Blog::latest()->limit(4)->get();
 
-        
         $categories = BlogCategory::whereNotIn('name', ['Editorial', 'Politics', 'World', 'Regional', 'Africa'])
-                    ->with('twoBlog')
-                    ->take(1)
-                    ->get();
+            ->with('twoBlog')
+            ->take(1)
+            ->get();
 
-        // $categories->each(function ($category) {
-        //     $category->blog = $category->blog->take(5); // limit the number of blogs per category to 2
-        // });
-
+        $national_posts = Blog::whereHas('blogCategory', function ($query) {
+            $query->whereNotIn('slug', ['regional', 'africa', 'world', 'politics', 'editorial']);
+        })->latest()->get();
         $politics_posts = BlogCategory::where('name', 'Politics')->first()?->posts(5)->get() ?? collect();
-        $editorial_posts = BlogCategory::where('name', 'Editorial')->with('threeBlog')->first()->threeBlog;
+        $editorial_posts = BlogCategory::where('name', 'Editorial')->first()?->posts(3)->get() ?? collect();
         $world_news_posts = BlogCategory::where('name', 'World')->first()?->posts(7)->get() ?? collect();
         $regional_posts = BlogCategory::where('name', 'Regional')->first()?->posts(5)->get() ?? collect();
         $africa_posts = BlogCategory::where('name', 'Africa')->first()?->posts(7)->get() ?? collect();
@@ -44,6 +40,7 @@ class BlogController extends Controller
             'latests' => $latests,
             'blog_category' => $categories,
             'trending_posts' => $trending_posts,
+            'national_posts' => $national_posts,
             'editorial_posts' => $editorial_posts,
             'world_news_posts' => $world_news_posts,
             'regional_posts' => $regional_posts,
@@ -115,10 +112,10 @@ class BlogController extends Controller
             'latests' => $latests,
             'comments' => $comments
         ])->withViewData([
-                    'title' => $blog->title,
-                    'description' => $blog->description,
-                    'image' => url($blog->imageurl),
-                ]);
+            'title' => $blog->title,
+            'description' => $blog->description,
+            'image' => url($blog->imageurl),
+        ]);
     }
 
     /**
@@ -162,7 +159,6 @@ class BlogController extends Controller
 
         //return Response($category);
         return Inertia::render('UploadArticleScreen', ['categories' => $categories]);
-
     }
 
     public function dispayCategoryBlogs(Request $request)
@@ -180,9 +176,9 @@ class BlogController extends Controller
             'category' => $category->name,
             'trending_posts' => $trending_posts,
         ])->withViewData([
-                    'title' => $category->name,
-                    'description' => 'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
-                ]);
+            'title' => $category->name,
+            'description' => 'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
+        ]);
     }
 
     public function dispayCategoryNational(Request $request)
@@ -198,10 +194,9 @@ class BlogController extends Controller
             'category' => 'National',
             'trending_posts' => $trending_posts,
         ])->withViewData([
-                    'title' => 'National',
-                    'description' => 'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
-                ]);
-
+            'title' => 'National',
+            'description' => 'Explore our diverse range of categories to find the content that interests you. Our Categories page showcases a wide selection of topics, from news and entertainment to lifestyle and technology. Discover the organized structure of our website and easily navigate to the content you love. Browse through our extensive categories and delve into a world of captivating information.'
+        ]);
     }
 
     public function comment(Request $request)

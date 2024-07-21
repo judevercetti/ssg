@@ -12,8 +12,12 @@ import InfinityList from './InfinityList';
 import PlainPostCard from './Component/PlainPostCard';
 import PostSmallCard from './Component/PostSmallCard';
 import PlainPostCard2 from './Component/PlainPostCard2';
+import PostTinyCard from './Component/PostTinyCard';
 
-function Home({ latest, latests, blog, blog_category, trending_posts, editorial_posts, world_news_posts, regional_posts, politics_posts, africa_posts }) {
+function Home({ latest, latests, blog, blog_category, trending_posts, national_posts, editorial_posts, world_news_posts, regional_posts, politics_posts, africa_posts }) {
+    const nationalTopRowPosts = national_posts.slice(0, 3);
+    const nationalBottomRowPosts = national_posts.slice(3);
+
     return (
         <>
             <section className="bg-gray-50 p-2 lg:p-10">
@@ -61,14 +65,34 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
             <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start mb-5'>
-                        <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Editorial</span></h2>
+                        <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">National</span></h2>
                         <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-5">
-                            {editorial_posts && editorial_posts.map((post, index) =>
+                            {nationalTopRowPosts && nationalTopRowPosts.map((post, index) =>
                                 <Link key={index} href={"/" + post.slug}>
                                     <BlogListCard2 post={post} />
                                 </Link>
                             )}
                         </div>
+                        {<div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 md:gap-x-5 gap-y-3 mt-5">
+                            <div className="flex flex-col border border-gray-300 rounded px-2 pt-3">
+                                {nationalBottomRowPosts[0] && <PostTinyCard post={nationalBottomRowPosts[0]} />}
+                                {nationalBottomRowPosts[3] && <PostTinyCard post={nationalBottomRowPosts[3]} />}
+                                {nationalBottomRowPosts[6] && <PostTinyCard post={nationalBottomRowPosts[6]} />}
+                                {nationalBottomRowPosts[9] && <PostTinyCard post={nationalBottomRowPosts[9]} />}
+                            </div>
+                            <div className="flex flex-col border border-gray-300 rounded px-2 pt-3">
+                                {nationalBottomRowPosts[1] && <PostTinyCard post={nationalBottomRowPosts[1]} />}
+                                {nationalBottomRowPosts[4] && <PostTinyCard post={nationalBottomRowPosts[4]} />}
+                                {nationalBottomRowPosts[7] && <PostTinyCard post={nationalBottomRowPosts[7]} />}
+                                {nationalBottomRowPosts[10] && <PostTinyCard post={nationalBottomRowPosts[10]} />}
+                            </div>
+                            <div className="flex flex-col border border-gray-300 rounded px-2 pt-3">
+                                {nationalBottomRowPosts[2] && <PostTinyCard post={nationalBottomRowPosts[2]} />}
+                                {nationalBottomRowPosts[5] && <PostTinyCard post={nationalBottomRowPosts[5]} />}
+                                {nationalBottomRowPosts[8] && <PostTinyCard post={nationalBottomRowPosts[8]} />}
+                                {nationalBottomRowPosts[11] && <PostTinyCard post={nationalBottomRowPosts[11]} />}
+                            </div>
+                        </div>}
                     </div>
 
                     <div className='w-full'>
@@ -96,27 +120,8 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                             </Link>
                         )}
                     </div>
-
-                    {/* <div className="text-sm py-6 sticky top-20">
-                        <div className="w-full text-center">
-                            <Adsense
-                                client='ca-pub-2005682797531342'
-                                slot='7046626912'
-                                adTest='on'
-                                style={{ display: 'block' }}
-                                format='auto'
-                                responsive='true'
-                                layoutKey='-gw-1+2a-9x+5c'
-                            />
-                            <a className="uppercase mt-5" href="#">Advertisement</a>
-                            <a href="#">
-                                <img className="mx-auto" src="/images/ads/250.jpg" alt="advertisement area" />
-                            </a>
-                        </div>
-                    </div> */}
                 </aside>
             </div>
-
 
             {politics_posts && politics_posts.length > 0 &&
                 <div className='container mx-auto px-5 md:px-0'>
@@ -140,6 +145,32 @@ function Home({ latest, latests, blog, blog_category, trending_posts, editorial_
                     </div>
                 </div>
             }
+
+            {editorial_posts && editorial_posts.length > 0 &&
+                <div id='whole-page' className='container mx-auto flex flex-wrap'>
+                    <section id='left' className='w-full md:w-2/3 flex flex-col items-center'>
+                        <div className='w-full justify-start mb-5'>
+                            <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Editorial</span></h2>
+                            <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-5">
+                                {editorial_posts && editorial_posts.map((post, index) =>
+                                    <Link key={index} href={"/" + post.slug}>
+                                        <BlogListCard2 post={post} />
+                                    </Link>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className='w-full'>
+                            <AdsComponent dataAdSlot='6063218924' />
+                        </div>
+                    </section>
+
+                    <aside id='right' className='w-full md:w-1/3 flex flex-col items-center px-3'>
+                        <div className='w-full'>
+                            <AdsComponent dataAdSlot='6063218924' />
+                        </div>
+                    </aside>
+                </div>}
 
             {world_news_posts && world_news_posts.length > 0 &&
                 <div className='container mx-auto px-5 md:px-0'>

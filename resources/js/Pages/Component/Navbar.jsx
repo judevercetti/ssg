@@ -31,7 +31,7 @@ function Navbar() {
   const { auth } = usePage().props
   const searchForm = useForm();
   const subscribeForm = useForm();
-  
+
   const { url } = usePage();
 
   const isActive = paths => paths.includes(url) && url != '/' ? 'border-b-2 border-gray-800' : '';
@@ -242,16 +242,16 @@ function Navbar() {
             <ul className="flex flex-col lg:flex-row items-end justify-center list-none lg:mx-auto">
               <li className="">
                 <Link
-                  className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary`}
+                  className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary`}
                   href="/">
-                  <span className="ml-2">Home</span>
+                  Home
                 </Link>
               </li>
 
               <li className=" cursor-pointer">
                 <Menu>
                   <MenuHandler>
-                    <div className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive(['/category/regional', '/category/africa', '/category/world'])}`}>
+                    <div className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive(['/category/regional', '/category/africa', '/category/world'])}`}>
                       News
                     </div>
                   </MenuHandler>
@@ -302,37 +302,37 @@ function Navbar() {
               </li>
               <li className="">
                 <Link
-                  className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/opinion')}`}
+                  className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/opinion')}`}
                   href="/category/opinion"
                 >
-                  <span className="ml-2">Opinion</span>
+                  Opinion
                 </Link>
               </li>
               <li className="">
                 <a
-                  className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary`}
+                  className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary`}
                   href="https://www.youtube.com/@SSGTVSouthSudanGlobal" target='_blank'
                 >
-                  <span className="ml-2">SSGTV</span>
+                  SSGTV
                 </a>
               </li>
               <li className="">
                 <Link
-                  className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/diaspora')}`}
+                  className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/diaspora')}`}
                   href="/category/diaspora"
                 >
-                  <span className="ml-2">Diaspora</span>
+                  Diaspora
                 </Link>
               </li>
               <li className="">
-                <Link className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/editorial')}`} href="/category/editorial">
-                  <span className="ml-2">Editorial</span>
+                <Link className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/editorial')}`} href="/category/editorial">
+                  Editorial
                 </Link>
               </li>
               {/* <li className=" cursor-pointer">
                 <Menu>
                   <MenuHandler>
-                    <div className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/')}`}>
+                    <div className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/')}`}>
                       Business
                     </div>
                   </MenuHandler>
@@ -343,46 +343,44 @@ function Navbar() {
                 </Menu>
               </li> */}
               <li className="">
-                <Link className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/economy')}`} href="/category/economy">
-                  <span className="ml-2">Economy</span>
+                <Link className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/economy')}`} href="/category/economy">
+                  Economy
                 </Link>
               </li>
               <li className="">
-                <Link className={`px-3 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/sports')}`} href="/category/sports">
-                  <span className="ml-2">Sport</span>
+                <Link className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary ${isActive('/category/sports')}`} href="/category/sports">
+                  Sport
                 </Link>
               </li>
               <li className="hidden md:block">
                 <span
-                  className="px-3 py-1 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
+                  className="mx-4 py-1.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary"
                   href="#pablo">
-                  <span className="ml-2">
-                    {isFormVisible ? (
-                      <form onSubmit={handleSearch} className='transition-all duration-500 ease-in-out transform translate-x-0 opacity-100'>
-                        <div className='flex rounded-md'>
-                          <input
-                            className="shadow appearance-none border rounded-l-md w-full py-1.5 px-3 text-gray-700 text-sm font-normal leading-tight focus:outline-none focus:shadow-outline"
-                            id="articleTitle"
-                            type="text"
-                            placeholder="Search for an article"
-                            value={searchForm.data.search_text ?? ''}
-                            onChange={(event) => searchForm.setData('search_text', event.target.value)}
-                          />
-                          <button type='submit' disabled={searchForm.processing} className='bg-primary px-4 rounded-r-md shadow text-white'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                            </svg>
-                          </button>
-                        </div>
-                      </form>
-                    ) : (
-                      <button onClick={() => setFormVisible(!isFormVisible)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>
-                      </button>
-                    )}
-                  </span>
+                  {isFormVisible ? (
+                    <form onSubmit={handleSearch} className='transition-all duration-500 ease-in-out transform translate-x-0 opacity-100'>
+                      <div className='flex rounded-md'>
+                        <input
+                          className="border rounded-l-md w-full py-1.5 px-3 m-0 text-gray-700 text-sm font-normal leading-tight focus:outline-none focus:shadow-outline"
+                          id="articleTitle"
+                          type="text"
+                          placeholder="Search for an article"
+                          value={searchForm.data.search_text ?? ''}
+                          onChange={(event) => searchForm.setData('search_text', event.target.value)}
+                        />
+                        <button type='submit' disabled={searchForm.processing} className='bg-primary px-4 rounded-r-md text-white'>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </form>
+                  ) : (
+                    <button onClick={() => setFormVisible(!isFormVisible)} className='py-1'>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                      </svg>
+                    </button>
+                  )}
                 </span>
               </li>
             </ul>
