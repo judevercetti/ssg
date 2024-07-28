@@ -31,8 +31,8 @@ class BlogController extends Controller
         $politics_posts = BlogCategory::where('name', 'Politics')->first()?->posts(5)->get() ?? collect();
         $editorial_posts = BlogCategory::where('name', 'Editorial')->first()?->posts(3)->get() ?? collect();
         $world_news_posts = BlogCategory::where('name', 'World')->first()?->posts(7)->get() ?? collect();
-        $regional_posts = BlogCategory::where('name', 'Regional')->first()?->posts(5)->get() ?? collect();
-        $africa_posts = BlogCategory::where('name', 'Africa')->first()?->posts(7)->get() ?? collect();
+        $regional_posts = BlogCategory::where('name', 'Regional')->first()?->posts(7)->get() ?? collect();
+        $africa_posts = BlogCategory::where('name', 'Africa')->first()?->posts(5)->get() ?? collect();
 
 
         return Inertia::render('Home', [

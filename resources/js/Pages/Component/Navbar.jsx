@@ -34,7 +34,7 @@ function Navbar() {
 
   const { url } = usePage();
 
-  const isActive = paths => paths.includes(url) && url != '/' ? 'border-b-2 border-gray-800' : '';
+  const isActive = paths => (paths.includes(url) && url != '/') || paths == url ? 'border-b-2 border-gray-800' : '';
 
   const handleSubscribe = e => {
     e.preventDefault();
@@ -242,7 +242,7 @@ function Navbar() {
             <ul className="flex flex-col lg:flex-row items-end justify-center list-none lg:mx-auto">
               <li className="">
                 <Link
-                  className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary`}
+                  className={`mx-4 py-2.5 flex items-center uppercase font-semibold leading-snug text-gray-800 hover:text-primary  ${isActive('/')}`}
                   href="/">
                   Home
                 </Link>
@@ -294,9 +294,9 @@ function Navbar() {
                         <MenuItem onClick={() => Inertia.get("/category/states")}>States</MenuItem>
                       </MenuList>
                     </Menu>
-                    <MenuItem><Link href={"/category/regional"}>Regional</Link></MenuItem>
-                    <MenuItem><Link href={"/category/africa"}>Africa</Link></MenuItem>
-                    <MenuItem><Link href={"/category/world"}>World</Link></MenuItem>
+                    <MenuItem onClick={() => Inertia.get("/category/regional")}>Regional</MenuItem>
+                    <MenuItem onClick={() => Inertia.get("/category/africa")}>Africa</MenuItem>
+                    <MenuItem onClick={() => Inertia.get("/category/world")}>World</MenuItem>
                   </MenuList>
                 </Menu>
               </li>

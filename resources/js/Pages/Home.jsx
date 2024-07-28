@@ -21,8 +21,8 @@ function Home({ latest, latests, blog, blog_category, trending_posts, national_p
     return (
         <>
             <section className="bg-gray-50 p-2 lg:p-10">
-                <div className='container mx-auto flex flex-col lg:flex-row lg:space-x-5 justify-between items-center'>
-                    <div className='hidden md:block w-full lg:w-1/3 text-gray-800'>
+                <div className='container mx-auto flex flex-col-reverse lg:flex-row gap-5 justify-between items-center'>
+                    <div className='w-full lg:w-1/3 text-gray-800'>
                         <h2 className='text-lg font-bold text-primary'>Latest &nbsp;News</h2>
                         {latests && latests.map((post, index) =>
                             <Link key={index} href={'/' + post.slug}>
@@ -65,7 +65,7 @@ function Home({ latest, latests, blog, blog_category, trending_posts, national_p
             <div id='whole-page' className='container mx-auto flex flex-wrap pb-6'>
                 <section id='left' className='w-full md:w-2/3 flex flex-col items-center px-3 divide-y-2 divide-yellow-200'>
                     <div className='w-full justify-start mb-5'>
-                        <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">National</span></h2>
+                        <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><Link href='/category/national' className="text-transparent bg-clip-text bg-primary hover:underline decoration-primary">National</Link></h2>
                         <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-5">
                             {nationalTopRowPosts && nationalTopRowPosts.map((post, index) =>
                                 <Link key={index} href={"/" + post.slug}>
@@ -126,7 +126,9 @@ function Home({ latest, latests, blog, blog_category, trending_posts, national_p
             {politics_posts && politics_posts.length > 0 &&
                 <div className='container mx-auto px-5 md:px-0'>
                     <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
-                        <span className="text-transparent bg-clip-text bg-primary">Politics</span>
+                        <Link href='/category/politics' className="text-transparent bg-clip-text bg-primary hover:underline decoration-primary">
+                            Politics
+                        </Link>
                     </h2>
                     <div className="grid grid-cols-1 md:gap-x-10 sm:grid-cols-3 lg:grid-cols-4">
                         <Link href={'/' + world_news_posts[0].slug}>
@@ -150,7 +152,11 @@ function Home({ latest, latests, blog, blog_category, trending_posts, national_p
                 <div id='whole-page' className='container mx-auto flex flex-wrap'>
                     <section id='left' className='w-full md:w-2/3 flex flex-col items-center'>
                         <div className='w-full justify-start mb-5'>
-                            <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Editorial</span></h2>
+                            <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
+                                <Link href='/category/editorial' className="text-transparent bg-clip-text bg-primary hover:underline decoration-primary">
+                                    Editorial
+                                </Link>
+                            </h2>
                             <div className="grid grid-cols-1 gap-y-5 gap-x-5 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-5">
                                 {editorial_posts && editorial_posts.map((post, index) =>
                                     <Link key={index} href={"/" + post.slug}>
@@ -170,39 +176,46 @@ function Home({ latest, latests, blog, blog_category, trending_posts, national_p
                             <AdsComponent dataAdSlot='6063218924' />
                         </div>
                     </aside>
-                </div>}
-
-            {world_news_posts && world_news_posts.length > 0 &&
-                <div className='container mx-auto px-5 md:px-0'>
-                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
-                        <span className="text-transparent bg-clip-text bg-primary">World News</span>
-                    </h2>
-                    <div className="grid grid-cols-1 md:gap-x-10 sm:grid-cols-3 lg:grid-cols-4">
-                        <div className="col-span-2" >
-                            {world_news_posts[0] && <Link href={'/' + world_news_posts[0].slug}>
-                                <BlogListCard2 post={world_news_posts[0]} />
-                            </Link>}
-                        </div>
-                        <div className="flex flex-col divide-y gap-2">
-                            {world_news_posts[1] && <PlainPostCard post={world_news_posts[1]} showImage={true} />}
-                            {world_news_posts[2] && <PlainPostCard post={world_news_posts[2]} />}
-                            {world_news_posts[3] && <PlainPostCard post={world_news_posts[3]} />}
-                        </div>
-                        <div className="flex flex-col divide-y gap-2">
-                            {world_news_posts[4] && <PlainPostCard post={world_news_posts[4]} showImage={true} />}
-                            {world_news_posts[5] && <PlainPostCard post={world_news_posts[5]} />}
-                            {world_news_posts[6] && <PlainPostCard post={world_news_posts[6]} />}
-                        </div>
-                    </div>
                 </div>
             }
 
             {regional_posts && regional_posts.length > 0 &&
                 <div className='container mx-auto px-5 md:px-0'>
-                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white"><span className="text-transparent bg-clip-text bg-primary">Regional</span></h2>
+                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
+                        <Link href='/category/regional' className="text-transparent bg-clip-text bg-primary hover:underline decoration-primary">
+                            Regional
+                        </Link>
+                    </h2>
+                    <div className="grid grid-cols-1 md:gap-x-10 sm:grid-cols-3 lg:grid-cols-4">
+                        <div className="col-span-2" >
+                            {regional_posts[0] && <Link href={'/' + regional_posts[0].slug}>
+                                <BlogListCard2 post={regional_posts[0]} />
+                            </Link>}
+                        </div>
+                        <div className="flex flex-col divide-y gap-2">
+                            {regional_posts[1] && <PlainPostCard post={regional_posts[1]} showImage={true} />}
+                            {regional_posts[2] && <PlainPostCard post={regional_posts[2]} />}
+                            {regional_posts[3] && <PlainPostCard post={regional_posts[3]} />}
+                        </div>
+                        <div className="flex flex-col divide-y gap-2">
+                            {regional_posts[4] && <PlainPostCard post={regional_posts[4]} showImage={true} />}
+                            {regional_posts[5] && <PlainPostCard post={regional_posts[5]} />}
+                            {regional_posts[6] && <PlainPostCard post={regional_posts[6]} />}
+                        </div>
+                    </div>
+                </div>
+            }
+
+            {africa_posts && africa_posts.length > 0 &&
+                <div className='container mx-auto px-5 md:px-0'>
+                    <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
+                        <Link href='/category/africa' className="text-transparent bg-clip-text bg-primary hover:underline decoration-primary">
+                            Africa
+                        </Link>
+                    </h2>
                     <div className="grid grid-cols-1 md:gap-10 sm:grid-cols-3 lg:grid-cols-4">
                         <Link href={'/' + world_news_posts[0].slug}>
-                            <BlogListCard2 post={regional_posts[0]} square />
+                            <BlogListCard2 post={africa_posts[0]} square />
                         </Link>
                         <div className="col-span-2 flex flex-col md:divide-y gap-2">
                             {latests && latests.slice(1).map((post, index) =>
@@ -218,27 +231,28 @@ function Home({ latest, latests, blog, blog_category, trending_posts, national_p
                 </div>
             }
 
-
-            {africa_posts && africa_posts.length > 0 &&
+            {world_news_posts && world_news_posts.length > 0 &&
                 <div className='container mx-auto px-5 md:px-0'>
                     <h2 className="mb-2 mt-5 text-lg font-extrabold text-gray-900 dark:text-white">
-                        <span className="text-transparent bg-clip-text bg-primary">Africa</span>
+                        <Link href='/category/world' className="text-transparent bg-clip-text bg-primary hover:underline decoration-primary">
+                            World
+                        </Link>
                     </h2>
                     <div className="grid grid-cols-1 md:gap-10 sm:grid-cols-3 lg:grid-cols-3">
                         <div className="" >
-                            {africa_posts[0] && <Link href={'/' + world_news_posts[0].slug}>
-                                <BlogListCard2 post={africa_posts[0]} square />
+                            {world_news_posts[0] && <Link href={'/' + world_news_posts[0].slug}>
+                                <BlogListCard2 post={world_news_posts[0]} square />
                             </Link>}
                         </div>
                         <div className="flex flex-col divide-y gap-2">
-                            {africa_posts[1] && <PlainPostCard post={africa_posts[1]} showImage={true} />}
-                            {africa_posts[2] && <PlainPostCard2 post={africa_posts[2]} />}
-                            {africa_posts[3] && <PlainPostCard2 post={africa_posts[3]} />}
+                            {world_news_posts[1] && <PlainPostCard post={world_news_posts[1]} showImage={true} />}
+                            {world_news_posts[2] && <PlainPostCard2 post={world_news_posts[2]} />}
+                            {world_news_posts[3] && <PlainPostCard2 post={world_news_posts[3]} />}
                         </div>
                         <div className="flex flex-col divide-y gap-2">
-                            {africa_posts[4] && <PlainPostCard post={africa_posts[4]} showImage={true} />}
-                            {africa_posts[5] && <PlainPostCard2 post={africa_posts[5]} />}
-                            {africa_posts[6] && <PlainPostCard2 post={africa_posts[6]} />}
+                            {world_news_posts[4] && <PlainPostCard post={world_news_posts[4]} showImage={true} />}
+                            {world_news_posts[5] && <PlainPostCard2 post={world_news_posts[5]} />}
+                            {world_news_posts[6] && <PlainPostCard2 post={world_news_posts[6]} />}
                         </div>
                     </div>
                 </div>
@@ -264,9 +278,9 @@ function Home({ latest, latests, blog, blog_category, trending_posts, national_p
 function BlogList({ item }) {
     return item.two_blog.length == 0 ? <></> : <div className="divide-y-2 divide-yellow-200">
         <h2 className="mb-2 my-10 text-lg font-extrabold text-gray-900 dark:text-white">
-            <span className="text-transparent bg-clip-text bg-primary">
+            <Link href={'/category/' + item.slug} className="text-transparent bg-clip-text bg-primary hover:underline decoration-primary">
                 {item.name}
-            </span>
+            </Link>
         </h2>
         {item.two_blog.map((blogs, index) =>
             <Link key={index} href={"/" + blogs.slug}>
